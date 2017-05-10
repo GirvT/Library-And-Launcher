@@ -1,1 +1,1 @@
-//Smoke by Chimney Co.
+Smoke by Chimney Co.
