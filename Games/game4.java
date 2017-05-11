@@ -10,8 +10,7 @@ public class game4
 extends Applet
 implements KeyListener
 {
-   int points = 0;
-   int lives = 3;
+   int lives = 5;
    public void init ()
       {
       this.addKeyListener(this);
@@ -24,93 +23,109 @@ implements KeyListener
       setBackground(Color.white);
       Graphics2D g2 = (Graphics2D)g;
       g.setColor(Color.black);
-      g.drawString("Choose a number between 1-6", 175,100);
+      g.drawString("Choose a number between 1-6", 130,120);
+      g.drawString("Wrong guess = lose a life", 160,160);
+      g.drawString("Right guess = gain a life", 175,190);
+      g.drawString("Lives remaining = " + lives, 350,40);
+      if (lives==0)
+         {
+         g.setColor(Color.white);
+         g.drawRect(0,0,600,400);
+         g.setColor(Color.black);
+         g.drawString("You Lost! Press Q to exit the game, press to restart", 250,40);
+         }
  
       }
    public void rando()
       {
       int randArray[]={1,2,3,4,5,6};
       Random rand = new Random();
-      int  num = rand.nextInt(6)+1;
+      int  num = rand.nextInt(6);
       int n = randArray[num];
-      System.out.print(n);
-      if (lives == 0)
-         {
-         System.out.print("you lost");
-         }
+      repaint();  
       }
 
    public void keyPressed(KeyEvent e)
       {
       Random rand = new Random();
-      int  num = rand.nextInt(6)+1;
+      int  num = rand.nextInt(6);
       int randArray[]={1,2,3,4,5,6};
-      int n = randArray[num];
-      System.out.print(n);
+      int n = randArray[num]; 
+      System.out.print("  ");
+      System.out.println(n);
+       
       if (e.getKeyCode() == KeyEvent.VK_1)
          {
             if (n == 1)
                {
-               points++;
+               lives++;
+               System.out.println("Lives remaining:" + lives);
                rando();
                } 
             else
                {
-               lives-- ;
-               rando(); 
+               lives--;  
+               System.out.println("Lives remaining:" + lives);
+               rando();
                } 
-         }
+         }        
       else if (e.getKeyCode() == KeyEvent.VK_2)
          {
             if (n == 2)
                {
-               points++;
+               lives++;
+               System.out.println("Lives remaining:" + lives);
                rando();
                } 
             else
                {
                lives--;  
+               System.out.println("Lives remaining:" + lives);
                rando();
                } 
-         }         
+         }        
       else if (e.getKeyCode() == KeyEvent.VK_3)
          {
             if (n == 3)
                {
-               points++;
+               lives++;
+               System.out.println("Lives remaining:" + lives);
                rando();
                } 
             else
                {
                lives--;  
+               System.out.println("Lives remaining:" + lives);
                rando();
                } 
-         }    
-
+         }
       else if (e.getKeyCode() == KeyEvent.VK_4)
          {
             if (n == 4)
                {
-               points++;
+               lives++;
+               System.out.println("Lives remaining:" + lives);
                rando();
                } 
             else
                {
                lives--;  
+               System.out.println("Lives remaining:" + lives);
                rando();
                } 
-         }     
- 
+         }             
       else if (e.getKeyCode() == KeyEvent.VK_5)
          {
             if (n == 5)
                {
-               points++;
+               lives++;
+               System.out.println("Lives remaining:" + lives);
                rando();
                } 
             else
                {
                lives--;  
+               System.out.println("Lives remaining:" + lives);
                rando();
                } 
          }     
@@ -118,12 +133,13 @@ implements KeyListener
          {
             if (n == 6)
                {
-               points++;
+               lives++;
                rando();
                } 
             else
                {
                lives--;  
+               System.out.println("Lives remaining:" + lives);
                rando();
                } 
          }                                 
@@ -133,9 +149,11 @@ implements KeyListener
          }  
       else if (e.getKeyCode() == KeyEvent.VK_R)
          {
-
-         }                     
+         lives = 5;
          repaint();
+         }                     
+         
+         
    
       }
    
