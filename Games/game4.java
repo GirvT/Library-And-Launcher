@@ -27,12 +27,12 @@ implements KeyListener
       g.drawString("Wrong guess = lose a life", 160,160);
       g.drawString("Right guess = gain a life", 175,190);
       g.drawString("Lives remaining = " + lives, 350,40);
-      if (lives==0)
+      if (lives<=0)
          {
-         g.setColor(Color.white);
-         g.drawRect(0,0,600,400);
+         g.clearRect(0, 0, getWidth(), getHeight()); 
          g.setColor(Color.black);
-         g.drawString("You Lost! Press Q to exit the game, press to restart", 250,40);
+         g.drawString("You Lost!", 265,40);
+         g.drawString("Press Q to exit the game, press R to restart", 60,75);
          }
  
       }
@@ -42,8 +42,11 @@ implements KeyListener
       Random rand = new Random();
       int  num = rand.nextInt(6);
       int n = randArray[num];
-      repaint();  
-      }
+      if (lives >= 0)
+         {
+         repaint();  
+         }
+      }   
 
    public void keyPressed(KeyEvent e)
       {
