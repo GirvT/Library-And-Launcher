@@ -53,11 +53,9 @@ implements KeyListener
       Random rand = new Random();
       int  num = rand.nextInt(6);
       int randArray[]={1,2,3,4,5,6};
-      int n = randArray[num]; 
-      System.out.print("  ");
-      System.out.println(n);
+      int n = randArray[num];
        
-      if (e.getKeyCode() == KeyEvent.VK_1)
+      if (e.getKeyCode() == KeyEvent.VK_1 || e.getKeyCode() == Event.VK_NUMPAD1))
          {
             if (n == 1)
                {
