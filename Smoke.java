@@ -84,7 +84,7 @@ public class Smoke
       rows = rd.readFile(fileName, 10);
       info = re.getRecords(rows);
       StringBuilder sb = new StringBuilder();
-      for (int i = 0; i < info.length-3; i++)
+      for (int i = 0; i < info.length-5; i++)
       {
          for(int j = 0; j < info[0].length; j++)
          {
@@ -92,10 +92,10 @@ public class Smoke
          }
          sb.append("\n");
       }
-      field.append("Name" + "\tYear\n");
+      field.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
       field.append(sb.toString());
       JScrollPane scrollPane = new JScrollPane(field,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-      scrollPane.setBounds(160,100, 300, 150);
+      scrollPane.setBounds(100, 120, 500, 160);
       panel.add(scrollPane);       
       
       
