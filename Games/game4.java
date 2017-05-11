@@ -55,82 +55,72 @@ implements KeyListener
       int randArray[]={1,2,3,4,5,6};
       int n = randArray[num];
        
-      if (e.getKeyCode() == KeyEvent.VK_1 || e.getKeyCode() == Event.VK_NUMPAD1))
+      if (e.getKeyCode() == KeyEvent.VK_1 || e.getKeyCode() == KeyEvent.VK_NUMPAD1)
          {
             if (n == 1)
                {
                lives++;
-               System.out.println("Lives remaining:" + lives);
                rando();
                } 
             else
                {
                lives--;  
-               System.out.println("Lives remaining:" + lives);
                rando();
                } 
          }        
-      else if (e.getKeyCode() == KeyEvent.VK_2)
-         {
+      else if (e.getKeyCode() == KeyEvent.VK_2 || e.getKeyCode() == KeyEvent.VK_NUMPAD2)         {
             if (n == 2)
                {
                lives++;
-               System.out.println("Lives remaining:" + lives);
+                
                rando();
                } 
             else
                {
                lives--;  
-               System.out.println("Lives remaining:" + lives);
                rando();
                } 
          }        
-      else if (e.getKeyCode() == KeyEvent.VK_3)
+      else if (e.getKeyCode() == KeyEvent.VK_3 || e.getKeyCode() == KeyEvent.VK_NUMPAD3)
          {
             if (n == 3)
                {
                lives++;
-               System.out.println("Lives remaining:" + lives);
                rando();
                } 
             else
                {
                lives--;  
-               System.out.println("Lives remaining:" + lives);
                rando();
                } 
          }
-      else if (e.getKeyCode() == KeyEvent.VK_4)
+      else if (e.getKeyCode() == KeyEvent.VK_4 || e.getKeyCode() == KeyEvent.VK_NUMPAD4)
          {
             if (n == 4)
                {
                lives++;
-               System.out.println("Lives remaining:" + lives);
                rando();
                } 
             else
                {
                lives--;  
-               System.out.println("Lives remaining:" + lives);
                rando();
                } 
          }             
-      else if (e.getKeyCode() == KeyEvent.VK_5)
+      else if (e.getKeyCode() == KeyEvent.VK_5 || e.getKeyCode() == KeyEvent.VK_NUMPAD5)
          {
             if (n == 5)
                {
                lives++;
-               System.out.println("Lives remaining:" + lives);
                rando();
                } 
             else
                {
                lives--;  
-               System.out.println("Lives remaining:" + lives);
                rando();
                } 
          }     
-      else if (e.getKeyCode() == KeyEvent.VK_6)
+      else if (e.getKeyCode() == KeyEvent.VK_6 || e.getKeyCode() == KeyEvent.VK_NUMPAD6)
          {
             if (n == 6)
                {
@@ -140,7 +130,6 @@ implements KeyListener
             else
                {
                lives--;  
-               System.out.println("Lives remaining:" + lives);
                rando();
                } 
          }                                 
