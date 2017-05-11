@@ -1,19 +1,19 @@
-//Filename: SearchInput.java
+//Filename: SearchInput2.java
 //Author: Girvan Tse & Manish Suresh
 //Date : 05/03/17
 
 import java.io.*;
 
 /**
-Takes an input in the form which the Search class can read
+Takes an input in the form which the Search2 class can read
 @author Girvan Tse & Manish Suresh
 */
 
-class Search //prepares keyboard to recieve data
+class Delete //prepares keyboard to recieve data
 {
    /**
-   Takes the data and puts it into a form that the Search class can read
-   @param fileName The name of the file to take the data from
+   Takes the data and puts it into a form that the Search class can take
+   @param fileName The name of the text file to take the data from
    @param data The data set to search for the Search class target
    @param item The specific data category to look for assigned to a numerical value
                0 is Name
@@ -23,12 +23,12 @@ class Search //prepares keyboard to recieve data
                4 is Time
                5 is Period
    */
-   public void searchGame(String fileName, String data[][], int item)
+   public void deleteGame(String fileName, String data[][], int item)
    {
       DataInput d = new DataInputStream(System.in);
       String input;
-      Search s = new Search();
-      System.out.println("Who would you like to search?");
+      Search2 se = new Search2();
+      System.out.println("What is the name of the person you want to delete?");
       try
       {
          input = d.readLine();
@@ -41,17 +41,21 @@ class Search //prepares keyboard to recieve data
                if(data[i][item].equals(input))
                {
                   found = true;
+                  System.out.println("Record to delete");
                   for(int k = 0; k < 6; k++)
                   {
                      System.out.print(data[i][k] + "\t\t"); //output entire record
-                     System.out.println();
+                     data[i][k]="";//erase record items
                   }
+                  System.out.println("");
                }//end if
             }//end loop
             if(!found)
             {
                System.out.println("No record found!");
             }  
+            UpdateRecords ur = new UpdateRecords();  
+            ur.updateFile(fileName, data);
          }
       }
       catch(IOException ignored)
