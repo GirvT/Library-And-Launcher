@@ -8,7 +8,7 @@ import java.awt.geom.*;
       Timer t = new Timer(30,this);
       double x = 0, y = 0;
       int a = 100, b = 50;
-      int c = -250, d = 100;
+      int c = 100, d = 100;
       
       public second(){
          t.start();
@@ -26,7 +26,9 @@ import java.awt.geom.*;
          g.drawRect(0,150,500,300);
          g.setColor(Color.blue);
          g.drawRect(a,b,50,50);
+         g.setColor(Color.yellow);
          g.drawRect(c,d,50,50);
+         g.setColor(Color.black);
          g.drawString("Move the black square to the red square.", 175,100);
          g.drawString("Don't try crossing me >:(", 150,250);
          Graphics2D g2 = (Graphics2D) g;
@@ -65,15 +67,15 @@ import java.awt.geom.*;
             repaint();
             a += 10;
          }
-         if (c>=800)
+         if (c<=0)
             {
             repaint();
-            c = -100;
+            c = 800;
             }
          else
             {
             repaint();
-            c +=6;   
+            c -=6;   
             }
          if (y>=250)
             {
@@ -92,11 +94,11 @@ import java.awt.geom.*;
       }
       
       public void left(){
-         x -=9;
+         x -= 10;
       }
       
       public void right(){
-         x += 7;
+         x += 10;
       }
       
       
