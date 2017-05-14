@@ -5,7 +5,7 @@ import java.awt.geom.*;
 
    public class second extends JPanel implements ActionListener, KeyListener{
    
-      Timer t = new Timer(5,this);
+      Timer t = new Timer(30,this);
       double x = 0, y = 0;
       int a = 100, b = 100;
       
@@ -18,13 +18,17 @@ import java.awt.geom.*;
       
       public void paintComponent(Graphics g){
          super.paintComponent(g);
+         g.setFont(new Font("Helvetica", Font.BOLD, 24));
          g.setColor(Color.red);  
          g.drawRect(540,340,50,50);
          g.setColor(Color.green);
          g.drawRect(0,150,500,300);
          g.setColor(Color.blue);
          g.drawRect(a,b,50,50);
+         g.drawString("Move the black square to the red square.", 175,100);
+         g.drawString("Don't try crossing me >:(", 150,250);
          Graphics2D g2 = (Graphics2D) g;
+         g.setColor(Color.black);
          g2.fill(new Rectangle2D.Double(x, y, 50, 50));
          if (x == 540 && y == 340){
    	      g.setColor(Color.WHITE);
@@ -51,7 +55,7 @@ import java.awt.geom.*;
             a = 0;
          } else {
             repaint();
-            a += 1;
+            a += 8;
          }
       }
       
