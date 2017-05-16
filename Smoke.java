@@ -19,11 +19,13 @@ public class Smoke{
    JTextField field = new JTextField();
    
    
-   public Smoke(){
+   public Smoke()
+   {
       frame();
    }
    
-   public void frame(){
+   public void frame()
+   {
       final JFrame window = new JFrame("Smoke");
       window.setVisible(true);
       window.setSize(xSize,ySize);
@@ -43,21 +45,26 @@ public class Smoke{
       panel.add(Start);
       panel.add(Quit);
       
-      Start.addActionListener(new ActionListener(){      
-         public void actionPerformed(ActionEvent e){
+      Start.addActionListener(new ActionListener()
+      {      
+         public void actionPerformed(ActionEvent e)
+         {
             window.dispose();
             frame2();
          }
       });// end Start actionListener
       
-      Quit.addActionListener(new ActionListener(){      
-         public void actionPerformed(ActionEvent e){
+      Quit.addActionListener(new ActionListener()
+      {      
+         public void actionPerformed(ActionEvent e)
+         {
             System.exit(0);
          }
       });
    }// end frame
    
-   public void frame2(){
+   public void frame2()
+   {
       final JFrame window = new JFrame("Smoke");
       window.setVisible(true);
       window.setSize(xSize,ySize);
@@ -87,8 +94,10 @@ public class Smoke{
       rows = rd.readFile(fileName, 10);
       info = re.getRecords(rows);
       StringBuilder sb = new StringBuilder();
-      for (int i = 0; i < info.length-5; i++){
-         for(int j = 0; j < info[0].length; j++){
+      for (int i = 0; i < info.length-5; i++)
+      {
+         for(int j = 0; j < info[0].length; j++)
+         {
             sb.append(info[i][j] + "\t");
          }
          sb.append("\n");
@@ -106,23 +115,34 @@ public class Smoke{
       
 
       
-      Sort.addActionListener(new ActionListener(){
-         public void actionPerformed(ActionEvent e){
+      Sort.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent e)
+         {
             //window.dispose();// close the current fram
             sortFrame();// open the frame used for sorting
          }
       });// end Sort ActionListener
       
-      Launch.addActionListener(new ActionListener(){
-         public void actionPerformed(ActionEvent a){
+      Launch.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent a)
+         {
             input = field.getText();
-            if (input.equals("game1")){
+            if (input.equals("game1"))
+            {
                game1();
-            }else if (input.equals("game2")){
+            }
+            else if (input.equals("game2"))
+            {
                game2();
-            }else if (input.equals("game3")){
+            }
+            else if (input.equals("game3"))
+            {
                game3();
-            }else if (input.equals("game4")){
+            }
+            else if (input.equals("game4"))
+            {
                //game4();
             }
             
@@ -165,7 +185,8 @@ public class Smoke{
       });// end Name ActionListener
    }// end frame sortFrame
    
-   public void game1(){
+   public void game1()
+   {
       JFrame f = new JFrame("");
       first s = new first();
       f.setSize(800,600);    
@@ -175,7 +196,8 @@ public class Smoke{
       f.setVisible(true);
    }
       
-   public void game2(){
+   public void game2()
+   {
       JFrame f = new JFrame("");
       second s = new second();
       f.setSize(800,600);    
@@ -185,7 +207,8 @@ public class Smoke{
       f.setVisible(true);
    }
    
-    public void game3(){
+    public void game3()
+    {
       JFrame f = new JFrame("");
       third s = new third();
       f.setSize(800,600);    
@@ -195,7 +218,8 @@ public class Smoke{
       f.setVisible(true);
    }
    
-   public static void main(String[] args){
+   public static void main(String[] args)
+   {
       new Smoke();
    }
           
