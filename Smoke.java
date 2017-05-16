@@ -1,9 +1,12 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;  // Using AWT event classes and listener interfaces
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
-public class Smoke
-{
+public class Smoke{
    String nameArray[] = new String[6];
    static String fileName = "records.txt";//fileName = "records.txt"
    final int MAX = 10;//Set MAX number of records
@@ -11,19 +14,23 @@ public class Smoke
    String info[][] = new String[MAX][6];//Store records in 2d array
    ReadData rd = new ReadData();//Instantiate the class ReadData
    Records re = new Records();//Instantiate the class Records
+   int xSize = 700,ySize = 500;
+   String input;
+   JTextField field = new JTextField();
    
-   public Smoke()
-   {
+   
+   public Smoke(){
       frame();
    }
    
-   public void frame()
-   {
+   public void frame(){
       final JFrame window = new JFrame("Smoke");
       window.setVisible(true);
-      window.setSize(700,500);
+      window.setSize(xSize,ySize);
       window.setResizable(false);
       window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      
+      window.setLocationRelativeTo(null);
       
       JPanel panel = new JPanel();
       panel.setLayout(null);
@@ -36,31 +43,27 @@ public class Smoke
       panel.add(Start);
       panel.add(Quit);
       
-      Start.addActionListener(new ActionListener()
-      {      
-         public void actionPerformed(ActionEvent e)
-         {
+      Start.addActionListener(new ActionListener(){      
+         public void actionPerformed(ActionEvent e){
             window.dispose();
             frame2();
          }
       });// end Start actionListener
       
-      Quit.addActionListener(new ActionListener()
-      {      
-         public void actionPerformed(ActionEvent e)
-         {
+      Quit.addActionListener(new ActionListener(){      
+         public void actionPerformed(ActionEvent e){
             System.exit(0);
          }
       });
    }// end frame
    
-   public void frame2()
-   {
+   public void frame2(){
       final JFrame window = new JFrame("Smoke");
       window.setVisible(true);
-      window.setSize(700,500);
+      window.setSize(xSize,ySize);
       window.setResizable(false);
       window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      window.setLocationRelativeTo(null);
       
       final JPanel panel = new JPanel();
       panel.setLayout(null);
@@ -70,43 +73,61 @@ public class Smoke
       JButton Quit = new JButton("Quit");
       JButton Launch = new JButton("Launch");
       JButton Sort = new JButton("Sort");
-      View.setBounds(200,430,100,30);
-      Quit.setBounds(550,430,100,30);
-      Launch.setBounds(400,430,100,30);
-      Sort.setBounds(50,430,100,30);
+      View.setBounds(220,430,100,30);
+      Quit.setBounds(520,430,100,30);
+      Launch.setBounds(370,430,100,30);
+      Sort.setBounds(70,430,100,30);
       panel.add(View);
       panel.add(Quit);
       panel.add(Launch);
       panel.add(Sort);
       
-      JTextArea field = new JTextArea();
-      field.setEditable(false);
+      JTextArea display = new JTextArea();
+      display.setEditable(false);
       rows = rd.readFile(fileName, 10);
       info = re.getRecords(rows);
       StringBuilder sb = new StringBuilder();
-      for (int i = 0; i < info.length-5; i++)
-      {
-         for(int j = 0; j < info[0].length; j++)
-         {
+      for (int i = 0; i < info.length-5; i++){
+         for(int j = 0; j < info[0].length; j++){
             sb.append(info[i][j] + "\t");
          }
          sb.append("\n");
       }
-      field.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
-      field.append(sb.toString());
-      JScrollPane scrollPane = new JScrollPane(field,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-      scrollPane.setBounds(100, 120, 500, 160);
+      display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+      display.append(sb.toString());
+      JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+      scrollPane.setBounds(80, 120, 540, 160);
       panel.add(scrollPane);       
       
+      field.setEditable(true);      
+      field.setBounds(295,350,100,30);
+      panel.add(field);
+            
       
-      Sort.addActionListener(new ActionListener()
-      {
-         public void actionPerformed(ActionEvent e)
-         {
-            window.dispose();
-            sortFrame();
+
+      
+      Sort.addActionListener(new ActionListener(){
+         public void actionPerformed(ActionEvent e){
+            //window.dispose();// close the current fram
+            sortFrame();// open the frame used for sorting
          }
       });// end Sort ActionListener
+      
+      Launch.addActionListener(new ActionListener(){
+         public void actionPerformed(ActionEvent a){
+            input = field.getText();
+            if (input.equals("game1")){
+               game1();
+            }else if (input.equals("game2")){
+               game2();
+            }else if (input.equals("game3")){
+               game3();
+            }else if (input.equals("game4")){
+               //game4();
+            }
+            
+         }
+      });// end Launch ActionListener
            
        Quit.addActionListener(new ActionListener()
        {      
@@ -121,9 +142,10 @@ public class Smoke
    {
       final JFrame window = new JFrame("Smoke");
       window.setVisible(true);
-      window.setSize(700,500);
+      window.setSize(xSize,ySize);
       window.setResizable(false);
       window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      window.setLocationRelativeTo(null);
             
       JPanel panel = new JPanel();
       panel.setLayout(null);
@@ -141,10 +163,39 @@ public class Smoke
             frame2();
          }
       });// end Name ActionListener
-   }// end frame 3
+   }// end frame sortFrame
+   
+   public void game1(){
+      JFrame f = new JFrame("");
+      first s = new first();
+      f.setSize(800,600);    
+      f.add(s);
+      f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+      f.setLocationRelativeTo(null);
+      f.setVisible(true);
+   }
       
-   public static void main(String[] args)
-   {
+   public void game2(){
+      JFrame f = new JFrame("");
+      second s = new second();
+      f.setSize(800,600);    
+      f.add(s);
+      f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+      f.setLocationRelativeTo(null);
+      f.setVisible(true);
+   }
+   
+    public void game3(){
+      JFrame f = new JFrame("");
+      third s = new third();
+      f.setSize(800,600);    
+      f.add(s);
+      f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+      f.setLocationRelativeTo(null);
+      f.setVisible(true);
+   }
+   
+   public static void main(String[] args){
       new Smoke();
    }
           
