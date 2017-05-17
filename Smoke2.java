@@ -13,80 +13,80 @@ import javax.swing.ImageIcon;
 
 public class Smoke2 
 {
-    private JFrame frame;
-    private JFrame frame2;
-    String nameArray[] = new String[6];
-      static String fileName = "records.txt";//fileName = "records.txt"
-      final int MAX = 10;//Set MAX number of records
-      String rows[] = new String[MAX];//Store max 20 records
-      String info[][] = new String[MAX][6];//Store records in 2d array
-      ReadData rd = new ReadData();//Instantiate the class ReadData
-      Records re = new Records();//Instantiate the class Records
-      String input;
-      JTextField field = new JTextField();
+   private JFrame frame;
+   private JFrame frame2;
+   String nameArray[] = new String[6];
+   static String fileName = "records.txt";//fileName = "records.txt"
+   final int MAX = 10;//Set MAX number of records
+   String rows[] = new String[MAX];//Store max 20 records
+   String info[][] = new String[MAX][6];//Store records in 2d array
+   ReadData rd = new ReadData();//Instantiate the class ReadData
+   Records re = new Records();//Instantiate the class Records
+   String input;
+   JTextField field = new JTextField();
 
-    private Smoke2 create() 
-    {
-        frame = createFrame();
-        frame.getContentPane().add(createContent());
-        return this;
-    }
+   private Smoke2 create() 
+   {
+       frame = createFrame();
+       frame.getContentPane().add(createContent());
+       return this;
+   }
 
-    private JFrame createFrame() 
-    {
-        JFrame frame = new JFrame(getClass().getName());
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        return frame;
-    }
+   private JFrame createFrame() 
+   {
+       JFrame frame = new JFrame(getClass().getName());
+       frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+       return frame;
+   }
     
-    private JFrame createFrame2() 
-    {
-        JFrame frame2 = new JFrame(getClass().getName());
-        frame2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        return frame2;
-    }
+   private JFrame createFrame2() 
+   {
+       JFrame frame2 = new JFrame(getClass().getName());
+       frame2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+       return frame2;
+   }
 
-    private void show()
-    {
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
+   private void show()
+   {
+       frame.pack();
+       frame.setLocationRelativeTo(null);
+       frame.setVisible(true);
+   }
 
-    private Component createContent() 
-    {
-        final Image image = requestImage();
+   private Component createContent() 
+   {
+      final Image image = requestImage();
 
-        JPanel panel = new JPanel() 
-        {
-            @Override
-            protected void paintComponent(Graphics g)
-            {
-                super.paintComponent(g);
-                g.drawImage(image, 0, 0, null);
-            }
-        };
+      JPanel panel = new JPanel() 
+      {
+         @Override
+         protected void paintComponent(Graphics g)
+         {
+            super.paintComponent(g);
+            g.drawImage(image, 0, 0, null);
+         }
+      };
          
-         panel.setLayout(null);
-         JButton Start = new JButton("Start");
-         JButton Quit = new JButton("Quit");
-         Start.setBounds(100,400,120,40);
-         Quit.setBounds(400,400,120,40);
-         panel.add(Start);
-         panel.add(Quit);
-        
-         Start.addActionListener(new ActionListener()
-         {      
-            public void actionPerformed(ActionEvent e)
-            {
-               frame.dispose();
-               frame2 = createFrame2();
-               frame2.getContentPane().add(createContent2());
-               frame2.pack();
-               frame2.setLocationRelativeTo(null); 
-               frame2.setVisible(true);
-            }
-         });// end Start actionListener
+      panel.setLayout(null);
+      JButton Start = new JButton("Start");
+      JButton Quit = new JButton("Quit");
+      Start.setBounds(120,400,120,40);
+      Quit.setBounds(460,400,120,40);
+      panel.add(Start);
+      panel.add(Quit);
+      
+      Start.addActionListener(new ActionListener()
+      {      
+         public void actionPerformed(ActionEvent e)
+         {
+            frame.dispose();
+            frame2 = createFrame2();
+            frame2.getContentPane().add(createContent2());
+            frame2.pack();
+            frame2.setLocationRelativeTo(null); 
+            frame2.setVisible(true);
+         }
+      });// end Start actionListener
          
          Quit.addActionListener(new ActionListener()
          {      
@@ -99,7 +99,7 @@ public class Smoke2
         panel.setPreferredSize(new Dimension(700, 500));
 
         return panel;
-    }
+    }// end create component
 
     private Component createContent2() 
     {
@@ -116,19 +116,25 @@ public class Smoke2
         };
          
          panel.setLayout(null);
-               
-      JButton View = new JButton("View");
-      JButton Quit = new JButton("Quit");
+              
+      JButton Search = new JButton("Search");               
       JButton Launch = new JButton("Launch");
-      JButton Sort = new JButton("Sort");
-      View.setBounds(220,430,100,30);
-      Quit.setBounds(520,430,100,30);
-      Launch.setBounds(370,430,100,30);
-      Sort.setBounds(70,430,100,30);
-      panel.add(View);
-      panel.add(Quit);
+      JButton Sort = new JButton("By Name");
+      JButton Sort2 = new JButton("By Author");      
+      JButton Sort3 = new JButton("By Difficulty");    
+      JButton Quit = new JButton("Quit");       
+      Search.setBounds(70,430,100,30);      
+      Launch.setBounds(295,430,100,30);
+      Sort.setBounds(70,320,100,30);
+      Sort2.setBounds(220,320,100,30);      
+      Sort3.setBounds(370,320,100,30);
+      Quit.setBounds(520,430,100,30);      
+      panel.add(Search);      
       panel.add(Launch);
       panel.add(Sort);
+      panel.add(Sort2);      
+      panel.add(Sort3);
+      panel.add(Quit);      
       
       JTextArea display = new JTextArea();
       display.setEditable(false);
@@ -146,7 +152,6 @@ public class Smoke2
       display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
       display.append(sb.toString());
       display.setOpaque(false);
-      //display.setBackground(new Color(red, green, blue, alpha));
       JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
       scrollPane.setBounds(70, 120, 560, 160);
       scrollPane.getViewport().setOpaque(false);
@@ -154,15 +159,14 @@ public class Smoke2
       panel.add(scrollPane);       
       
       field.setEditable(true);      
-      field.setBounds(295,350,100,30);
+      field.setBounds(295,380,100,30);
       panel.add(field);
             
       Sort.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
          {
-            frame2.dispose();// close the current fram
-            //sortFrame();// open the frame used for sorting
+            frame2.dispose();// close the current frame
          }
       });// end Sort ActionListener
       
@@ -185,7 +189,7 @@ public class Smoke2
             }
             else if (input.equals("game4"))
             {
-               //game4();
+               game4();
             }
             
          }
@@ -202,7 +206,7 @@ public class Smoke2
         panel.setPreferredSize(new Dimension(700, 500));
 
         return panel;
-    }
+    }// end create component2
  
     private Image requestImage()
     {
@@ -221,7 +225,7 @@ public class Smoke2
     
       public void game1()
       {
-         JFrame f = new JFrame("");
+         JFrame f = new JFrame("game1");
          first s = new first();
          f.setSize(800,600);    
          f.add(s);
@@ -232,7 +236,7 @@ public class Smoke2
       
       public void game2()
       {
-         JFrame f = new JFrame("");
+         JFrame f = new JFrame("game2");
          second s = new second();
          f.setSize(800,600);    
          f.add(s);
@@ -241,10 +245,21 @@ public class Smoke2
          f.setVisible(true);
       }
       
-       public void game3()
-       {
-         JFrame f = new JFrame("");
+      public void game3()
+      {
+         JFrame f = new JFrame("game3");
          third s = new third();
+         f.setSize(800,600);    
+         f.add(s);
+         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+         f.setLocationRelativeTo(null);
+         f.setVisible(true);
+      }
+      
+      public void game4()
+      {
+         JFrame f = new JFrame("game4");
+         fourth s = new fourth();
          f.setSize(800,600);    
          f.add(s);
          f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

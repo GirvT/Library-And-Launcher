@@ -16,8 +16,7 @@ implements KeyListener
       this.addKeyListener(this);
       }   
   
-   public void paint(Graphics g) 
-      { 
+   public void paint(Graphics g) { 
       setSize(600, 400);
       g.setFont(new Font("Helvetica", Font.BOLD, 24)); 
       setBackground(Color.white);
