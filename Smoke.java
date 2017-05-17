@@ -1,10 +1,14 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 import java.awt.event.*;  // Using AWT event classes and listener interfaces
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class Smoke{
    String nameArray[] = new String[6];
@@ -18,7 +22,6 @@ public class Smoke{
    String input;
    JTextField field = new JTextField();
    
-   
    public Smoke()
    {
       frame();
@@ -29,22 +32,21 @@ public class Smoke{
       final JFrame window = new JFrame("Smoke");
       window.setVisible(true);
       window.setSize(xSize,ySize);
-      window.setResizable(false);
+      window.setResizable(true);
       window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      
       window.setLocationRelativeTo(null);
-      
+        
       JPanel panel = new JPanel();
       panel.setLayout(null);
       window.add(panel);
-      
+            
       JButton Start = new JButton("Start");
       JButton Quit = new JButton("Quit");
       Start.setBounds(100,400,120,40);
       Quit.setBounds(400,400,120,40);
       panel.add(Start);
       panel.add(Quit);
-      
+     
       Start.addActionListener(new ActionListener()
       {      
          public void actionPerformed(ActionEvent e)
@@ -217,6 +219,18 @@ public class Smoke{
       f.setLocationRelativeTo(null);
       f.setVisible(true);
    }
+   
+   private Image requestImage() {
+        Image image = null;
+
+        try {
+            image = ImageIO.read(new File("aa.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return image;
+    }
    
    public static void main(String[] args)
    {
