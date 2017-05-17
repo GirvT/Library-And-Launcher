@@ -11,7 +11,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import javax.swing.ImageIcon;
 
-public class Smoke2 {
+public class Smoke2 
+{
     private JFrame frame;
     private JFrame frame2;
     String nameArray[] = new String[6];
@@ -24,38 +25,43 @@ public class Smoke2 {
       String input;
       JTextField field = new JTextField();
 
-    private Smoke2 create() {
+    private Smoke2 create() 
+    {
         frame = createFrame();
         frame.getContentPane().add(createContent());
         return this;
     }
 
-    private JFrame createFrame() {
+    private JFrame createFrame() 
+    {
         JFrame frame = new JFrame(getClass().getName());
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
         return frame;
     }
     
-    private JFrame createFrame2() {
+    private JFrame createFrame2() 
+    {
         JFrame frame2 = new JFrame(getClass().getName());
         frame2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
         return frame2;
     }
 
-    private void show() {
+    private void show()
+    {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
-    private Component createContent() {
+    private Component createContent() 
+    {
         final Image image = requestImage();
 
-        JPanel panel = new JPanel() {
+        JPanel panel = new JPanel() 
+        {
             @Override
-            protected void paintComponent(Graphics g) {
+            protected void paintComponent(Graphics g)
+            {
                 super.paintComponent(g);
                 g.drawImage(image, 0, 0, null);
             }
@@ -95,12 +101,15 @@ public class Smoke2 {
         return panel;
     }
 
-    private Component createContent2() {
+    private Component createContent2() 
+    {
         final Image image = requestImage();
 
-        JPanel panel = new JPanel() {
+        JPanel panel = new JPanel() 
+        {
             @Override
-            protected void paintComponent(Graphics g) {
+            protected void paintComponent(Graphics g) 
+            {
                 super.paintComponent(g);
                 g.drawImage(image, 0, 0, null);
             }
@@ -148,9 +157,6 @@ public class Smoke2 {
       field.setBounds(295,350,100,30);
       panel.add(field);
             
-      
-
-      
       Sort.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
@@ -198,12 +204,15 @@ public class Smoke2 {
         return panel;
     }
  
-    private Image requestImage() {
+    private Image requestImage()
+    {
         Image image = null;
 
-        try {
+        try 
+        {
             image = ImageIO.read(new File("aa.jpg"));
-        } catch (IOException e) {
+        } catch (IOException e) 
+        {
             e.printStackTrace();
         }
 
@@ -243,10 +252,13 @@ public class Smoke2 {
          f.setVisible(true);
       }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
+    public static void main(String[] args) 
+    {
+        SwingUtilities.invokeLater(new Runnable() 
+        {
             @Override
-            public void run() {
+            public void run() 
+            {
                 new Smoke2().create().show();
             }
         });
