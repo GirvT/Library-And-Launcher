@@ -17,13 +17,16 @@ public class Smoke2
    private JFrame frame2;
    String nameArray[] = new String[6];
    static String fileName = "records.txt";//fileName = "records.txt"
-   final int MAX = 10;//Set MAX number of records
+   final int MAX = 3;//Set MAX number of records
    String rows[] = new String[MAX];//Store max 20 records
    String info[][] = new String[MAX][6];//Store records in 2d array
    ReadData rd = new ReadData();//Instantiate the class ReadData
    Records re = new Records();//Instantiate the class Records
    String input;
    JTextField field = new JTextField();
+   JTextArea display = new JTextArea();
+   Search si = new Search();
+   Sort s = new Sort();
 
    private Smoke2 create() 
    {
@@ -119,24 +122,23 @@ public class Smoke2
               
       JButton Search = new JButton("Search");               
       JButton Launch = new JButton("Launch");
-      JButton Sort = new JButton("By Name");
-      JButton Sort2 = new JButton("By Author");      
-      JButton Sort3 = new JButton("By Difficulty");    
+      JButton SortN = new JButton("By Name");
+      JButton SortA = new JButton("By Author");      
+      JButton SortD = new JButton("By Difficulty");    
       JButton Quit = new JButton("Quit");       
       Search.setBounds(70,430,100,30);      
       Launch.setBounds(295,430,100,30);
-      Sort.setBounds(70,320,100,30);
-      Sort2.setBounds(220,320,100,30);      
-      Sort3.setBounds(370,320,100,30);
+      SortN.setBounds(70,320,100,30);
+      SortA.setBounds(220,320,100,30);      
+      SortD.setBounds(370,320,100,30);
       Quit.setBounds(520,430,100,30);      
       panel.add(Search);      
       panel.add(Launch);
-      panel.add(Sort);
-      panel.add(Sort2);      
-      panel.add(Sort3);
+      panel.add(SortN);
+      panel.add(SortA);      
+      panel.add(SortD);
       panel.add(Quit);      
       
-      JTextArea display = new JTextArea();
       display.setEditable(false);
       rows = rd.readFile(fileName, 10);
       info = re.getRecords(rows);
@@ -162,11 +164,33 @@ public class Smoke2
       field.setBounds(295,380,100,30);
       panel.add(field);
             
-      Sort.addActionListener(new ActionListener()
+      SortN.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
          {
-            frame2.dispose();// close the current frame
+            //frame2.dispose();// close the current frame
+            display.setText("");
+            sorting(0);
+         }
+      });// end Sort ActionListener
+      
+      SortA.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent e)
+         {
+            //frame2.dispose();// close the current frame
+            display.setText("");
+            sorting(1);
+         }
+      });// end Sort ActionListener
+      
+      SortD.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent e)
+         {
+            //frame2.dispose();// close the current frame
+            display.setText("");
+            sorting(2);
          }
       });// end Sort ActionListener
       
@@ -265,6 +289,25 @@ public class Smoke2
          f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
          f.setLocationRelativeTo(null);
          f.setVisible(true);
+      }
+      
+      public void sorting(int a)
+      {
+         info = s.sortGame(info,a);
+         StringBuilder sb2 = new StringBuilder();
+         for (int  i = 0; i < 10; i++)
+         {
+            for (int  j = 0; j < 6; j++)
+            {
+               if (rows[i] !=null)
+               {
+                  sb2.append(info[i][j] + "\t");
+               }
+            }
+            sb2.append("\n");
+         }
+         display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+         display.append(sb2.toString());
       }
 
     public static void main(String[] args) 
