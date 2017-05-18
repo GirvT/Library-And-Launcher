@@ -17,7 +17,7 @@ public class Smoke2
    private JFrame frame2;
    String nameArray[] = new String[6];
    static String fileName = "records.txt";//fileName = "records.txt"
-   final int MAX = 6;//Set MAX number of records
+   final int MAX = 10;//Set MAX number of records
    String rows[] = new String[MAX];//Store max 20 records
    String info[][] = new String[MAX][6];//Store records in 2d array
    ReadData rd = new ReadData();//Instantiate the class ReadData
@@ -126,25 +126,28 @@ public class Smoke2
       JButton SortN = new JButton("By Name");
       JButton SortA = new JButton("By Author");      
       JButton SortD = new JButton("By Difficulty");    
-      JButton Quit = new JButton("Quit");       
+      JButton Quit = new JButton("Quit");  
+      JButton Refresh = new JButton("Refresh");     
       Search.setBounds(70,430,100,30);      
       Launch.setBounds(295,430,100,30);
       SortN.setBounds(70,320,100,30);
       SortA.setBounds(220,320,100,30);      
       SortD.setBounds(370,320,100,30);
-      Quit.setBounds(520,430,100,30);      
+      Quit.setBounds(520,430,100,30);  
+      Refresh.setBounds(520,320,100,30);    
       panel.add(Search);      
       panel.add(Launch);
       panel.add(SortN);
       panel.add(SortA);      
       panel.add(SortD);
-      panel.add(Quit);      
+      panel.add(Quit); 
+      panel.add(Refresh);     
       
       display.setEditable(false);
       rows = rd.readFile(fileName, 10);
       info = re.getRecords(rows);
       StringBuilder sb = new StringBuilder();
-      for (int i = 0; i < 6; i++)
+      for (int i = 0; i < info.length; i++)
       {
          for(int j = 0; j < info[0].length; j++)
          {
@@ -153,7 +156,6 @@ public class Smoke2
          sb.append("\n");
       }
       display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
-      //display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|");
       display.append(sb.toString());
       display.setOpaque(false);
       JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -169,7 +171,7 @@ public class Smoke2
       Search.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
-         {  
+         {                          
             Add a = new Add();
             KeyInput ki = new KeyInput();
             a.addGame(fileName, ki.entries());
@@ -228,7 +230,19 @@ public class Smoke2
             }
          }
       });// end Launch ActionListener
-           
+       
+       Refresh.addActionListener(new ActionListener()
+       {
+         public void actionPerformed(ActionEvent e)
+         {
+           frame2.dispose();
+           frame2 = createFrame2();
+           frame2.getContentPane().add(createContent2());
+           frame2.pack();
+           frame2.setLocationRelativeTo(null); 
+           frame2.setVisible(true);
+         }
+        });   
        Quit.addActionListener(new ActionListener()
        {      
           public void actionPerformed(ActionEvent e)
