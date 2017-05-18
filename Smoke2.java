@@ -17,7 +17,7 @@ public class Smoke2
    private JFrame frame2;
    String nameArray[] = new String[6];
    static String fileName = "records.txt";//fileName = "records.txt"
-   final int MAX = 3;//Set MAX number of records
+   final int MAX = 6;//Set MAX number of records
    String rows[] = new String[MAX];//Store max 20 records
    String info[][] = new String[MAX][6];//Store records in 2d array
    ReadData rd = new ReadData();//Instantiate the class ReadData
@@ -27,7 +27,7 @@ public class Smoke2
    JTextArea display = new JTextArea();
    Search si = new Search();
    Sort s = new Sort();
-
+   
    private Smoke2 create() 
    {
        frame = createFrame();
@@ -120,7 +120,8 @@ public class Smoke2
          
          panel.setLayout(null);
               
-      JButton Search = new JButton("Search");               
+  //    JButton Search = new JButton("Search");
+      JButton Search = new JButton("Add Game");                 
       JButton Launch = new JButton("Launch");
       JButton SortN = new JButton("By Name");
       JButton SortA = new JButton("By Author");      
@@ -143,7 +144,7 @@ public class Smoke2
       rows = rd.readFile(fileName, 10);
       info = re.getRecords(rows);
       StringBuilder sb = new StringBuilder();
-      for (int i = 0; i < 3; i++)
+      for (int i = 0; i < 6; i++)
       {
          for(int j = 0; j < info[0].length; j++)
          {
@@ -164,7 +165,17 @@ public class Smoke2
       field.setEditable(true);      
       field.setBounds(295,380,100,30);
       panel.add(field);
-            
+      
+      Search.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent e)
+         {  
+            Add a = new Add();
+            KeyInput ki = new KeyInput();
+            a.addGame(fileName, ki.entries());
+         }
+      });
+      
       SortN.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
@@ -194,7 +205,6 @@ public class Smoke2
             sorting(2);
          }
       });// end Sort ActionListener
-      
       Launch.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent a)
@@ -216,7 +226,6 @@ public class Smoke2
             {
                game4();
             }
-            
          }
       });// end Launch ActionListener
            
