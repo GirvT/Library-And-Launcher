@@ -143,7 +143,7 @@ public class Smoke2
       rows = rd.readFile(fileName, 10);
       info = re.getRecords(rows);
       StringBuilder sb = new StringBuilder();
-      for (int i = 0; i < info.length-5; i++)
+      for (int i = 0; i < 3; i++)
       {
          for(int j = 0; j < info[0].length; j++)
          {
@@ -152,6 +152,7 @@ public class Smoke2
          sb.append("\n");
       }
       display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+      //display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|");
       display.append(sb.toString());
       display.setOpaque(false);
       JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -180,7 +181,7 @@ public class Smoke2
          {
             //frame2.dispose();// close the current frame
             display.setText("");
-            sorting(1);
+            sorting(5);
          }
       });// end Sort ActionListener
       
@@ -295,7 +296,7 @@ public class Smoke2
       {
          info = s.sortGame(info,a);
          StringBuilder sb2 = new StringBuilder();
-         for (int  i = 0; i < 10; i++)
+         for (int  i = 0; i < info.length; i++)
          {
             for (int  j = 0; j < 6; j++)
             {
@@ -307,7 +308,7 @@ public class Smoke2
             sb2.append("\n");
          }
          display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
-         display.append(sb2.toString());
+         display.append(sb2.toString().trim());
       }
 
     public static void main(String[] args) 
