@@ -55,6 +55,15 @@ public class Smoke2
        frame.setLocationRelativeTo(null);
        frame.setVisible(true);
    }
+   
+   private void frame2()
+   {
+      frame2 = createFrame2();
+      frame2.getContentPane().add(createContent2());
+      frame2.pack();
+      frame2.setLocationRelativeTo(null); 
+      frame2.setVisible(true);
+   }
 
    private Component createContent() 
    {
@@ -83,11 +92,7 @@ public class Smoke2
          public void actionPerformed(ActionEvent e)
          {
             frame.dispose();
-            frame2 = createFrame2();
-            frame2.getContentPane().add(createContent2());
-            frame2.pack();
-            frame2.setLocationRelativeTo(null); 
-            frame2.setVisible(true);
+            frame2();
          }
       });// end Start actionListener
          
@@ -236,11 +241,7 @@ public class Smoke2
          public void actionPerformed(ActionEvent e)
          {
            frame2.dispose();
-           frame2 = createFrame2();
-           frame2.getContentPane().add(createContent2());
-           frame2.pack();
-           frame2.setLocationRelativeTo(null); 
-           frame2.setVisible(true);
+           frame2();
          }
         });   
        Quit.addActionListener(new ActionListener()
