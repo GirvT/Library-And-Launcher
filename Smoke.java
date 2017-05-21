@@ -18,10 +18,13 @@ public class Smoke{
    String info[][] = new String[MAX][6];//Store records in 2d array
    ReadData rd = new ReadData();//Instantiate the class ReadData
    Records re = new Records();//Instantiate the class Records
-   int xSize = 700,ySize = 500;
+   int xSize1 = 300,ySize1 = 500;
+   int xSize = 700,ySize = 500; 
    String input;
    JTextField field = new JTextField();
+   JTextField passLabel = new JTextField("Enter your password");
    JPasswordField passField = new JPasswordField();
+   
    
    public Smoke()
    {
@@ -31,8 +34,7 @@ public class Smoke{
    public void frame()
    {
       final JFrame window = new JFrame("Smoke");
-      window.setVisible(true);
-      window.setSize(xSize,ySize);
+      window.setSize(xSize1,ySize1);
       window.setResizable(true);
       window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       window.setLocationRelativeTo(null);
@@ -40,8 +42,6 @@ public class Smoke{
       JPanel panel = new JPanel();
       panel.setLayout(null);
       window.add(panel);
-      
-      
             
       JButton Login = new JButton("Login");
       JButton Quit = new JButton("Quit");
@@ -50,21 +50,25 @@ public class Smoke{
       Login.setFocusPainted(false);
       Login.setFont(new Font("Tahoma", Font.BOLD, 12));
        
-
       Quit.setBackground(new Color(255, 10, 10));
       Quit.setForeground(Color.WHITE);
       Quit.setFocusPainted(false);
       Quit.setFont(new Font("Tahoma", Font.BOLD, 12));
       
-      
-      Login.setBounds(120,400,120,40);
-      Quit.setBounds(440,400,120,40);
+      Login.setBounds(85,300,120,40);
+      Quit.setBounds(85,350,120,40);
       panel.add(Login);
       panel.add(Quit);
       
       passField.setEditable(true);      
-      passField.setBounds(295,350,100,30);
+      passField.setBounds(70,150,150,30);
       panel.add(passField);
+      
+      passLabel.setOpaque(false);
+      passLabel.setBounds(70,120,150,30);
+      panel.add(passLabel);
+      passLabel.setEditable(false); 
+      window.setVisible(true);
       
      
       Login.addActionListener(new ActionListener()
