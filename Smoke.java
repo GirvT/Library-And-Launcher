@@ -74,7 +74,12 @@ public class Smoke{
             input = passField.getText();
             if (input.equals("password"))
             {
+               JOptionPane.showMessageDialog(null, "Login Sucessful!");
                frame2();
+            }
+            else
+            {
+               JOptionPane.showMessageDialog(null, "Incorrect password, please try again.");
             }
          }      
       });
