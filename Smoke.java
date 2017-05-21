@@ -21,6 +21,7 @@ public class Smoke{
    int xSize = 700,ySize = 500;
    String input;
    JTextField field = new JTextField();
+   JPasswordField passField = new JPasswordField();
    
    public Smoke()
    {
@@ -39,33 +40,45 @@ public class Smoke{
       JPanel panel = new JPanel();
       panel.setLayout(null);
       window.add(panel);
-            
-      JButton Start = new JButton("Start");
-      JButton Quit = new JButton("Quit");
-      Start.setBackground(new Color(59, 89, 182));
-      Start.setForeground(Color.WHITE);
-      Start.setFocusPainted(false);
-      Start.setFont(new Font("Tahoma", Font.BOLD, 12));
       
+      
+            
+      JButton Login = new JButton("Login");
+      JButton Quit = new JButton("Quit");
+      Login.setBackground(new Color(59, 89, 182));
+      Login.setForeground(Color.WHITE);
+      Login.setFocusPainted(false);
+      Login.setFont(new Font("Tahoma", Font.BOLD, 12));
+       
+
       Quit.setBackground(new Color(255, 10, 10));
       Quit.setForeground(Color.WHITE);
       Quit.setFocusPainted(false);
       Quit.setFont(new Font("Tahoma", Font.BOLD, 12));
       
-      Start.setBounds(120,400,120,40);
-      Quit.setBounds(440,400,120,40);
-      panel.add(Start);
-      panel.add(Quit);
-     
-      Start.addActionListener(new ActionListener()
-      {      
-         public void actionPerformed(ActionEvent e)
-         {
-            window.dispose();
-            frame2();
-         }
-      });// end Start actionListener
       
+      Login.setBounds(120,400,120,40);
+      Quit.setBounds(440,400,120,40);
+      panel.add(Login);
+      panel.add(Quit);
+      
+      passField.setEditable(true);      
+      passField.setBounds(295,350,100,30);
+      panel.add(passField);
+      
+     
+      Login.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent evt)
+         {
+            input = passField.getText();
+            if (input.equals("password"))
+            {
+               frame2();
+            }
+         }      
+      });
+
       Quit.addActionListener(new ActionListener()
       {      
          public void actionPerformed(ActionEvent e)
@@ -123,6 +136,7 @@ public class Smoke{
       field.setEditable(true);      
       field.setBounds(295,350,100,30);
       panel.add(field);
+      
             
       
 
