@@ -45,7 +45,7 @@ class TrainCanvas extends JComponent {
         int trainSpeed = 2;
 
         int x = lastX + trainSpeed;
-        int trainSpeed = 5;
+        trainSpeed = 5;
         int a = lastA + trainSpeed;
 
         if (x > w + trainW || a > w + trainQ) {

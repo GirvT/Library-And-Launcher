@@ -19,7 +19,7 @@ public class Smoke{
    ReadData rd = new ReadData();//Instantiate the class ReadData
    Records re = new Records();//Instantiate the class Records
    int xSize = 700,ySize = 500;
-   String input;
+   String input = "";
    JTextField field = new JTextField();
    JPasswordField passField = new JPasswordField();
    
@@ -64,8 +64,10 @@ public class Smoke{
       
       passField.setEditable(true);      
       passField.setBounds(295,350,100,30);
-      panel.add(passField);
-      
+      panel.add(passField);     
+     
+                 input = passField.getText();
+
      
       Login.addActionListener(new ActionListener()
       {
@@ -74,8 +76,8 @@ public class Smoke{
             input = passField.getText();
             if (input.equals("password"))
             {
-               JOptionPane.showMessageDialog(null, "Login Sucessful!");
-               frame2();
+                  JOptionPane.showMessageDialog(null, "Login Sucessful!");
+                  frame2();
             }
             else
             {
@@ -92,6 +94,25 @@ public class Smoke{
          }
       });
    }// end frame
+   
+   private void passFieldKeyPressed(KeyEvent evt)
+   {
+
+      if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+      {
+         System.out.println(input);
+            if (input.equals("password"))
+            {
+                  JOptionPane.showMessageDialog(null, "Login Sucessful!");
+                  frame2();
+            }
+            else
+            {
+               JOptionPane.showMessageDialog(null, "Incorrect password, please try again.");
+            }
+      }  
+   }
+   
    
    public void frame2()
    {
