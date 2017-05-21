@@ -20,12 +20,16 @@ public class Smoke{
    Records re = new Records();//Instantiate the class Records
 <<<<<<< HEAD
    int xSize = 700,ySize = 500;
+<<<<<<< HEAD
    String input = "";
 =======
    int xSize1 = 300,ySize1 = 500;
    int xSize = 700,ySize = 500; 
    String input;
 >>>>>>> origin/master
+=======
+   String input;
+>>>>>>> parent of b4af147... just junk
    JTextField field = new JTextField();
    JTextField passLabel = new JTextField("Enter your password");
    JPasswordField passField = new JPasswordField();
@@ -68,6 +72,7 @@ public class Smoke{
       passField.setEditable(true);      
 <<<<<<< HEAD
       passField.setBounds(295,350,100,30);
+<<<<<<< HEAD
       panel.add(passField);     
      
                  input = passField.getText();
@@ -83,6 +88,10 @@ public class Smoke{
       window.setVisible(true);
       
 >>>>>>> origin/master
+=======
+      panel.add(passField);
+      
+>>>>>>> parent of b4af147... just junk
      
       Login.addActionListener(new ActionListener()
       {
@@ -91,8 +100,8 @@ public class Smoke{
             input = passField.getText();
             if (input.equals("password"))
             {
-                  JOptionPane.showMessageDialog(null, "Login Sucessful!");
-                  frame2();
+               JOptionPane.showMessageDialog(null, "Login Sucessful!");
+               frame2();
             }
             else
             {
@@ -109,25 +118,6 @@ public class Smoke{
          }
       });
    }// end frame
-   
-   private void passFieldKeyPressed(KeyEvent evt)
-   {
-
-      if(evt.getKeyCode() == KeyEvent.VK_ENTER)
-      {
-         System.out.println(input);
-            if (input.equals("password"))
-            {
-                  JOptionPane.showMessageDialog(null, "Login Sucessful!");
-                  frame2();
-            }
-            else
-            {
-               JOptionPane.showMessageDialog(null, "Incorrect password, please try again.");
-            }
-      }  
-   }
-   
    
    public void frame2()
    {

@@ -82,18 +82,8 @@ public class Smoke2
       panel.setLayout(null);
       JButton Start = new JButton("Start");
       JButton Quit = new JButton("Quit");
-      
-      Start.setBackground(new Color(59, 89, 182));
-      Start.setForeground(Color.WHITE);
-      Start.setFocusPainted(false);
-      Start.setFont(new Font("Tahoma", Font.BOLD, 12));
-      
-      Quit.setBackground(new Color(255, 10, 10));
-      Quit.setForeground(Color.WHITE);
-      Quit.setFocusPainted(false);
-      Quit.setFont(new Font("Tahoma", Font.BOLD, 12));
       Start.setBounds(120,400,120,40);
-      Quit.setBounds(440,400,120,40);
+      Quit.setBounds(460,400,120,40);
       panel.add(Start);
       panel.add(Quit);
       
