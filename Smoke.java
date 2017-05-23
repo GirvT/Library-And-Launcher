@@ -18,18 +18,10 @@ public class Smoke{
    String info[][] = new String[MAX][6];//Store records in 2d array
    ReadData rd = new ReadData();//Instantiate the class ReadData
    Records re = new Records();//Instantiate the class Records
-<<<<<<< HEAD
    int xSize = 700,ySize = 500;
-<<<<<<< HEAD
    String input = "";
-=======
    int xSize1 = 300,ySize1 = 500;
-   int xSize = 700,ySize = 500; 
-   String input;
->>>>>>> origin/master
-=======
-   String input;
->>>>>>> parent of b4af147... just junk
+
    JTextField field = new JTextField();
    JTextField passLabel = new JTextField("Enter your password");
    JPasswordField passField = new JPasswordField();
@@ -70,14 +62,14 @@ public class Smoke{
       panel.add(Quit);
       
       passField.setEditable(true);      
-<<<<<<< HEAD
+
       passField.setBounds(295,350,100,30);
-<<<<<<< HEAD
+
       panel.add(passField);     
      
                  input = passField.getText();
 
-=======
+
       passField.setBounds(70,150,150,30);
       panel.add(passField);
       
@@ -87,11 +79,10 @@ public class Smoke{
       passLabel.setEditable(false); 
       window.setVisible(true);
       
->>>>>>> origin/master
-=======
+
       panel.add(passField);
       
->>>>>>> parent of b4af147... just junk
+
      
       Login.addActionListener(new ActionListener()
       {
