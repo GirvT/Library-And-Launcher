@@ -126,7 +126,7 @@ public class Smoke2
          panel.setLayout(null);
               
   //    JButton Search = new JButton("Search");
-      JButton Search = new JButton("Add Game");                 
+      JButton Search = new JButton("Search");                 
       JButton Launch = new JButton("Launch");
       JButton SortN = new JButton("By Name");
       JButton SortA = new JButton("By Author");      
@@ -179,7 +179,8 @@ public class Smoke2
          {                          
             Add a = new Add();
             KeyInput ki = new KeyInput();
-            a.addGame(fileName, ki.entries());
+            si.searchGame(fileName, info, 0);
+            
          }
       });
       
