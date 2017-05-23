@@ -27,6 +27,10 @@ public class Smoke2
    JTextArea display = new JTextArea();
    Search si = new Search();
    Sort s = new Sort();
+   int xSize1 = 300,ySize1 = 500;
+   JTextField passLabel = new JTextField("      Enter your password");
+   JPasswordField passField = new JPasswordField();
+   
    
    private Smoke2 create() 
    {
@@ -78,33 +82,69 @@ public class Smoke2
             g.drawImage(image, 0, 0, null);
          }
       };
-         
-      panel.setLayout(null);
-      JButton Start = new JButton("Start");
+      
+      panel.setLayout(null);   
+      JButton Login = new JButton("Login");
       JButton Quit = new JButton("Quit");
-      Start.setBounds(120,400,120,40);
-      Quit.setBounds(460,400,120,40);
-      panel.add(Start);
+      Login.setBackground(new Color(59, 89, 182));
+      Login.setForeground(Color.WHITE);
+      Login.setFocusPainted(false);
+      Login.setFont(new Font("Tahoma", Font.BOLD, 12));
+       
+      Quit.setBackground(new Color(255, 10, 10));
+      Quit.setForeground(Color.WHITE);
+      Quit.setFocusPainted(false);
+      Quit.setFont(new Font("Tahoma", Font.BOLD, 12));
+      
+      Login.setBounds(85,300,120,40);
+      Quit.setBounds(85,350,120,40);
+      panel.add(Login);
       panel.add(Quit);
       
-      Start.addActionListener(new ActionListener()
+      passField.setEditable(true);      
+      passField.setBounds(295,350,100,30);
+
+      panel.add(passField);     
+     
+      input = passField.getText();
+
+      passField.setBounds(70,150,150,30);
+      panel.add(passField);
+      
+      passLabel.setOpaque(false);
+      passLabel.setBounds(70,120,150,30);
+      passLabel.setBorder(null);
+      panel.add(passLabel);
+      passLabel.setEditable(false); 
+      
+      panel.add(passField);
+      
+      Login.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent evt)
+         {
+            input = passField.getText();
+            if (input.equals("password"))
+            {
+               JOptionPane.showMessageDialog(null, "Login Sucessful!");
+               frame2();
+            }
+            else
+            {
+               JOptionPane.showMessageDialog(null, "Incorrect password, please try again.");
+            }
+         }      
+      });
+
+      Quit.addActionListener(new ActionListener()
       {      
          public void actionPerformed(ActionEvent e)
          {
-            frame.dispose();
-            frame2();
+            System.exit(0);
          }
-      });// end Start actionListener
+      });
          
-         Quit.addActionListener(new ActionListener()
-         {      
-            public void actionPerformed(ActionEvent e)
-            {
-               System.exit(0);
-            }
-         });
-         
-        panel.setPreferredSize(new Dimension(700, 500));
+        panel.setPreferredSize(new Dimension(xSize1, ySize1));
 
         return panel;
     }// end create component
