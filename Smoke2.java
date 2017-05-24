@@ -126,6 +126,7 @@ public class Smoke2
             input = passField.getText();
             if (input.equals("password"))
             {
+               frame.dispose();
                JOptionPane.showMessageDialog(null, "Login Sucessful!");
                frame2();
             }
@@ -204,9 +205,10 @@ public class Smoke2
       display.append(sb.toString());
       display.setOpaque(false);
       JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-      scrollPane.setBounds(70, 120, 560, 160);
+      scrollPane.setBounds(70, 80, 560, 200);
       scrollPane.getViewport().setOpaque(false);
       scrollPane.setOpaque(false);
+      scrollPane.setBorder(null);
       panel.add(scrollPane);       
       
       field.setEditable(true);      
