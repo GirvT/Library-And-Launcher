@@ -169,16 +169,16 @@ public class Smoke2
   //    JButton Search = new JButton("Search");
       JButton Search = new JButton("Search");                 
       JButton Launch = new JButton("Launch");
-      JButton SortN = new JButton("By Name");
-      JButton SortA = new JButton("By Author");      
-      JButton SortD = new JButton("By Difficulty");    
+      JButton SortN = new JButton("Sort by Name");
+      JButton SortA = new JButton("Sort by Author");      
+      JButton SortD = new JButton("Sort by Difficulty");    
       JButton Quit = new JButton("Quit");  
       JButton Refresh = new JButton("Refresh");     
       Search.setBounds(70,430,100,30);      
       Launch.setBounds(295,430,100,30);
-      SortN.setBounds(70,320,100,30);
-      SortA.setBounds(220,320,100,30);      
-      SortD.setBounds(370,320,100,30);
+      SortN.setBounds(70,320,120,30);
+      SortA.setBounds(220,320,120,30);      
+      SortD.setBounds(370,320,120,30);
       Quit.setBounds(520,430,100,30);  
       Refresh.setBounds(520,320,100,30);    
       panel.add(Search);      
@@ -190,6 +190,7 @@ public class Smoke2
       panel.add(Refresh);     
       
       display.setEditable(false);
+      display.setText("");
       rows = rd.readFile(fileName, 10);
       info = re.getRecords(rows);
       StringBuilder sb = new StringBuilder();
@@ -205,9 +206,9 @@ public class Smoke2
       display.append(sb.toString());
       display.setOpaque(false);
       JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-      scrollPane.setBounds(70, 80, 560, 200);
+      scrollPane.setBounds(80, 80, 560, 200);
       scrollPane.getViewport().setOpaque(false);
-      scrollPane.setOpaque(false);
+      scrollPane.setBackground(Color.white);
       scrollPane.setBorder(null);
       panel.add(scrollPane);       
       
@@ -255,11 +256,44 @@ public class Smoke2
             sorting(2);
          }
       });// end Sort ActionListener
+      
+      
+      
+      display.addMouseListener(new MouseAdapter()
+            {
+               public void mouseClicked(MouseEvent me)
+               {
+                  if (!display.getText().trim().equals("")) 
+                 {
+                     /*int position = messagearea.viewToModel(messagearea.getMousePosition());
+                     String[] text = messagearea.getText().split("\n");
+                     int[] charNum = new int[text.length];
+                     for (int i = 0; i < text.length; i++)
+                     {
+                        charNum[i] = text[i].length() + 1;
+                     }
+                     int sum = 0;
+                     for (int i = 0; i < charNum.length; i++) 
+                     {
+                        sum += charNum[i];
+                          if (sum >= position) 
+                          {
+                              chatarea.append(text[i] + "\n");
+                              break;
+                          }
+                     }*/
+                     System.out.println("Testing");
+                  }
+               }
+            });
+      
+      
+      
       Launch.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent a)
          {
-            input = field.getText();
+            /*input = field.getText();
             if (input.equals("game1"))
             {
                game1();
@@ -275,7 +309,12 @@ public class Smoke2
             else if (input.equals("game4"))
             {
                game4();
-            }
+            }*/
+            
+            
+            
+            
+            
          }
       });// end Launch ActionListener
        
