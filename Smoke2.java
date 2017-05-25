@@ -345,7 +345,7 @@ public class Smoke2
 
         try 
         {
-            image = ImageIO.read(new File("aa.jpg"));
+            image = ImageIO.read(new File("aa.png"));
         } catch (IOException e) 
         {
             e.printStackTrace();
