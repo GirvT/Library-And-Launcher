@@ -10,6 +10,10 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import javax.swing.ImageIcon;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Utilities;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Smoke2 
 {
@@ -23,13 +27,13 @@ public class Smoke2
    ReadData rd = new ReadData();//Instantiate the class ReadData
    Records re = new Records();//Instantiate the class Records
    String input;
-   JTextField field = new JTextField();
    JTextArea display = new JTextArea();
    Search si = new Search();
    Sort s = new Sort();
    int xSize1 = 300,ySize1 = 500;
    JTextField passLabel = new JTextField("      Enter your password");
    JPasswordField passField = new JPasswordField();
+   String st;
    
    
    private Smoke2 create() 
@@ -167,21 +171,27 @@ public class Smoke2
          panel.setLayout(null);
               
   //    JButton Search = new JButton("Search");
-      JButton Search = new JButton("Search");                 
+      JButton Search = new JButton("Search");   
+      JButton Add = new JButton("Add");      
+      JButton Delete = new JButton("Delete");        
       JButton Launch = new JButton("Launch");
       JButton SortN = new JButton("Sort by Name");
       JButton SortA = new JButton("Sort by Author");      
       JButton SortD = new JButton("Sort by Difficulty");    
       JButton Quit = new JButton("Quit");  
       JButton Refresh = new JButton("Refresh");     
-      Search.setBounds(70,430,100,30);      
+      Search.setBounds(70,430,100,30); 
+      Add.setBounds(520,380,100,30);     
+      Delete.setBounds(70,380,100,30);
       Launch.setBounds(295,430,100,30);
       SortN.setBounds(70,320,120,30);
       SortA.setBounds(220,320,120,30);      
       SortD.setBounds(370,320,120,30);
       Quit.setBounds(520,430,100,30);  
       Refresh.setBounds(520,320,100,30);    
-      panel.add(Search);      
+      panel.add(Search);   
+      panel.add(Add);
+      panel.add(Delete);   
       panel.add(Launch);
       panel.add(SortN);
       panel.add(SortA);      
@@ -191,19 +201,9 @@ public class Smoke2
       
       display.setEditable(false);
       display.setText("");
-      rows = rd.readFile(fileName, 10);
-      info = re.getRecords(rows);
-      StringBuilder sb = new StringBuilder();
-      for (int i = 0; i < info.length; i++)
-      {
-         for(int j = 0; j < info[0].length; j++)
-         {
-            sb.append(info[i][j] + "\t");
-         }
-         sb.append("\n");
-      }
+      loading();
       display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
-      display.append(sb.toString());
+      display.append(st);
       display.setOpaque(false);
       JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
       scrollPane.setBounds(80, 80, 560, 200);
@@ -211,11 +211,7 @@ public class Smoke2
       scrollPane.setBackground(Color.white);
       scrollPane.setBorder(null);
       panel.add(scrollPane);       
-      
-      field.setEditable(true);      
-      field.setBounds(295,380,100,30);
-      panel.add(field);
-      
+           
       Search.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
@@ -257,63 +253,56 @@ public class Smoke2
          }
       });// end Sort ActionListener
       
-      
-      
-      display.addMouseListener(new MouseAdapter()
-            {
-               public void mouseClicked(MouseEvent me)
-               {
-                  if (!display.getText().trim().equals("")) 
-                 {
-                     /*int position = messagearea.viewToModel(messagearea.getMousePosition());
-                     String[] text = messagearea.getText().split("\n");
-                     int[] charNum = new int[text.length];
-                     for (int i = 0; i < text.length; i++)
-                     {
-                        charNum[i] = text[i].length() + 1;
-                     }
-                     int sum = 0;
-                     for (int i = 0; i < charNum.length; i++) 
-                     {
-                        sum += charNum[i];
-                          if (sum >= position) 
-                          {
-                              chatarea.append(text[i] + "\n");
-                              break;
-                          }
-                     }*/
-                     System.out.println("Testing");
-                  }
-               }
-            });
-      
-      
+       display.addMouseListener(new MouseAdapter() {
+         @Override
+         public void mouseClicked(MouseEvent e) {
+            if (e.getButton() != MouseEvent.BUTTON1) {
+               return;
+            }
+            if (e.getClickCount() != 1) {
+               return;
+            }
+
+            int offset = display.viewToModel(e.getPoint());
+
+            try {
+               int rowStart = Utilities.getRowStart(display, offset);
+               int rowEnd = Utilities.getRowEnd(display, offset);
+               String selectedLine = display.getText().substring(rowStart, rowEnd);
+               input = selectedLine.trim();
+
+            } catch (BadLocationException e1) {
+               e1.printStackTrace();
+            }
+
+         }
+      });
       
       Launch.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent a)
          {
-            /*input = field.getText();
-            if (input.equals("game1"))
+            String input2 = input.replaceAll("\\s","");
+            if (input2.equals("MazeBoxgame1205/02/17***Luciano"))
             {
                game1();
             }
-            else if (input.equals("game2"))
+            else if (input2.equals("BoxMazegame2105/02/2017*****Keith"))
             {
                game2();
             }
-            else if (input.equals("game3"))
+            else if (input2.equals("Mazegame3305/02/17**Luciano"))
             {
                game3();
             }
-            else if (input.equals("game4"))
+            else if (input2.equals("GuessMastergame4505/18/2017*****Keith"))
             {
                game4();
-            }*/
-            
-            
-            
-            
+            }
+            else 
+            {
+               JOptionPane.showMessageDialog(null, "Game does not exist, please try again a different one.");
+            }
             
          }
       });// end Launch ActionListener
@@ -322,8 +311,10 @@ public class Smoke2
        {
          public void actionPerformed(ActionEvent e)
          {
-           frame2.dispose();
-           frame2();
+            display.setText("");
+            loading();
+            display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+            display.append(st);
          }
         });   
        Quit.addActionListener(new ActionListener()
@@ -416,6 +407,23 @@ public class Smoke2
          display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
          display.append(sb2.toString().trim());
       }
+      
+      public String loading()
+      {
+         rows = rd.readFile(fileName, 10);
+         info = re.getRecords(rows);
+         StringBuilder sb = new StringBuilder();
+         for (int i = 0; i < info.length; i++)
+         {
+            for(int j = 0; j < info[0].length; j++)
+            {
+               sb.append(info[i][j] + "\t");
+            }
+            sb.append("\n");
+         }
+         st = sb.toString();
+         return st;
+      }   
 
     public static void main(String[] args) 
     {
