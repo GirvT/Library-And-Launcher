@@ -180,15 +180,18 @@ public class Smoke2
       JButton SortD = new JButton("Sort by Difficulty");    
       JButton Quit = new JButton("Quit");  
       JButton Refresh = new JButton("Refresh");     
-      Search.setBounds(70,430,100,30); 
+      
+      SortN.setBounds(70,440,120,30); 
       Add.setBounds(520,380,100,30);     
-      Delete.setBounds(70,380,100,30);
-      Launch.setBounds(295,430,100,30);
-      SortN.setBounds(70,320,120,30);
-      SortA.setBounds(220,320,120,30);      
-      SortD.setBounds(370,320,120,30);
-      Quit.setBounds(520,430,100,30);  
+      SortA.setBounds(70,380,120,30);
+      Launch.setBounds(295,285,100,30);
+      SortD.setBounds(70,320,120,30);
+      Add.setBounds(220,320,120,30);      
+      Search.setBounds(370,320,120,30);
+      Quit.setBounds(520,440,100,30);  
       Refresh.setBounds(520,320,100,30);    
+      Delete.setBounds(520,320,100,30);  
+      
       panel.add(Search);   
       panel.add(Add);
       panel.add(Delete);   
