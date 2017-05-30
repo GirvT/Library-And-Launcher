@@ -128,7 +128,7 @@ public class Smoke2
          public void actionPerformed(ActionEvent evt)
          {
             input = passField.getText();
-            if (input.equals("password"))
+            if (input.equals(""))
             {
                frame.dispose();
                JOptionPane.showMessageDialog(null, "Login Sucessful!");
@@ -170,7 +170,6 @@ public class Smoke2
          
          panel.setLayout(null);
               
-  //    JButton Search = new JButton("Search");
       JButton Search = new JButton("Search");   
       JButton Add = new JButton("Add");      
       JButton Delete = new JButton("Delete");        
@@ -181,16 +180,46 @@ public class Smoke2
       JButton Quit = new JButton("Quit");  
       JButton Refresh = new JButton("Refresh");     
       
-      SortN.setBounds(70,440,120,30); 
-      Add.setBounds(520,380,100,30);     
-      SortA.setBounds(70,380,120,30);
-      Launch.setBounds(295,285,100,30);
-      SortD.setBounds(70,320,120,30);
-      Add.setBounds(220,320,120,30);      
-      Search.setBounds(370,320,120,30);
-      Quit.setBounds(520,440,100,30);  
-      Refresh.setBounds(520,320,100,30);    
-      Delete.setBounds(520,320,100,30);  
+      Refresh.setFocusPainted(false);
+      Refresh.setContentAreaFilled(false);
+      Refresh.setForeground(new Color(234, 234, 225));
+      
+      Delete.setFocusPainted(false);
+      Delete.setContentAreaFilled(false);
+      Delete.setForeground(new Color(234, 234, 225));
+      
+      Add.setFocusPainted(false);
+      Add.setContentAreaFilled(false);
+      Add.setForeground(new Color(234, 234, 225));
+      
+      Search.setFocusPainted(false);
+      Search.setContentAreaFilled(false);
+      Search.setForeground(new Color(234, 234, 225));
+      
+      SortN.setFocusPainted(false);
+      SortN.setContentAreaFilled(false);
+      SortN.setForeground(new Color(234, 234, 225));
+      
+      SortA.setFocusPainted(false);
+      SortA.setContentAreaFilled(false);
+      SortA.setForeground(new Color(234, 234, 225));
+      
+      SortD.setFocusPainted(false);
+      SortD.setContentAreaFilled(false);
+      SortD.setForeground(new Color(234, 234, 225));
+      
+      Launch.setFocusPainted(false);
+      Launch.setContentAreaFilled(false);
+      Launch.setForeground(new Color(234, 234, 225));
+      
+      SortN.setBounds(70,300,120,30);     
+      SortA.setBounds(225,300,120,30);
+      Launch.setBounds(380,40,100,30);
+      SortD.setBounds(380,300,120,30);
+      Add.setBounds(70,40,100,30);      
+      Search.setBounds(530,300,100,30);  
+      Refresh.setBounds(530,40,100,30);    
+      Delete.setBounds(220,40,100,30);  
       
       panel.add(Search);   
       panel.add(Add);
@@ -198,8 +227,7 @@ public class Smoke2
       panel.add(Launch);
       panel.add(SortN);
       panel.add(SortA);      
-      panel.add(SortD);
-      panel.add(Quit); 
+      panel.add(SortD); 
       panel.add(Refresh);     
       
       display.setEditable(false);
@@ -209,7 +237,7 @@ public class Smoke2
       display.append(st);
       display.setOpaque(false);
       JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-      scrollPane.setBounds(80, 80, 560, 200);
+      scrollPane.setBounds(70, 80, 560, 200);
       scrollPane.getViewport().setOpaque(false);
       scrollPane.setBackground(Color.white);
       scrollPane.setBorder(null);
@@ -304,7 +332,7 @@ public class Smoke2
             }
             else 
             {
-               JOptionPane.showMessageDialog(null, "Game does not exist, please try again a different one.");
+               JOptionPane.showMessageDialog(null, "Game does not exist, please try a different one.");
             }
             
          }
@@ -328,7 +356,7 @@ public class Smoke2
           }
       });// end Quit ActionListener
         
-        panel.setPreferredSize(new Dimension(700, 500));
+        panel.setPreferredSize(new Dimension(700, 375));
 
         return panel;
     }// end create component2
