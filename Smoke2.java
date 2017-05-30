@@ -115,12 +115,13 @@ public class Smoke2
       passField.setBounds(70,150,150,30);
       panel.add(passField);
       
-      passLabel.setOpaque(true);
+      
       passLabel.setBounds(70,120,150,30);
       passLabel.setBorder(null);
       panel.add(passLabel);
+      passLabel.setOpaque(false);
       passLabel.setEditable(false); 
-      passLabel.setBackground(Color.red);// change color here
+      passLabel.setForeground(new Color(234, 234, 225));
       
       panel.add(passField);
       
@@ -239,9 +240,7 @@ public class Smoke2
       display.setOpaque(false);
       JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
       scrollPane.setBounds(70, 80, 560, 200);
-      scrollPane.getViewport().setOpaque(false);
-      scrollPane.setBackground(Color.white);  // set background to a textfield
-      scrollPane.setBorder(null);
+      scrollPane.setBackground(new Color(234,234,225,100));  // set background to a textfield
       panel.add(scrollPane);       
            
       Search.addActionListener(new ActionListener()
@@ -343,6 +342,7 @@ public class Smoke2
        {
          public void actionPerformed(ActionEvent e)
          {
+            display.setText(null);
             display.setText("");
             loading();
             display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
