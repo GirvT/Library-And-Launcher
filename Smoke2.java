@@ -115,11 +115,12 @@ public class Smoke2
       passField.setBounds(70,150,150,30);
       panel.add(passField);
       
-      passLabel.setOpaque(false);
+      passLabel.setOpaque(true);
       passLabel.setBounds(70,120,150,30);
       passLabel.setBorder(null);
       panel.add(passLabel);
       passLabel.setEditable(false); 
+      passLabel.setBackground(Color.red);// change color here
       
       panel.add(passField);
       
@@ -239,7 +240,7 @@ public class Smoke2
       JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
       scrollPane.setBounds(70, 80, 560, 200);
       scrollPane.getViewport().setOpaque(false);
-      scrollPane.setBackground(Color.white);
+      scrollPane.setBackground(Color.white);  // set background to a textfield
       scrollPane.setBorder(null);
       panel.add(scrollPane);       
            
