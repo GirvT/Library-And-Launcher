@@ -24,25 +24,19 @@ import java.awt.geom.*;
          Graphics2D g2 = (Graphics2D) g;
          g.setColor(Color.black);
          g2.fill(new Rectangle2D.Double(x, y, 50, 50));
-         /*if (x == 540 && y == 340 && cond == true) 
-            {
-               cond = false;             
-            } 
-         if (cond == false){
+         if (x == 540 && y == 340)
+         { 
             g.setColor(Color.WHITE);
       	   g.fillRect(0, 0, getWidth(), getHeight());
       	   g.setColor(Color.BLACK);
-      	   g.drawString("You Win!", 240,100);
-         }*/
+      	   g.drawString("You Win!", 340,100);
+         }
          
           
       }
       
       public void actionPerformed(ActionEvent e){
          repaint();
-         if (x == 540 && y == 340 ){
-            
-         }
       }        
       
       public void up(){
@@ -65,17 +59,30 @@ import java.awt.geom.*;
       public void keyPressed(KeyEvent e){
          int code = e.getKeyCode();
          if (code == KeyEvent.VK_UP)
-            up();
-         if (code == KeyEvent.VK_DOWN)
-            down();
+         {
+            if (x != 540 || y != 340)
+               up();
+         }
+         if (code == KeyEvent.VK_DOWN )
+            {
+            if (x != 540 || y != 340)
+               down();
+         }
          if (code == KeyEvent.VK_LEFT)
-            left();
-         if (code == KeyEvent.VK_RIGHT)
-            right();  
+            {
+            if (x != 540 || y != 340)
+               left();
+         }
+         if (code == KeyEvent.VK_RIGHT )
+            {
+            if (x != 540 || y != 340)
+               right();
+         } 
          if (code == KeyEvent.VK_R)
             {
             x = 0;
             y = 0;
+            repaint();
          }
       }
       

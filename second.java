@@ -9,6 +9,7 @@ import java.awt.geom.*;
       double x = 0, y = 0;
       int a = 100, b = 50;
       int c = 100, d = 100;
+      boolean alive = true;
       
       public second(){
          t.start();
@@ -39,9 +40,9 @@ import java.awt.geom.*;
    	      g.setColor(Color.WHITE);
    	      g.fillRect(0, 0, getWidth(), getHeight());
    	      g.setColor(Color.BLACK);
-   	      g.drawString("You Win!", 240,100);
-   	      g.drawString("Press R to play again", 180,150);        
-         
+   	      g.drawString("You Win!", 350,100);
+   	      g.drawString("Press R to play again", 250,150);        
+            alive = false;
             }
          else if (x >a-50 && y>b-50 && y<b+50 && x<a+50||x>c-50 && y>d-50 && y<d+50 && x<c+50)
             {
@@ -49,29 +50,32 @@ import java.awt.geom.*;
    	      g.fillRect(0, 0, getWidth(), getHeight());
    	      g.setColor(Color.BLACK);
    	      g.drawString("You Lose! Press R to restart", 140,100);
+            alive = false;
             }
          else if (x < 500 && y+50 > 150 && y+50<500) {
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, getWidth(), getHeight());
             g.setColor(Color.BLACK);
-            g.drawString("You Lose! Press R to restart", 140,100); 
+            g.drawString("You Lose! Press R to restart", 200,100); 
+            alive = false;
          }  
       }
       
       public void actionPerformed(ActionEvent e){
-         if (a >= 800) {
+         if (a >= 800 && alive) {
             repaint();
             a = 0;
-         } else {
+         } 
+         else if (alive) {
             repaint();
             a += 10;
          }
-         if (c<=0)
+         if (c<=0 && alive)
             {
             repaint();
             c = 800;
             }
-         else
+         else if (alive)
             {
             repaint();
             c -=6;   
@@ -104,22 +108,33 @@ import java.awt.geom.*;
       public void keyPressed(KeyEvent e){
          int code = e.getKeyCode();
          if (code == KeyEvent.VK_UP)
-            up();
-         if (code == KeyEvent.VK_DOWN)
-            down();
+         {
+            if (alive)
+               up();
+         }
+         if (code == KeyEvent.VK_DOWN )
+            {
+            if (alive)
+               down();
+         }
          if (code == KeyEvent.VK_LEFT)
-            left();
+            {
+            if (alive)
+               left();
+         }
          if (code == KeyEvent.VK_RIGHT)
-            right();  
+            {
+            if (alive)
+               right();
+         } 
          if (code == KeyEvent.VK_R)
             {
+            alive = true;
             x = 0;
             y = 0;
-            a = 100;
-            b = 50;
-            c = -250;
-            d = 100;
-         }
+         } 
+         
+         
       }
       
       public void keyTyped(KeyEvent e){}
