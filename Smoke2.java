@@ -88,8 +88,19 @@ public class Smoke2
       };
       
       panel.setLayout(null);   
-      JButton Login = new JButton("Login");
+      JTextPane pane = new JTextPane ();
+      pane.insertIcon (new ImageIcon("steam.png"));
+      ImageIcon login = new ImageIcon("login.png");
+      JButton Login = new JButton("Login",login);
+      Login.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+      Login.setHorizontalAlignment(SwingConstants.RIGHT);
+      Login.setHorizontalTextPosition(SwingConstants.LEFT);
       JButton Quit = new JButton("Quit");
+      
+      pane.setEditable(false);
+      pane.setOpaque(false);
+      pane.setBounds(100,20,250,150);
+      
       Login.setBackground(new Color(59, 89, 182));
       Login.setForeground(Color.WHITE);
       Login.setFocusPainted(false);
@@ -102,6 +113,7 @@ public class Smoke2
       
       Login.setBounds(85,300,120,40);
       Quit.setBounds(85,350,120,40);
+      panel.add(pane);
       panel.add(Login);
       panel.add(Quit);
       
@@ -240,7 +252,9 @@ public class Smoke2
       display.setOpaque(false);
       JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
       scrollPane.setBounds(70, 80, 560, 200);
-      scrollPane.setBackground(new Color(234,234,225,100));  // set background to a textfield
+      scrollPane.setBackground(new Color(234,250,255,200));  // set background to a textfield
+      scrollPane.getViewport().setOpaque(false);
+      //scrollPane.setOpaque(false);
       panel.add(scrollPane);       
            
       Search.addActionListener(new ActionListener()
@@ -342,7 +356,6 @@ public class Smoke2
        {
          public void actionPerformed(ActionEvent e)
          {
-            display.setText(null);
             display.setText("");
             loading();
             display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
