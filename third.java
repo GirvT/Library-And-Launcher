@@ -130,7 +130,6 @@ import java.awt.geom.*;
             
          if (code == KeyEvent.VK_Q)
             {
-            third.dispose();
             }
          }
       }

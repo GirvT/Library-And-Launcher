@@ -355,10 +355,12 @@ public class Smoke2
        {
          public void actionPerformed(ActionEvent e)
          {
-            display.setText("");
+            frame2.dispose();
+            frame2();
+            /*display.setText("");
             loading();
             display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
-            display.append(st);
+            display.append(st);*/
          }
         });   
        Quit.addActionListener(new ActionListener()
