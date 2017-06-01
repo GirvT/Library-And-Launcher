@@ -7,6 +7,7 @@ import java.awt.geom.*;
    
       Timer t = new Timer(30,this);
       double x = 0, y = 0;
+      boolean alive = true;
       
       public third(){
          t.start();
@@ -36,43 +37,48 @@ import java.awt.geom.*;
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, getWidth(), getHeight());
             g.setColor(Color.BLACK);
-            g.drawString("You Win!", 255,100);
-            g.drawString("Press Q to quit, R to restart", 150,150);            
+            alive = false;
+            g.drawString("You Win!", 360,100);
+            g.drawString("Press Q to quit, R to restart", 250,150);            
          }
          else if (x<500 && y>200){
              g.setColor(Color.WHITE);
              g.fillRect(0, 0, getWidth(), getHeight());
              g.setColor(Color.BLACK);
-             g.drawString("You Lose", 255,100);
-             g.drawString("Press Q to quit, R to restart", 150,150);
+             alive = false;
+             g.drawString("You Lose", 360,100);
+             g.drawString("Press Q to quit, R to restart", 250,150);
             }
          else if (x>0 && y<200 && x<350){
              g.setColor(Color.WHITE);
              g.fillRect(0, 0, getWidth(), getHeight());
              g.setColor(Color.BLACK);
-             g.drawString("You Lose", 255,100);
-             g.drawString("Press Q to quit, R to restart", 150,150);            
+             alive = false;
+             g.drawString("You Lose", 360,100);
+             g.drawString("Press Q to quit, R to restart", 250,150);            
          }
          else if (x>350 && y>0 && x<540){
              g.setColor(Color.WHITE);
              g.fillRect(0, 0, getWidth(), getHeight());
              g.setColor(Color.BLACK);
-             g.drawString("You Lose", 255,100);
-             g.drawString("Press Q to quit, R to restart", 150,150);          
+             alive = false;
+             g.drawString("You Lose", 360,100);
+             g.drawString("Press Q to quit, R to restart", 250,150);          
          }
          else if (x<0 || y<0){
              g.setColor(Color.WHITE);
              g.fillRect(0, 0, getWidth(), getHeight());
              g.setColor(Color.BLACK);
-             g.drawString("You Lose", 255,100);
-             g.drawString("Press Q to quit, R to restart", 150,150); 
+             g.drawString("You Lose", 360,100);
+             g.drawString("Press Q to quit, R to restart", 250,150); 
          }
          else if (x>540){
              g.setColor(Color.WHITE);
              g.fillRect(0, 0, getWidth(), getHeight());
              g.setColor(Color.BLACK);
-             g.drawString("You Lose", 255,100);
-             g.drawString("Press Q to quit, R to restart", 150,150);
+             alive = false;
+             g.drawString("You Lose", 360,100);
+             g.drawString("Press Q to quit, R to restart", 250,150);
             
          }  
       }
@@ -101,17 +107,31 @@ import java.awt.geom.*;
       public void keyPressed(KeyEvent e){
          int code = e.getKeyCode();
          if (code == KeyEvent.VK_UP)
+            {if (alive)
             up();
+            }
          if (code == KeyEvent.VK_DOWN)
+            {if (alive)
             down();
+            }
          if (code == KeyEvent.VK_LEFT)
+            {if (alive) 
             left();
+            }
          if (code == KeyEvent.VK_RIGHT)
-            right();  
+            { if (alive)
+            right(); 
+            } 
          if (code == KeyEvent.VK_R)
             {
+            alive = true;
             x = 0;
             y = 0;
+            
+         if (code == KeyEvent.VK_Q)
+            {
+            third.dispose();
+            }
          }
       }
       
