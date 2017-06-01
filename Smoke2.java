@@ -17,8 +17,7 @@ import java.awt.event.MouseEvent;
 
 public class Smoke2 
 {
-   private JFrame frame;
-   private JFrame frame2;
+   private JFrame frame, frame2;
    String nameArray[] = new String[6];
    static String fileName = "records.txt";//fileName = "records.txt"
    final int MAX = 10;//Set MAX number of records
@@ -328,11 +327,11 @@ public class Smoke2
          public void actionPerformed(ActionEvent a)
          {
             String input2 = input.replaceAll("\\s","");
-            if (input2.equals("MazeBoxgame1205/02/17***Luciano"))
+            if (input2.equals("MazeBoxgame1205/02/17***Keith"))
             {
                game1();
             }
-            else if (input2.equals("BoxMazegame2105/02/2017*****Keith"))
+            else if (input2.equals("BoxMazegame2105/02/2017*****Manish"))
             {
                game2();
             }
