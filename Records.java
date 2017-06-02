@@ -13,10 +13,10 @@ class Records { //Separate a line of record into 6 component parts
          int i = 0;
          while(st.hasMoreTokens() && i < 6){
             records[line][i] = st.nextToken();//Store each item of the record
-            System.out.print(records[line][i] + "\t\t");
+            //System.out.print(records[line][i] + "\t\t");
             i++;
          }// end while
-         System.out.println();
+         //System.out.println();
       }// end for
       return records;    //return the 2-dmensional array records
    }// end getrecords 

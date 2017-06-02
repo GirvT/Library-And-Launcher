@@ -2,6 +2,7 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
 import java.io.IOException;
 import java.net.URL;
 import java.awt.image.BufferedImage;
@@ -17,7 +18,7 @@ import java.awt.event.MouseEvent;
 
 public class Smoke2 
 {
-   private JFrame frame, frame2;
+   private JFrame frame, mainFrame, searchFrame, deleteFrame;
    String nameArray[] = new String[6];
    static String fileName = "records.txt";//fileName = "records.txt"
    final int MAX = 10;//Set MAX number of records
@@ -25,14 +26,13 @@ public class Smoke2
    String info[][] = new String[MAX][6];//Store records in 2d array
    ReadData rd = new ReadData();//Instantiate the class ReadData
    Records re = new Records();//Instantiate the class Records
-   String input;
    JTextArea display = new JTextArea();
    Search si = new Search();
    Sort s = new Sort();
    int xSize1 = 300,ySize1 = 500;
-   JTextField passLabel = new JTextField("      Enter your password");
+   JTextField passLabel = new JTextField("\t" + "Enter your password");
    JPasswordField passField = new JPasswordField();
-   String st;
+   String input, st, ss, search_input;
    
    
    private Smoke2 create() 
@@ -51,11 +51,25 @@ public class Smoke2
     
    private JFrame createFrame2() 
    {
-       JFrame frame2 = new JFrame(getClass().getName());
-       frame2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-       return frame2;
+       JFrame mainFrame = new JFrame(getClass().getName());
+       mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+       return mainFrame;
+   }
+   
+   private JFrame createFrame3() 
+   {
+       JFrame searchFrame = new JFrame(getClass().getName());
+       searchFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+       return searchFrame;
    }
 
+   private JFrame createFrame4() 
+   {
+       JFrame deleteFrame = new JFrame(getClass().getName());
+       deleteFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+       return deleteFrame;
+   } 
+   
    private void show()
    {
        frame.pack();
@@ -63,13 +77,31 @@ public class Smoke2
        frame.setVisible(true);
    }
    
-   private void frame2()
+   private void mainFrame()
    {
-      frame2 = createFrame2();
-      frame2.getContentPane().add(createContent2());
-      frame2.pack();
-      frame2.setLocationRelativeTo(null); 
-      frame2.setVisible(true);
+      mainFrame = createFrame2();
+      mainFrame.getContentPane().add(createContent2());
+      mainFrame.pack();
+      mainFrame.setLocationRelativeTo(null); 
+      mainFrame.setVisible(true);
+   }
+   
+  private void searchFrame()
+   {
+      searchFrame = createFrame3();
+      searchFrame.getContentPane().add(createContent3());
+      searchFrame.pack();
+      searchFrame.setLocationRelativeTo(null); 
+      searchFrame.setVisible(true);
+   }
+   
+   private void deleteFrame()
+   {
+      deleteFrame = createFrame4();
+      deleteFrame.getContentPane().add(createContent4());
+      deleteFrame.pack();
+      deleteFrame.setLocationRelativeTo(null); 
+      deleteFrame.setVisible(true);
    }
 
    private Component createContent() 
@@ -87,54 +119,49 @@ public class Smoke2
       };
       
       panel.setLayout(null);   
-      JTextPane pane = new JTextPane ();
-      pane.insertIcon (new ImageIcon("steam.png"));
+      
       ImageIcon login = new ImageIcon("login.png");
       JButton Login = new JButton("Login",login);
-      Login.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-      Login.setHorizontalAlignment(SwingConstants.RIGHT);
-      Login.setHorizontalTextPosition(SwingConstants.LEFT);
-      JButton Quit = new JButton("Quit");
+      JButton Quit = new JButton("Quit");       
+      JTextPane pane = new JTextPane ();
       
+      pane.insertIcon (new ImageIcon("steam.png"));
       pane.setEditable(false);
       pane.setOpaque(false);
       pane.setBounds(100,20,250,150);
       
+      Login.setBounds(85,300,120,40);
       Login.setBackground(new Color(59, 89, 182));
       Login.setForeground(Color.WHITE);
       Login.setFocusPainted(false);
       Login.setFont(new Font("Tahoma", Font.BOLD, 12));
-       
+      Login.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+      Login.setHorizontalAlignment(SwingConstants.RIGHT);
+      Login.setHorizontalTextPosition(SwingConstants.LEFT);
+      
       Quit.setBackground(new Color(255, 10, 10));
       Quit.setForeground(Color.WHITE);
       Quit.setFocusPainted(false);
       Quit.setFont(new Font("Tahoma", Font.BOLD, 12));
-      
-      Login.setBounds(85,300,120,40);
       Quit.setBounds(85,350,120,40);
-      panel.add(pane);
-      panel.add(Login);
-      panel.add(Quit);
       
       passField.setEditable(true);      
       passField.setBounds(295,350,100,30);
-
-      panel.add(passField);     
-     
-      input = passField.getText();
-
       passField.setBounds(70,150,150,30);
-      panel.add(passField);
-      
-      
+           
       passLabel.setBounds(70,120,150,30);
       passLabel.setBorder(null);
-      panel.add(passLabel);
       passLabel.setOpaque(false);
       passLabel.setEditable(false); 
       passLabel.setForeground(new Color(234, 234, 225));
       
+      panel.add(pane);
+      panel.add(Login);
+      panel.add(Quit);
       panel.add(passField);
+      panel.add(passLabel);
+      
+      input = passField.getText();
       
       Login.addActionListener(new ActionListener()
       {
@@ -145,7 +172,7 @@ public class Smoke2
             {
                frame.dispose();
                JOptionPane.showMessageDialog(null, "Login Sucessful!");
-               frame2();
+               mainFrame();
             }
             else
             {
@@ -233,6 +260,19 @@ public class Smoke2
       Search.setBounds(530,300,100,30);  
       Refresh.setBounds(530,40,100,30);    
       Delete.setBounds(220,40,100,30);  
+            
+      display.setEditable(false);
+      display.setText("");
+      loading();
+      display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+      display.append(st);
+      display.setOpaque(false);
+      display.setForeground(new Color(234, 234, 25));
+
+      JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+      scrollPane.setBounds(70, 80, 560, 200);
+      scrollPane.getViewport().setOpaque(false);
+      scrollPane.setOpaque(false);
       
       panel.add(Search);   
       panel.add(Add);
@@ -241,29 +281,16 @@ public class Smoke2
       panel.add(SortN);
       panel.add(SortA);      
       panel.add(SortD); 
-      panel.add(Refresh);     
-      
-      display.setEditable(false);
-      display.setText("");
-      loading();
-      display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
-      display.append(st);
-      display.setOpaque(false);
-      JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-      scrollPane.setBounds(70, 80, 560, 200);
-      scrollPane.setBackground(new Color(234,250,255,200));  // set background to a textfield
-      scrollPane.getViewport().setOpaque(false);
-      //scrollPane.setOpaque(false);
+      panel.add(Refresh); 
       panel.add(scrollPane);       
            
       Search.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
-         {                          
-            Add a = new Add();
-            KeyInput ki = new KeyInput();
-            si.searchGame(fileName, info, 0);
-            
+         {   
+            mainFrame.dispose();
+            searchFrame();                       
+            searchGame(fileName, info, 0);           
          }
       });
       
@@ -271,7 +298,6 @@ public class Smoke2
       {
          public void actionPerformed(ActionEvent e)
          {
-            //frame2.dispose();// close the current frame
             display.setText("");
             sorting(0);
          }
@@ -281,7 +307,6 @@ public class Smoke2
       {
          public void actionPerformed(ActionEvent e)
          {
-            //frame2.dispose();// close the current frame
             display.setText("");
             sorting(5);
          }
@@ -291,34 +316,36 @@ public class Smoke2
       {
          public void actionPerformed(ActionEvent e)
          {
-            //frame2.dispose();// close the current frame
             display.setText("");
             sorting(2);
          }
       });// end Sort ActionListener
       
-       display.addMouseListener(new MouseAdapter() {
+       display.addMouseListener(new MouseAdapter() 
+       {
          @Override
-         public void mouseClicked(MouseEvent e) {
+         public void mouseClicked(MouseEvent e) 
+         {
             if (e.getButton() != MouseEvent.BUTTON1) {
                return;
             }
-            if (e.getClickCount() != 1) {
+            if (e.getClickCount() != 1) 
+            {
                return;
             }
-
             int offset = display.viewToModel(e.getPoint());
-
-            try {
+            try 
+            {
                int rowStart = Utilities.getRowStart(display, offset);
                int rowEnd = Utilities.getRowEnd(display, offset);
                String selectedLine = display.getText().substring(rowStart, rowEnd);
                input = selectedLine.trim();
+               System.out.println(input);
 
-            } catch (BadLocationException e1) {
+            } catch (BadLocationException e1)
+            {
                e1.printStackTrace();
             }
-
          }
       });
       
@@ -355,14 +382,13 @@ public class Smoke2
        {
          public void actionPerformed(ActionEvent e)
          {
-            frame2.dispose();
-            frame2();
-            /*display.setText("");
+            display.setText("");
             loading();
             display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
-            display.append(st);*/
+            display.append(st);
          }
-        });   
+        });  
+                 
        Quit.addActionListener(new ActionListener()
        {      
           public void actionPerformed(ActionEvent e)
@@ -376,6 +402,171 @@ public class Smoke2
         return panel;
     }// end create component2
  
+      private Component createContent3() 
+      {
+        final Image image = requestImage();
+
+        JPanel panel = new JPanel() 
+        {
+            @Override
+            protected void paintComponent(Graphics g) 
+            {
+                super.paintComponent(g);
+                g.drawImage(image, 0, 0, null);
+            }
+        };
+         
+         panel.setLayout(null);
+         
+         JTextField userInput = new JTextField();
+         JTextArea display2 = new JTextArea();
+         JTextArea display3 = new JTextArea();
+         JButton Search = new JButton("Search");
+         JButton Launch = new JButton("Launch");
+         JButton Home = new JButton("Home");
+         
+         display2.setText("What would you like to search?");
+         display2.setEditable(false);
+         display2.setOpaque(false);
+         display2.setForeground(new Color(234, 234, 225));
+
+         display3.setText("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+         display3.setEditable(false);
+         display3.setOpaque(false);
+         display3.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));         
+         display3.setForeground(new Color(234, 234, 225));
+         
+         Search.setFocusPainted(false);
+         Search.setContentAreaFilled(false);
+         Search.setForeground(new Color(234, 234, 225));
+         
+         Home.setFocusPainted(false);
+         Home.setContentAreaFilled(false);
+         Home.setForeground(new Color(234, 234, 225));
+         
+         Launch.setFocusPainted(false);
+         Launch.setContentAreaFilled(false);
+         Launch.setForeground(new Color(234, 234, 225));
+            
+         Search.setBounds(300,300,100,30);
+         Home.setBounds(100,320,100,30);
+         display2.setBounds(270,200,180,40);
+         userInput.setBounds(300,250,100,30);
+         display3.setBounds(70,60,560,100);
+         Launch.setBounds(500,320,100,30);
+         
+         panel.add(display2);
+         panel.add(Search);
+         panel.add(display3);
+         panel.add(userInput);
+         panel.add(Home);
+         panel.add(Launch);
+         
+              
+      Search.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent e)
+         {  display.setText("");                  
+            search_input = userInput.getText();     
+            searchGame(fileName, info, 0);
+            display3.setText("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+            display3.append(ss);         
+         }
+      });
+      
+      Home.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent e)
+         {  
+            searchFrame.dispose();
+            mainFrame();         
+         }
+      });
+      
+      display3.addMouseListener(new MouseAdapter() 
+      {
+         @Override
+         public void mouseClicked(MouseEvent e) 
+         {
+            if (e.getButton() != MouseEvent.BUTTON1) 
+            {
+               return;
+            }
+            if (e.getClickCount() != 1) 
+            {
+               return;
+            }
+            int offset = display3.viewToModel(e.getPoint());
+            try 
+            {
+               int rowStart = Utilities.getRowStart(display3, offset);
+               int rowEnd = Utilities.getRowEnd(display3, offset);
+               String selectedLine = display3.getText().substring(rowStart, rowEnd);
+               input = selectedLine.trim();
+               System.out.println(input);
+
+            }
+            catch (BadLocationException e1) 
+            {
+               e1.printStackTrace();
+            }
+         }
+      });
+      
+      Launch.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent a)
+         {
+            String input2 = input.replaceAll("\\s","");
+            if (input2.equals("MazeBoxgame1205/02/17***Keith"))
+            {
+               game1();
+            }
+            else if (input2.equals("BoxMazegame2105/02/2017*****Manish"))
+            {
+               game2();
+            }
+            else if (input2.equals("Mazegame3305/02/17**Luciano"))
+            {
+               game3();
+            }
+            else if (input2.equals("GuessMastergame4505/18/2017*****Keith"))
+            {
+               game4();
+            }
+            else 
+            {
+               JOptionPane.showMessageDialog(null, "Game does not exist, please try a different one.");
+            }
+            
+         }
+      });// end Launch ActionListener
+               
+         panel.setPreferredSize(new Dimension(700, 375));
+
+        return panel;
+      }
+      
+      private Component createContent4() 
+    {
+        final Image image = requestImage();
+
+        JPanel panel = new JPanel() 
+        {
+            @Override
+            protected void paintComponent(Graphics g) 
+            {
+                super.paintComponent(g);
+                g.drawImage(image, 0, 0, null);
+            }
+        };
+         
+         panel.setLayout(null);
+         panel.setPreferredSize(new Dimension(700, 375));
+
+        return panel;
+      }
+         
     private Image requestImage()
     {
         Image image = null;
@@ -470,6 +661,36 @@ public class Smoke2
          st = sb.toString();
          return st;
       }   
+      
+      public String searchGame(String fileName, String data[][], int item)
+      {
+         DataInput d = new DataInputStream(System.in);
+         String input;
+         Search s = new Search();
+         StringBuilder sb = new StringBuilder();
+            input = search_input;
+            if(input != null)
+            {
+               boolean found = false;
+               for(int i = 0; i < data.length; i++)//Search for record
+               {
+                  if(data[i][item].equals(input))
+                  {
+                     found = true;
+                     for(int k = 0; k < 6; k++)
+                     {
+                        sb.append(data[i][k] + "\t"); //output entire record
+                     }
+                     sb.append("\n");
+                  }//end if
+               }//end loop
+               if(!found)
+               {
+               }  
+            }
+            ss = sb.toString();
+            return ss;
+         }
 
     public static void main(String[] args) 
     {

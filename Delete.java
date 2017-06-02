@@ -27,7 +27,6 @@ class Delete //prepares keyboard to recieve data
    {
       DataInput d = new DataInputStream(System.in);
       String input;
-      Search2 se = new Search2();
       System.out.println("What is the name of the person you want to delete?");
       try
       {
@@ -54,8 +53,8 @@ class Delete //prepares keyboard to recieve data
             {
                System.out.println("No record found!");
             }  
-            UpdateRecords ur = new UpdateRecords();  
-            ur.updateFile(fileName, data);
+            Write ur = new Write();  
+            ur.writeGame(fileName, data);
          }
       }
       catch(IOException ignored)
