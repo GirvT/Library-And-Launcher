@@ -23,6 +23,7 @@ import java.awt.geom.*;
          g.setColor(Color.black);
          Graphics2D g2 = (Graphics2D) g;
          g.setColor(Color.black);
+         g.drawString("Move the black square to the red using the arrow keys.", 120,100);
          g2.fill(new Rectangle2D.Double(x, y, 50, 50));
          if (x == 540 && y == 340)
          { 
@@ -60,22 +61,22 @@ import java.awt.geom.*;
          int code = e.getKeyCode();
          if (code == KeyEvent.VK_UP)
          {
-            if (x != 540 || y != 340)
+            if (x != 540 || y != 340 && y >0)
                up();
          }
          if (code == KeyEvent.VK_DOWN )
             {
-            if (x != 540 || y != 340)
+            if (x != 540 || y != 340 && y <340)
                down();
          }
-         if (code == KeyEvent.VK_LEFT)
+         if (code == KeyEvent.VK_LEFT )
             {
-            if (x != 540 || y != 340)
+            if (x != 540 || y != 340 && x >0)
                left();
          }
          if (code == KeyEvent.VK_RIGHT )
             {
-            if (x != 540 || y != 340)
+            if (x != 540 || y != 340 && x <540)
                right();
          } 
          if (code == KeyEvent.VK_R)

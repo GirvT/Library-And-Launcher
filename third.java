@@ -26,12 +26,18 @@ import java.awt.geom.*;
          g.setColor(Color.blue);
          g.fillRect(50,0,300,200);
          g.setColor(Color.blue);
+         g.fillRect(540,550,300,200);
+         g.setColor(Color.blue);
          g.fillRect(400,50,140,300);
          g.setColor(Color.blue);
          g.fillRect(590,0,200,600);
          g.setColor(Color.black);
          Graphics2D g2 = (Graphics2D) g;
          g.setColor(Color.black);
+         g.drawString("Using the arrow keys move the black", 20,280);
+         g.drawString("square to the red square to win", 20,310);
+         g.drawString("the game. Avoid touching the walls ", 20,340);
+         g.drawString("to prevent losing.", 20,370);
          g2.fill(new Rectangle2D.Double(x, y, 50, 50));
          if (x==540 && y==500){
             g.setColor(Color.WHITE);
