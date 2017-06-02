@@ -23,39 +23,33 @@ class Search //prepares keyboard to recieve data
                4 is Time
                5 is Period
    */
-   public void searchGame(String fileName, String data[][], int item)
-   {
-      DataInput d = new DataInputStream(System.in);
-      String input;
-      Search s = new Search();
-      System.out.println("Who would you like to search?");
-      try
+   String ss;
+   
+   public String searchGame(String fileName, String data[][], int item, String input)
       {
-         input = d.readLine();
-         if(input != null)
-         {
-            System.out.println("Searching...\n");
-            boolean found = false;
-            for(int i = 0; i < data.length; i++)//Search for record
+         DataInput d = new DataInputStream(System.in);
+         Search s = new Search();
+         StringBuilder sb = new StringBuilder();
+            if(input != null)
             {
-               if(data[i][item].equals(input))
+               boolean found = false;
+               for(int i = 0; i < data.length; i++)//Search for record
                {
-                  found = true;
-                  for(int k = 0; k < 6; k++)
+                  if(data[i][item].equals(input))
                   {
-                     System.out.print(data[i][k] + "\t\t"); //output entire record
-                     System.out.println();
-                  }
-               }//end if
-            }//end loop
-            if(!found)
-            {
-               System.out.println("No record found!");
-            }  
-         }
-      }
-      catch(IOException ignored)
-      {
-      }
+                     found = true;
+                     for(int k = 0; k < 6; k++)
+                     {
+                        sb.append(data[i][k] + "\t"); //output entire record
+                     }
+                     sb.append("\n");
+                  }//end if
+               }//end loop
+               if(!found)
+               {
+               }  
+            }
+            ss = sb.toString();
+            return ss;
    }//end keyInput
 }//end searchInput

@@ -19,20 +19,29 @@ import java.awt.event.MouseEvent;
 public class Smoke2 
 {
    private JFrame frame, mainFrame, searchFrame, deleteFrame;
-   String nameArray[] = new String[6];
    static String fileName = "records.txt";//fileName = "records.txt"
+   static String accountsName = "accounts.txt";//fileName = "records.txt"
+   static String logName = "log.txt";//fileName = "records.txt"
    final int MAX = 10;//Set MAX number of records
    String rows[] = new String[MAX];//Store max 20 records
    String info[][] = new String[MAX][6];//Store records in 2d array
+   String rows2[] = new String[MAX];//Store max 20 records
+   String info2[][] = new String[MAX][3];//Store records in 2d array
    ReadData rd = new ReadData();//Instantiate the class ReadData
    Records re = new Records();//Instantiate the class Records
    JTextArea display = new JTextArea();
+   JTextField userInput = new JTextField();
+   JTextArea display2 = new JTextArea();
+   JTextArea display3 = new JTextArea();
    Search si = new Search();
+   Add ad = new Add();
+   KeyInput ki = new KeyInput();
    Sort s = new Sort();
    int xSize1 = 300,ySize1 = 500;
    JTextField passLabel = new JTextField("\t" + "Enter your password");
    JPasswordField passField = new JPasswordField();
-   String input, st, ss, search_input;
+   JTextField userField = new JTextField();
+   String input, st, search_input, input2;
    
    
    private Smoke2 create() 
@@ -146,8 +155,10 @@ public class Smoke2
       Quit.setBounds(85,350,120,40);
       
       passField.setEditable(true);      
-      passField.setBounds(295,350,100,30);
-      passField.setBounds(70,150,150,30);
+      passField.setBounds(70,220,150,30);
+      
+      userField.setEditable(true);
+      userField.setBounds(70,180,150,30);
            
       passLabel.setBounds(70,120,150,30);
       passLabel.setBorder(null);
@@ -159,20 +170,26 @@ public class Smoke2
       panel.add(Login);
       panel.add(Quit);
       panel.add(passField);
+      panel.add(userField);
       panel.add(passLabel);
-      
-      input = passField.getText();
       
       Login.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent evt)
-         {
-            input = passField.getText();
-            if (input.equals(""))
+         { 
+            rows2 = rd.readFile(accountsName, 3);
+            info2 = re.getRecords(rows2);
+            input = userField.getText();
+            input2 = passField.getText();
+            System.out.println(info2[0][0]);
+            if (input.equals(info2[0][0]))
             {
-               frame.dispose();
-               JOptionPane.showMessageDialog(null, "Login Sucessful!");
-               mainFrame();
+               if (input2.equals(info2[0][1]))
+               {
+                  frame.dispose();
+                  JOptionPane.showMessageDialog(null, "Login Sucessful!");
+                  mainFrame();
+               }
             }
             else
             {
@@ -290,7 +307,6 @@ public class Smoke2
          {   
             mainFrame.dispose();
             searchFrame();                       
-            searchGame(fileName, info, 0);           
          }
       });
       
@@ -355,7 +371,8 @@ public class Smoke2
          {
             String input2 = input.replaceAll("\\s","");
             if (input2.equals("MazeBoxgame1205/02/17***Keith"))
-            {
+            {  
+               ad.addGame(logName, "game1");
                game1();
             }
             else if (input2.equals("BoxMazegame2105/02/2017*****Manish"))
@@ -418,9 +435,6 @@ public class Smoke2
          
          panel.setLayout(null);
          
-         JTextField userInput = new JTextField();
-         JTextArea display2 = new JTextArea();
-         JTextArea display3 = new JTextArea();
          JButton Search = new JButton("Search");
          JButton Launch = new JButton("Launch");
          JButton Home = new JButton("Home");
@@ -468,9 +482,8 @@ public class Smoke2
          public void actionPerformed(ActionEvent e)
          {  display.setText("");                  
             search_input = userInput.getText();     
-            searchGame(fileName, info, 0);
             display3.setText("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
-            display3.append(ss);         
+            display3.append(si.searchGame(fileName, info, 0, search_input));         
          }
       });
       
@@ -520,6 +533,7 @@ public class Smoke2
             String input2 = input.replaceAll("\\s","");
             if (input2.equals("MazeBoxgame1205/02/17***Keith"))
             {
+               ad.addGame(logName, "game1");
                game1();
             }
             else if (input2.equals("BoxMazegame2105/02/2017*****Manish"))
@@ -649,6 +663,7 @@ public class Smoke2
       {
          rows = rd.readFile(fileName, 10);
          info = re.getRecords(rows);
+
          StringBuilder sb = new StringBuilder();
          for (int i = 0; i < info.length; i++)
          {
@@ -662,36 +677,6 @@ public class Smoke2
          return st;
       }   
       
-      public String searchGame(String fileName, String data[][], int item)
-      {
-         DataInput d = new DataInputStream(System.in);
-         String input;
-         Search s = new Search();
-         StringBuilder sb = new StringBuilder();
-            input = search_input;
-            if(input != null)
-            {
-               boolean found = false;
-               for(int i = 0; i < data.length; i++)//Search for record
-               {
-                  if(data[i][item].equals(input))
-                  {
-                     found = true;
-                     for(int k = 0; k < 6; k++)
-                     {
-                        sb.append(data[i][k] + "\t"); //output entire record
-                     }
-                     sb.append("\n");
-                  }//end if
-               }//end loop
-               if(!found)
-               {
-               }  
-            }
-            ss = sb.toString();
-            return ss;
-         }
-
     public static void main(String[] args) 
     {
         SwingUtilities.invokeLater(new Runnable() 
