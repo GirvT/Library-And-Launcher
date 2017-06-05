@@ -425,7 +425,7 @@ public class Smoke2
          
          JTextField userInput = new JTextField();
          JTextArea display2 = new JTextArea();
-         JTextArea display3 = new JTextArea();
+         //JTextArea display3 = new JTextArea();
          JButton Search = new JButton("Search");
          JButton Launch = new JButton("Launch");
          JButton Home = new JButton("Home");
@@ -471,7 +471,8 @@ public class Smoke2
       Search.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
-         {  display.setText("");                  
+         {  
+            display.setText("");                  
             search_input = userInput.getText();     
             searchGame(fileName, info, 0);
             display3.setText("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");

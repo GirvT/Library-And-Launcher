@@ -1,11 +1,7 @@
-/**
- * @author ashraf
- * 
- */
-public class ClassLoaderTest extends JavaClassLoader {
+public class ClassLoaderTest extends JavaClassLoader 
+{
    
 	public void loader(String game)
-   
    {
       if (game == "game1")
       {
@@ -28,8 +24,4 @@ public class ClassLoaderTest extends JavaClassLoader {
 		javaClassLoader.invokeClassMethod("Smoke2", "game4");
 		}
 	}
-	public static void main(String[] args)
-   {
-   
-   }
 }

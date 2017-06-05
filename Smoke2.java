@@ -18,7 +18,7 @@ import java.awt.event.MouseEvent;
 
 public class Smoke2 
 {
-   private JFrame frame, mainFrame, searchFrame, deleteFrame;
+   private JFrame frame, mainFrame, searchFrame, deleteFrame, addFrame;
    static String fileName = "records.txt";//fileName = "records.txt"
    static String accountsName = "accounts.txt";//fileName = "records.txt"
    static String logName = "log.txt";//fileName = "records.txt"
@@ -31,6 +31,12 @@ public class Smoke2
    Records re = new Records();//Instantiate the class Records
    JTextArea display = new JTextArea();
    JTextField userInput = new JTextField();
+   JTextField add1 = new JTextField();
+   JTextField add2 = new JTextField();
+   JTextField add3 = new JTextField();
+   JTextField add4 = new JTextField();
+   JTextField add5 = new JTextField();
+   JTextField add6 = new JTextField();
    JTextArea display2 = new JTextArea();
    JTextArea display3 = new JTextArea();
    Search si = new Search();
@@ -71,6 +77,13 @@ public class Smoke2
        searchFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
        return searchFrame;
    }
+   
+   private JFrame createFrame5() 
+   {
+       JFrame addFrame = new JFrame(getClass().getName());
+       addFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+       return addFrame;
+   }
 
    private JFrame createFrame4() 
    {
@@ -95,7 +108,16 @@ public class Smoke2
       mainFrame.setVisible(true);
    }
    
-  private void searchFrame()
+   private void addFrame()
+   {
+      addFrame = createFrame5();
+      addFrame.getContentPane().add(createContent5());
+      addFrame.pack();
+      addFrame.setLocationRelativeTo(null); 
+      addFrame.setVisible(true);
+   }
+   
+   private void searchFrame()
    {
       searchFrame = createFrame3();
       searchFrame.getContentPane().add(createContent3());
@@ -248,6 +270,15 @@ public class Smoke2
       Add.setFocusPainted(false);
       Add.setContentAreaFilled(false);
       Add.setForeground(new Color(234, 234, 225));
+      
+      Add.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent e)
+         {   
+            mainFrame.dispose();
+            addFrame();                       
+         }
+      });
       
       Search.setFocusPainted(false);
       Search.setContentAreaFilled(false);
@@ -562,7 +593,7 @@ public class Smoke2
       }
       
       private Component createContent4() 
-    {
+      {
         final Image image = requestImage();
 
         JPanel panel = new JPanel() 
@@ -580,6 +611,160 @@ public class Smoke2
 
         return panel;
       }
+      
+      //------------------------------------------------------
+      
+      private Component createContent5() 
+      {
+        final Image image = requestImage();
+
+        JPanel panel = new JPanel() 
+        {
+            @Override
+            protected void paintComponent(Graphics g) 
+            {
+                super.paintComponent(g);
+                g.drawImage(image, 0, 0, null);
+            }
+        };
+         
+         panel.setLayout(null);
+         
+         JButton addEntry = new JButton("addEntry");
+         JButton Launch = new JButton("Launch");
+         JButton Home = new JButton("Home");
+        
+         display2.setText("Enter Game Name     Enter Filename       Enter Difficulty      Enter Date of creation      Enter Star Raiting      Enter Publisher");
+         display2.setEditable(false);
+         display2.setOpaque(false);
+         display2.setForeground(new Color(234, 234, 225));
+
+         display3.setText("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+         display3.setEditable(false);
+         display3.setOpaque(false);
+         display3.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));         
+         display3.setForeground(new Color(234, 234, 225));
+         
+         addEntry.setFocusPainted(false);
+         addEntry.setContentAreaFilled(false);
+         addEntry.setForeground(new Color(234, 234, 225));
+         
+         Home.setFocusPainted(false);
+         Home.setContentAreaFilled(false);
+         Home.setForeground(new Color(234, 234, 225));
+         
+         Launch.setFocusPainted(false);
+         Launch.setContentAreaFilled(false);
+         Launch.setForeground(new Color(234, 234, 225));
+            
+         add1.setBounds(30,250,100,30);
+         add2.setBounds(140,250,100,30);
+         add3.setBounds(250,250,100,30);
+         add4.setBounds(360,250,100,30);
+         add5.setBounds(470,250,100,30);
+         add6.setBounds(580,250,100,30);
+         addEntry.setBounds(300,300,100,30);
+         Home.setBounds(100,320,100,30);
+         display2.setBounds(30,220,650,40);
+         display3.setBounds(70,60,560,100);
+         Launch.setBounds(500,320,100,30);
+         
+         panel.add(display2);
+         panel.add(addEntry);
+         panel.add(display3);
+         panel.add(add1);
+         panel.add(add2);
+         panel.add(add3);
+         panel.add(add4);
+         panel.add(add5);
+         panel.add(add6);
+         panel.add(Home);
+         panel.add(Launch);   
+                   
+      addEntry.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent e)
+         {                  
+            ad.addGame(fileName, ki.entries(display2, add1, add2, add3, add4, add5, add6));
+         }
+      });
+
+      Home.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent e)
+         {  
+            addFrame.dispose();
+            mainFrame();         
+         }
+      });
+      
+      display3.addMouseListener(new MouseAdapter() 
+      {
+         @Override
+         public void mouseClicked(MouseEvent e) 
+         {
+            if (e.getButton() != MouseEvent.BUTTON1) 
+            {
+               return;
+            }
+            if (e.getClickCount() != 1) 
+            {
+               return;
+            }
+            int offset = display3.viewToModel(e.getPoint());
+            try 
+            {
+               int rowStart = Utilities.getRowStart(display3, offset);
+               int rowEnd = Utilities.getRowEnd(display3, offset);
+               String selectedLine = display3.getText().substring(rowStart, rowEnd);
+               input = selectedLine.trim();
+               System.out.println(input);
+
+            }
+            catch (BadLocationException e1) 
+            {
+               e1.printStackTrace();
+            }
+         }
+      });
+      
+      Launch.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent a)
+         {
+            String input2 = input.replaceAll("\\s","");
+            if (input2.equals("MazeBoxgame1205/02/17***Keith"))
+            {
+               ad.addGame(logName, "game1");
+               game1();
+            }
+            else if (input2.equals("BoxMazegame2105/02/2017*****Manish"))
+            {
+               ad.addGame(logName, "game2");
+               game2();
+            }
+            else if (input2.equals("Mazegame3305/02/17**Luciano"))
+            {
+               ad.addGame(logName, "game3");
+               game3();
+            }
+            else if (input2.equals("GuessMastergame4505/18/2017*****Keith"))
+            {
+               ad.addGame(logName, "game4");
+               game4();
+            }
+            else 
+            {
+               JOptionPane.showMessageDialog(null, "Game does not exist, please try a different one.");
+            }
+            
+         }
+      });// end Launch ActionListener
+               
+         panel.setPreferredSize(new Dimension(700, 375));
+
+        return panel;
+      }   
          
     private Image requestImage()
     {
