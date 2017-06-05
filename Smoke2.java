@@ -160,7 +160,7 @@ public class Smoke2
       pane.insertIcon (new ImageIcon("steam.png"));
       pane.setEditable(false);
       pane.setOpaque(false);
-      pane.setBounds(100,20,250,150);
+      pane.setBounds(90,20,250,150);
       
       Login.setBounds(85,300,120,40);
       Login.setBackground(new Color(59, 89, 182));
@@ -183,7 +183,7 @@ public class Smoke2
       userField.setEditable(true);
       userField.setBounds(70,180,150,30);
            
-      passLabel.setBounds(70,120,150,30);
+      passLabel.setBounds(50,120,150,30);
       passLabel.setBorder(null);
       passLabel.setOpaque(false);
       passLabel.setEditable(false); 
@@ -195,7 +195,7 @@ public class Smoke2
       panel.add(passField);
       panel.add(userField);
       panel.add(passLabel);
-      final HelpBox help = new HelpBox();
+      
            
       Login.addActionListener(new ActionListener()
       {
@@ -340,12 +340,13 @@ public class Smoke2
       panel.add(Refresh); 
       panel.add(scrollPane);
       panel.add(Help);       
+      final HelpBox help = new HelpBox();
            
       Help.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
          {
-         Help();   
+         help.helpbox();   
          }
            
       });
