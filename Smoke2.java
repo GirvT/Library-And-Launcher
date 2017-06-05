@@ -156,6 +156,7 @@ public class Smoke2
       JButton Quit = new JButton("Quit");       
       JTextPane pane = new JTextPane ();
       
+      
       pane.insertIcon (new ImageIcon("steam.png"));
       pane.setEditable(false);
       pane.setOpaque(false);
@@ -194,7 +195,8 @@ public class Smoke2
       panel.add(passField);
       panel.add(userField);
       panel.add(passLabel);
-      
+      final HelpBox help = new HelpBox();
+           
       Login.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent evt)
@@ -257,7 +259,8 @@ public class Smoke2
       JButton SortA = new JButton("Sort by Author");      
       JButton SortD = new JButton("Sort by Difficulty");    
       JButton Quit = new JButton("Quit");  
-      JButton Refresh = new JButton("Refresh");     
+      JButton Refresh = new JButton("Refresh"); 
+      JButton Help = new JButton("Help");    
       
       Refresh.setFocusPainted(false);
       Refresh.setContentAreaFilled(false);
@@ -270,6 +273,10 @@ public class Smoke2
       Add.setFocusPainted(false);
       Add.setContentAreaFilled(false);
       Add.setForeground(new Color(234, 234, 225));
+      
+      Help.setFocusPainted(false);
+      Help.setContentAreaFilled(false);
+      Help.setForeground(new Color(234, 234, 225));
       
       Add.addActionListener(new ActionListener()
       {
@@ -308,6 +315,7 @@ public class Smoke2
       Search.setBounds(530,300,100,30);  
       Refresh.setBounds(530,40,100,30);    
       Delete.setBounds(220,40,100,30);  
+      Help.setBounds(0,0, 60,20);
             
       display.setEditable(false);
       display.setText("");
@@ -330,8 +338,18 @@ public class Smoke2
       panel.add(SortA);      
       panel.add(SortD); 
       panel.add(Refresh); 
-      panel.add(scrollPane);       
+      panel.add(scrollPane);
+      panel.add(Help);       
            
+      Help.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent e)
+         {
+         Help();   
+         }
+           
+      });
+      
       Search.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
