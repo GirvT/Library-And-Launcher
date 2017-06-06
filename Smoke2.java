@@ -220,7 +220,9 @@ public class Smoke2
             }
             else
             {
-               JOptionPane.showMessageDialog(null, "Incorrect password, please try again.");
+               //JOptionPane.showMessageDialog(null, "Incorrect password, please try again.");
+               frame.dispose();
+               mainFrame();
             }
          }      
       });

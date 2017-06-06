@@ -2,9 +2,40 @@ import javax.swing.*;
 
 public class HelpBox
 {
-   static void helpbox()
-   {
-   JOptionPane.showMessageDialog(null, "Click the function you want to use.\nThe add function will allow you to add more games to the collection.\nDelete will allow you to remove games.\nClick a game and press Launch to open a game.\nRefresh will reset any sorts made to the list.\nAny of the sorts will sort the selected criteria in ascending order.\nSearch will allow you to search for any games by entering the game name.");
-   }
+   public static void helpbox()
+  {
+   EvenMoreHelpBoxes help2 = new EvenMoreHelpBoxes();
+   String [] options = {"Add", "Delete", "Launch", "Refresh", "Sort", "Search"};
+   String input = (String) JOptionPane.showInputDialog(null, "What do you need help with?","Help", JOptionPane.QUESTION_MESSAGE, null, 
+                                                                       
+                                                                       
+   options, // Array of choices
+   options[0]); // Initial choice
+   if (input == "Add")
+     {
+     help2.moreHelpBoxes(1);
+     }
+   else if (input == "Delete")
+     {
+     help2.moreHelpBoxes(2);
+     }
+   else if (input == "Launch")
+     {
+     help2.moreHelpBoxes(3);
+     }
+   else if (input == "Refresh")
+     {
+     help2.moreHelpBoxes(4);
+     }
+   else if (input == "Sort")
+     {
+     help2.moreHelpBoxes(5);
+     }       
+   else if (input == "Search")
+     {
+     help2.moreHelpBoxes(6);
+     }               
+  }
 }
+
    
