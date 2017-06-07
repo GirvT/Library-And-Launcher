@@ -20,7 +20,7 @@ public class MainPanel extends JPanel
 
    JTextArea display = new JTextArea();
    DefaultHighlighter highlighter =  (DefaultHighlighter)display.getHighlighter();
-   DefaultHighlighter.DefaultHighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter( Color.BLUE );
+   DefaultHighlighter.DefaultHighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter( Color.GRAY );
    
    String input, st;
    final int MAX = 10;//Set MAX number of records
