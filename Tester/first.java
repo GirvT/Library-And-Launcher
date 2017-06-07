@@ -7,19 +7,12 @@ import java.awt.geom.*;
       Timer t = new Timer(30,this);
       double x = 0, y = 0;
       boolean cond = true;
-      Add ad = new Add();
-      static String logName = "log.txt";//fileName = "records.txt"
-      ClassLoaderTest cl = new ClassLoaderTest();
-      JFrame test = new JFrame();
       
-      public first(JFrame frame){
+      public first(){
          t.start();
          addKeyListener(this);
          setFocusable(true);
          setFocusTraversalKeysEnabled(false);
-         frame = new JFrame();
-         frame = test;
-         
       }
       
       public void paintComponent(Graphics g){
@@ -38,7 +31,6 @@ import java.awt.geom.*;
       	   g.fillRect(0, 0, getWidth(), getHeight());
       	   g.setColor(Color.BLACK);
       	   g.drawString("You Win!", 340,100);
-            ad.addGame(logName, "game1 Win");
          }
          
           
@@ -92,12 +84,6 @@ import java.awt.geom.*;
             x = 0;
             y = 0;
             repaint();
-         }
-         if (code == KeyEvent.VK_Q)
-         {
-            System.out.println("Selected q");;
-            //cl.start("disposeGame1");
-            //frame.dispose();
          }
       }
       

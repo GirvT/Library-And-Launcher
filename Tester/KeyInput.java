@@ -1,10 +1,8 @@
-
 //Filename: KeyInput.java
 //Author: Girvan Tse & Manish Suresh
 //Date : 05/03/17
 
 import java.io.*;
-import javax.swing.*;
 
 /**
 KeyInput class uses the .entries() method to take keyboard input data in a 
@@ -19,11 +17,12 @@ class KeyInput
    /**
    Start taking keyboard input data in a form the NewRecord class can use
    */
-   public static String entries( JTextField add1, JTextField add2, JTextField add3, JTextField add4, JTextField add5, JTextField add6)
+   public static String entries()
    {
       DataInput keyboard = new DataInputStream(System.in);
       try{
-         input = add1.getText();
+         System.out.println("Enter Game Name");
+         input = keyboard.readLine();
          txt = input;//Store name
          items[0] = input;
          int index = 1; // Get next item index 1 to 5
@@ -31,17 +30,18 @@ class KeyInput
          {
             switch (index)
             {
-               case 1:input = add2.getText();
+               case 1:System.out.println("Enter Filename");
                      break;
-               case 2:input = add3.getText();
+               case 2:System.out.println("Enter Difficulty");
                      break;
-               case 3:input = add4.getText();
+               case 3:System.out.println("Enter Date of creation");
                      break;
-               case 4:input = add5.getText();
+               case 4:System.out.println("Enter Star Raiting");
                      break;        
-               case 5:input = add6.getText();
+               case 5:System.out.println("Enter Publisher");
                      break;
             }
+            input = keyboard.readLine();
             txt += "#" + input;
             items[index] = input;
             index++;

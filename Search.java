@@ -28,7 +28,6 @@ class Search //prepares keyboard to recieve data
    public String searchGame(String fileName, String data[][], int item, String input)
       {
          DataInput d = new DataInputStream(System.in);
-         Search s = new Search();
          StringBuilder sb = new StringBuilder();
             if(input != null)
             {
@@ -47,9 +46,10 @@ class Search //prepares keyboard to recieve data
                }//end loop
                if(!found)
                {
-               }  
+               } 
             }
             ss = sb.toString();
             return ss;
+
    }//end keyInput
 }//end searchInput

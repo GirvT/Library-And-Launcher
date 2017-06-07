@@ -23,13 +23,14 @@ class Delete //prepares keyboard to recieve data
                4 is Time
                5 is Period
    */
-   public void deleteGame(String fileName, String data[][], int item, String deleteInput)
+   public void deleteGame(String fileName, String data[][], int item)
    {
       DataInput d = new DataInputStream(System.in);
       String input;
       System.out.println("What is the name of the person you want to delete?");
+      try
       {
-         input = deleteInput;
+         input = d.readLine();
          if(input != null)
          {
             System.out.println("Searching...\n");
@@ -55,6 +56,9 @@ class Delete //prepares keyboard to recieve data
             Write ur = new Write();  
             ur.writeGame(fileName, data);
          }
+      }
+      catch(IOException ignored)
+      {
       }
    }//end keyInput
 }//end searchInput
