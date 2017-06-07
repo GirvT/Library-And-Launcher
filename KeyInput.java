@@ -19,11 +19,7 @@ class KeyInput
    /**
    Start taking keyboard input data in a form the NewRecord class can use
    */
-<<<<<<< HEAD
    public static String entries( JTextField add1, JTextField add2, JTextField add3, JTextField add4, JTextField add5, JTextField add6)
-=======
-   public static String entries(JTextArea display, JTextField add1, JTextField add2, JTextField add3, JTextField add4, JTextField add5, JTextField add6)
->>>>>>> origin/master
    {
       DataInput keyboard = new DataInputStream(System.in);
       try{
