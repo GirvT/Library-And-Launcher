@@ -19,13 +19,17 @@ public class SearchPanel extends JPanel
    JTextArea display3 = new JTextArea();
    JTextField userInput = new JTextField();
    
+   
    final int MAX = 10;//Set MAX number of records
+   int x = 0;
    static String fileName = "records.txt";//fileName = "records.txt"   
    static String logName = "log.txt";//fileName = "records.txt"  
    String rows[] = new String[MAX];//Store max 20 records
    String info[][] = new String[MAX][6];//Store records in 2d array
+   String variables[] = {"Name","Filename","Difficulty","Date Created","Rating","Author"};
    String search_input, input;
    
+   JComboBox options = new JComboBox(variables);
    public SearchPanel(final JFrame Frame)
    {
       search(Frame);
@@ -33,6 +37,7 @@ public class SearchPanel extends JPanel
    
    public void search(final JFrame frame)
    {
+      frame.setResizable(false);
       final Image image = requestImage();
 
         JPanel panel = new JPanel() 
@@ -73,13 +78,16 @@ public class SearchPanel extends JPanel
          Launch.setFocusPainted(false);
          Launch.setContentAreaFilled(false);
          Launch.setForeground(new Color(234, 234, 225));
-            
+         
+         options.setSelectedIndex(0);
+         
          Search.setBounds(300,300,100,30);
          Home.setBounds(100,320,100,30);
-         display2.setBounds(270,200,180,40);
+         display2.setBounds(265,165,180,40);
          userInput.setBounds(300,250,100,30);
          display3.setBounds(70,60,560,100);
          Launch.setBounds(500,320,100,30);
+         options.setBounds(275,200,150,25);
          
          panel.add(display2);
          panel.add(Search);
@@ -87,10 +95,31 @@ public class SearchPanel extends JPanel
          panel.add(userInput);
          panel.add(Home);
          panel.add(Launch);
+         panel.add(options);
          add(panel);
                               
          rows = rd.readFile(fileName, 10);
          info = re.getRecords(rows);
+         
+         options.addActionListener(new ActionListener()
+         {
+            public void actionPerformed(ActionEvent e)
+         {  
+            String text = (String)options.getSelectedItem();
+            if (text.equals(variables[0]))
+               x=0;
+            else if (text.equals(variables[1]))
+               x=1;
+            else if (text.equals(variables[2]))
+               x=2;
+            else if (text.equals(variables[3]))
+               x=3;
+            else if (text.equals(variables[4]))
+               x=4;
+            else if (text.equals(variables[5]))
+               x=5;
+         }
+      });
                                 
       Search.addActionListener(new ActionListener()
       {
@@ -98,7 +127,7 @@ public class SearchPanel extends JPanel
          {  display.setText("");                  
             search_input = userInput.getText();    
             display3.setText("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
-            display3.append(si.searchGame(fileName, info, 0, search_input));   
+            display3.append(si.searchGame(fileName, info, x, search_input));   
          }
       });
       

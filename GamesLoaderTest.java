@@ -11,7 +11,8 @@ public class GamesLoaderTest extends JavaClassLoader {
    { 
       for (int x = 0; x < info.length; x++)
       {
-         if ( gameInput.toLowerCase().indexOf(info[x][1].toLowerCase()) != -1 ) {
+         System.out.println(gameInput);
+         if ( gameInput.toLowerCase().contains(info[x][1].toLowerCase()) ) {
             {
             System.out.println("I found the keyword");
             gg.Game(info[x][1]);

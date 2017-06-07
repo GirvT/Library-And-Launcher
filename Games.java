@@ -13,7 +13,7 @@ public class Games
    {
    if (game.equals("game1"))
    {   
-      first s = new first(Frame1);
+      first s = new first();
       Frame1.setSize(800,600);    
       Frame1.getContentPane().add(s);
       Frame1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -31,6 +31,7 @@ public class LoginPanel extends JPanel
    
    public void login(final JFrame frame)
    {
+      frame.setResizable(false);
       final Image image = requestImage();
       JPanel panel = new JPanel() 
       {

@@ -10,15 +10,12 @@ import java.awt.geom.*;
       Add ad = new Add();
       static String logName = "log.txt";//fileName = "records.txt"
       ClassLoaderTest cl = new ClassLoaderTest();
-      JFrame test = new JFrame();
       
-      public first(JFrame frame){
+      public first(){
          t.start();
          addKeyListener(this);
          setFocusable(true);
          setFocusTraversalKeysEnabled(false);
-         frame = new JFrame();
-         frame = test;
          
       }
       
@@ -107,5 +104,16 @@ import java.awt.geom.*;
       
       public void keyTyped(KeyEvent e){}
       public void keyReleased(KeyEvent e){}
+      
+      public void constructors()
+      {
+         JFrame Frame = new JFrame();
+         first s = new first();
+         Frame.setSize(800,600);    
+         Frame.getContentPane().add(s);
+         Frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+         Frame.setLocationRelativeTo(null);
+         Frame.setVisible(true);
+      }
       
    }
