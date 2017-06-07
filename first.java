@@ -50,17 +50,17 @@ import java.awt.geom.*;
       
       public void up(){
          y -= 10;
-         repaint();
+     
       }
       
       public void down(){
          y += 10;
-         repaint();
+   
       }
       
       public void left(){
          x -= 10;
-         repaint();
+  
       }
       
       public void right(){
@@ -72,24 +72,24 @@ import java.awt.geom.*;
          int code = e.getKeyCode();
          if (code == KeyEvent.VK_UP)
          {
-            if (x != 540 || y != 340 && y >0)
+            if (x != 540 || y != 340)
                up();
          }
          if (code == KeyEvent.VK_DOWN )
             {
-            if (x != 540 || y != 340 && y <340)
+            if (x != 540 || y != 340)
                down();
          }
          if (code == KeyEvent.VK_LEFT )
             {
-            if (x != 540 || y != 340 && x >0)
+            if (x != 540 || y != 340)
                left();
          }
          if (code == KeyEvent.VK_RIGHT )
             {
-            if (x != 540 || y != 340 && x <540)
+            if (x != 540 || y != 340)
                right();
-               repaint();
+              
          } 
          if (code == KeyEvent.VK_R)
             {
