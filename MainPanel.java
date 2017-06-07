@@ -13,13 +13,14 @@ public class MainPanel extends JPanel
    Sort s = new Sort();
    Add ad = new Add();
    Smoke2 sMain = new Smoke2();
+   HelpBox help = new HelpBox();
    
    static String fileName = "records.txt";//fileName = "records.txt"
    static String logName = "log.txt";//fileName = "records.txt"
 
    JTextArea display = new JTextArea();
    DefaultHighlighter highlighter =  (DefaultHighlighter)display.getHighlighter();
-   DefaultHighlighter.DefaultHighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter( Color.RED );
+   DefaultHighlighter.DefaultHighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter( Color.BLUE );
    
    String input, st;
    final int MAX = 10;//Set MAX number of records
@@ -284,7 +285,7 @@ public class MainPanel extends JPanel
       {
          public void actionPerformed(ActionEvent e)
          {
-         JOptionPane.showMessageDialog(null, "Click the function you want to use.\nThe add function will allow you to add more games to the collection.\nDelete will allow you to remove games.\nClick a game and press Launch to open a game.\nRefresh will reset any sorts made to the list.\nAny of the sorts will sort the selected criteria in ascending order.\nSearch will allow you to search for any games by entering the game name.");   
+          help.helpbox();  
          }
            
       });
