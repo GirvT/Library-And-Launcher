@@ -101,14 +101,14 @@ public class MainPanel extends JPanel
       Help.setContentAreaFilled(false);
       Help.setForeground(new Color(234, 234, 225));
       
-      SortN.setBounds(50,40,120,30);     
-      SortA.setBounds(205,40,120,30);
-      SortR.setBounds(530,40,120,30);
-      SortD.setBounds(370,40,130,30);            
-      Search.setBounds(70,300,100,30);
-      Add.setBounds(225,300,100,30);           
-      Delete.setBounds(380,300,100,30);
-      Refresh.setBounds(530,300,100,30); 
+      SortN.setBounds(70,40,120,30);     
+      SortA.setBounds(215,40,120,30);
+      SortR.setBounds(510,40,120,30);
+      SortD.setBounds(360,40,130,30);            
+      Search.setBounds(70,290,100,30);
+      Add.setBounds(225,290,100,30);           
+      Delete.setBounds(380,290,100,30);
+      Refresh.setBounds(530,290,100,30); 
       Launch.setBounds(300,350,100,30);  
       Help.setBounds(0,0, 60,20);
 
@@ -227,11 +227,7 @@ public class MainPanel extends JPanel
                   int end =    display.getLineEndOffset(line);
                   highlighter.addHighlight(start, end, painter);
                }
-               else
-               {
-                  JOptionPane.showMessageDialog(null, "No Line was selected, please select a line.");
 
-               }
             } catch (BadLocationException e1)
             {
                e1.printStackTrace();

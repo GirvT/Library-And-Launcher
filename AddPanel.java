@@ -57,7 +57,7 @@ public class AddPanel extends JPanel
           
       panel.setLayout(null);   
       
-      JButton addEntry = new JButton("addEntry");
+      JButton addEntry = new JButton("Add Entry");
      // JButton Launch = new JButton("Launch");
       JButton Home = new JButton("Home");
         
