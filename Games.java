@@ -7,6 +7,7 @@ public class Games
    JFrame Frame2 = new JFrame("game2");
    JFrame Frame3 = new JFrame("game3");
    JFrame Frame4 = new JFrame("game4");
+   JFrame Frame5 = new JFrame("game5");
    
    public void Game(String game)
    {
@@ -47,6 +48,15 @@ public class Games
       Frame4.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
       Frame4.setLocationRelativeTo(null);
       Frame4.setVisible(true);
+   }
+   else if (game.equals("game5"))
+   {
+      fifth s = new fifth();
+      Frame5.setSize(800,600);    
+      Frame5.add(s);
+      Frame5.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+      Frame5.setLocationRelativeTo(null);
+      Frame5.setVisible(true);
    }
    else
    {

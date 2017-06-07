@@ -128,8 +128,8 @@ public class MainPanel extends JPanel
       scrollPane.setOpaque(false);
       
       panel.add(Search);   
-      /*panel.add(Add);
-      panel.add(Delete); */  
+      panel.add(Add);
+      panel.add(Delete);   
       panel.add(Launch);
       panel.add(SortN);
       panel.add(SortA); 
