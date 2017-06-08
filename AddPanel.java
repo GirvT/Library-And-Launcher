@@ -1,3 +1,6 @@
+//Author: Manish Suresh 
+//Date : 08/06/17
+
 import javax.imageio.*;
 import javax.swing.*;
 import java.awt.*;
@@ -5,15 +8,22 @@ import java.io.*;
 import java.awt.event.*;
 import javax.swing.text.*;
  
+/**
+@author Manish Suresh
+AddPanel class is the GUI equlivant to Add class.
+*/ 
+ 
 public class AddPanel extends JPanel
 {
-   ReadData rd = new ReadData();//Instantiate the class ReadData
-   Records re = new Records();//Instantiate the class Records
+   //Instinatate required objects
+   ReadData rd = new ReadData();
+   Records re = new Records();
    KeyInput ki = new KeyInput();
    Add ad = new Add();
    Search si = new Search();
-   Smoke2 sMain = new Smoke2();
+   Smoke sMain = new Smoke();
    
+   //Create a text field and label for each part of data input
    JTextField display = new JTextField();
    JTextField display2 = new JTextField();
    JTextField display3 = new JTextField();
@@ -27,8 +37,8 @@ public class AddPanel extends JPanel
    JTextField add5 = new JTextField();
    JTextField add6 = new JTextField();
 
-   static String fileName = "records.txt";//fileName = "records.txt"
-   static String logName = "log.txt";//fileName = "records.txt"   
+   static String fileName = "records.txt";
+   static String logName = "log.txt";   
 
    final int MAX = 10;//Set MAX number of records
    int xSize1 = 300,ySize1 = 500;
@@ -37,11 +47,21 @@ public class AddPanel extends JPanel
    String rows[] = new String[MAX];//Store max 20 records
    String info[][] = new String[MAX][6];//Store records in 2d array
    
+   /**
+   "AddPanel" does the add() method while retaning the name of the class
+   @param JFrame The main JFrame that instantiates "add"
+   @param access The access level of the user
+   */
    public AddPanel (final JFrame Frame, final String access)
    {
       add(Frame, access);
    }
    
+   /**
+   "add" creates a JPanel that has the functionallity to add data to records
+   @param JFrame The main JFrame that instantiates "add"
+   @param access The access level of the user
+   */
    public void add(final JFrame frame, final String Access)
    {
       final Image image = requestImage();
@@ -57,9 +77,11 @@ public class AddPanel extends JPanel
           
       panel.setLayout(null);   
       
+      //Buttons
       JButton addEntry = new JButton("Add Entry");
       JButton Home = new JButton("Home");
         
+      //Input Boxes  
       display.setText("Name");
       display.setEditable(false);
       display.setOpaque(false);
@@ -110,6 +132,7 @@ public class AddPanel extends JPanel
       Home.setContentAreaFilled(false);
       Home.setForeground(new Color(234, 234, 225));
             
+      //Bounds of input boxes and labels   
       add1.setBounds(30,150,100,30);
       add2.setBounds(140,150,100,30);
       add3.setBounds(250,150,100,30);
@@ -125,6 +148,7 @@ public class AddPanel extends JPanel
       display5.setBounds(470,110,100,30);
       display6.setBounds(580,110,100,30);
          
+      //Add input boxes and labels to the main panel
       panel.add(display);
       panel.add(addEntry);
       panel.add(display2);
@@ -143,11 +167,13 @@ public class AddPanel extends JPanel
       
       rows = rd.readFile(fileName, 10);
       info = re.getRecords(rows);
-                        
+      
+      //if "addEntry" button is clicked call the addGame method                   
       addEntry.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
          {                  
+            //If any boxes are empty, fail to add to records
             if(
                     add1.getText().trim().length() > 0
                 &&  add2.getText().trim().length() > 0
@@ -164,7 +190,8 @@ public class AddPanel extends JPanel
             } 
          }
       });
-
+      
+      //if "home" button is clicked go back to main frame
       Home.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
@@ -177,6 +204,7 @@ public class AddPanel extends JPanel
       panel.setPreferredSize(new Dimension(700, 375));
    }
    
+   //Set Background
    private Image requestImage()
    {
       Image image = null;

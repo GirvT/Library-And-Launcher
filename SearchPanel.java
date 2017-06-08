@@ -7,12 +7,12 @@ import javax.swing.text.*;
  
 public class SearchPanel extends JPanel
 {
-   GamesLoaderTest gl = new GamesLoaderTest();
+   GamesLoader gl = new GamesLoader();
    ReadData rd = new ReadData();//Instantiate the class ReadData
    Records re = new Records();//Instantiate the class Records
    Search si = new Search();
    Add ad = new Add();  
-   Smoke2 sMain = new Smoke2();
+   Smoke sMain = new Smoke();
 
    JTextArea display = new JTextArea();
    JTextArea display2 = new JTextArea();

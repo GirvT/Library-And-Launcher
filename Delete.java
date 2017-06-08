@@ -1,27 +1,26 @@
-//Filename: SearchInput2.java
-//Author: Girvan Tse & Manish Suresh
+//Author: Girvan Tse
 //Date : 05/03/17
 
 import java.io.*;
 
 /**
-Takes an input in the form which the Search2 class can read
-@author Girvan Tse & Manish Suresh
+@author Girvan Tse 
+Delete class searches for data and proceeds to delete them from the records file.
 */
 
-class Delete //prepares keyboard to recieve data
+class Delete 
 {
    /**
-   Takes the data and puts it into a form that the Search class can take
-   @param fileName The name of the text file to take the data from
-   @param data The data set to search for the Search class target
-   @param item The specific data category to look for assigned to a numerical value
+   "deleteGame" searches for data and deletes it based on the input.
+   @param fileName The name of the text file to take the data from.
+   @param data The data set to search for the Delete class target.
+   @param deleteInput The specific data category to look for assigned to a numerical value.
                0 is Name
-               1 is ID
-               2 is Homeform
-               3 is Date
-               4 is Time
-               5 is Period
+               1 is FileName
+               2 is MethodName
+               3 is Date Created
+               4 is Rating
+               5 is Publisher
    */
    public void deleteGame(String fileName, String data[][], int item, String deleteInput)
    {
@@ -52,5 +51,5 @@ class Delete //prepares keyboard to recieve data
          Write ur = new Write();  
          ur.writeGame(fileName, data);
       } 
-   }//end keyInput
-}//end searchInput
+   }
+}

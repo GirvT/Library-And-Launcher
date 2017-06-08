@@ -9,7 +9,7 @@ public class LoginPanel extends JPanel
 {
    ReadData rd = new ReadData();//Instantiate the class ReadData
    Records re = new Records();//Instantiate the class Records
-   Smoke2 sMain = new Smoke2();
+   Smoke sMain = new Smoke();
    
    JTextField passLabel = new JTextField("Enter your Login Info");
    JTextField userField = new JTextField("Manish");

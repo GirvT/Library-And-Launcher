@@ -1,24 +1,23 @@
-//Filename: NewRecord.java
-//Author: Girvan Tse & Manish Suresh
-//Date : 05/03/17
+//Author: Girvan Tse 
+//Date : 08/06/17
 
 import java.io.*;
 
 /**
-NewRecord class inserts a new profile into the LTS system.
-@author Girvan Tse & Manish Suresh
+@author Girvan Tse 
+Add class takes string input and turns it into an array. Then the string input is added to the records file.
 */
 
 class Add
 {
    /**
-   Add a record into the LTS system
-   @param fileName The name of the text file which the data NewRecord will manipulate
-   @param newRec The data of the profile (in the form of KeyInput) that the new record will contain
+   "addGame" adds an new entry into the records data text file.
+   @param fileName The name of the text file which the data will be saved into.
+   @param newRec The data to be added to the new entry (in the form of KeyInput) that the new record will contain.
    */
    public static void addGame(String fileName, String newRec)
    {
-      String data[]= new String[20];
+      String data[]= new String[20]; //max 20 characters per input
       int count = 0;
       int a = 0;
       try

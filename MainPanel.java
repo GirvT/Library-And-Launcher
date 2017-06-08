@@ -12,7 +12,7 @@ public class MainPanel extends JPanel
    Records re = new Records();//Instantiate the class Records
    Sort s = new Sort();
    Add ad = new Add();
-   Smoke2 sMain = new Smoke2();
+   Smoke sMain = new Smoke();
    HelpBox help = new HelpBox();
    
    static String fileName = "records.txt";//fileName = "records.txt"
