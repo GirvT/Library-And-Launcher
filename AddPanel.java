@@ -58,7 +58,6 @@ public class AddPanel extends JPanel
       panel.setLayout(null);   
       
       JButton addEntry = new JButton("Add Entry");
-     // JButton Launch = new JButton("Launch");
       JButton Home = new JButton("Home");
         
       display.setText("Name");
@@ -110,11 +109,7 @@ public class AddPanel extends JPanel
       Home.setFocusPainted(false);
       Home.setContentAreaFilled(false);
       Home.setForeground(new Color(234, 234, 225));
-         
-     /* Launch.setFocusPainted(false);
-      Launch.setContentAreaFilled(false);
-      Launch.setForeground(new Color(234, 234, 225));
-    */     
+            
       add1.setBounds(30,150,100,30);
       add2.setBounds(140,150,100,30);
       add3.setBounds(250,150,100,30);
@@ -143,8 +138,7 @@ public class AddPanel extends JPanel
       panel.add(add4);
       panel.add(add5);
       panel.add(add6);
-      panel.add(Home);
-     // panel.add(Launch);   
+      panel.add(Home);  
       add(panel);
       
       rows = rd.readFile(fileName, 10);
@@ -154,10 +148,20 @@ public class AddPanel extends JPanel
       {
          public void actionPerformed(ActionEvent e)
          {                  
-            ad.addGame(fileName, ki.entries(add1, add2, add3, add4, add5, add6));
-            frame.dispose();
-            sMain.mainFrame(Access);
-            JOptionPane.showMessageDialog(null, " Successfully Added.");
+            if(
+                    add1.getText().trim().length() > 0
+                &&  add2.getText().trim().length() > 0
+                &&  add3.getText().trim().length() > 0
+                &&  add4.getText().trim().length() > 0
+                &&  add5.getText().trim().length() > 0
+                &&  add6.getText().trim().length() > 0
+              )
+            {
+               ad.addGame(fileName, ki.entries(add1, add2, add3, add4, add5, add6));
+               JOptionPane.showMessageDialog(null, " Successfully Added.");
+               frame.dispose();
+               sMain.mainFrame(Access);
+            } 
          }
       });
 
@@ -168,70 +172,9 @@ public class AddPanel extends JPanel
             frame.dispose();
             sMain.mainFrame(Access);         
          }
-      });
-      
-/*      display2.addMouseListener(new MouseAdapter() 
-      {
-         @Override
-         public void mouseClicked(MouseEvent e) 
-         {
-            if (e.getButton() != MouseEvent.BUTTON1) 
-            {
-               return;
-            }
-            if (e.getClickCount() != 1) 
-            {
-               return;
-            }
-            int offset = display2.viewToModel(e.getPoint());
-            try 
-            {
-               int rowStart = Utilities.getRowStart(display2, offset);
-               int rowEnd = Utilities.getRowEnd(display2, offset);
-               String selectedLine = display2.getText().substring(rowStart, rowEnd);
-               input = selectedLine.trim();
-               System.out.println(input);
-
-            }
-            catch (BadLocationException e1) 
-            {
-               e1.printStackTrace();
-            }
-         }
-      });
-      
-      Launch.addActionListener(new ActionListener()
-      {
-         public void actionPerformed(ActionEvent a)
-         {
-            String input2 = input.replaceAll("\\s","");
-             if (input2.equals("MazeBoxgame1205/02/17***Keith"))
-            {  
-               cl.start("game1");
-            }
-            else if (input2.equals("BoxMazegame2105/02/2017*****Manish"))
-            {
-               ad.addGame(logName, "game2");
-               cl.start("game2");
-            }
-            else if (input2.equals("Mazegame3305/02/17**Luciano"))
-            {
-               ad.addGame(logName, "game3");
-               cl.start("game3");
-            }
-            else if (input2.equals("GuessMastergame4505/18/2017*****Keith"))
-            {
-               ad.addGame(logName, "game4");
-               cl.start("game4");
-            }
-            else 
-            {
-               JOptionPane.showMessageDialog(null, "Game does not exist, please try a different one.");
-            }            
-         }
-      });// end Launch ActionListener
-*/               
-         panel.setPreferredSize(new Dimension(700, 375));
+      });           
+     
+      panel.setPreferredSize(new Dimension(700, 375));
    }
    
    private Image requestImage()
@@ -240,7 +183,8 @@ public class AddPanel extends JPanel
       try 
       {
          image = ImageIO.read(new File("aa.png"));
-      } catch (IOException e) 
+      } 
+      catch (IOException e) 
       {
          e.printStackTrace();
       }

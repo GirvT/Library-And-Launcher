@@ -27,34 +27,30 @@ class Delete //prepares keyboard to recieve data
    {
       DataInput d = new DataInputStream(System.in);
       String input;
-      System.out.println("What is the name of the person you want to delete?");
+      input = deleteInput;
+      if(input != null)
       {
-         input = deleteInput;
-         if(input != null)
+         boolean found = false;
+         for(int i = 0; i < data.length; i++)//Search for record
          {
-            System.out.println("Searching...\n");
-            boolean found = false;
-            for(int i = 0; i < data.length; i++)//Search for record
+            if(data[i][item].equals(input))
             {
-               if(data[i][item].equals(input))
+               System.out.println("Record found!");
+               found = true;
+               for(int k = 0; k < 6; k++)
                {
-                  found = true;
-                  System.out.println("Record to delete");
-                  for(int k = 0; k < 6; k++)
-                  {
-                     System.out.print(data[i][k] + "\t\t"); //output entire record
-                     data[i][k]="";//erase record items
-                  }
-                  System.out.println("");
-               }//end if
-            }//end loop
-            if(!found)
-            {
-               System.out.println("No record found!");
-            }  
-            Write ur = new Write();  
-            ur.writeGame(fileName, data);
-         }
-      }
+                  System.out.print(data[i][k] + "\t\t"); //output entire record
+                  data[i][k]="";//erase record items
+               }
+               System.out.println("");
+            }//end if
+         }//end loop
+         if(!found)
+         {
+            System.out.println("No record found!");
+         }  
+         Write ur = new Write();  
+         ur.writeGame(fileName, data);
+      } 
    }//end keyInput
 }//end searchInput
