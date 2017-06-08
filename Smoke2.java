@@ -54,40 +54,44 @@ public class Smoke2
       frame.setVisible(true);
    }
    
-   public void mainFrame()
+   public void mainFrame(String access)
    {
       mainFrame = createFrame2();
-      mainFrame.getContentPane().add(createContent2());
+      mainFrame.getContentPane().add(createContent2(access));
       mainFrame.pack();
       mainFrame.setLocationRelativeTo(null); 
       mainFrame.setVisible(true);
+      mainFrame.setResizable(false);
    }
    
-   public void searchFrame()
+   public void searchFrame(String access)
    {
       searchFrame = createFrame3();
-      searchFrame.getContentPane().add(createContent3());
+      searchFrame.getContentPane().add(createContent3(access));
       searchFrame.pack();
       searchFrame.setLocationRelativeTo(null); 
       searchFrame.setVisible(true);
+      searchFrame.setResizable(false);
    }
    
-   public void addFrame()
+   public void addFrame(String access)
    {
       addFrame = createFrame4();
-      addFrame.getContentPane().add(createContent4());
+      addFrame.getContentPane().add(createContent4(access));
       addFrame.pack();
       addFrame.setLocationRelativeTo(null); 
       addFrame.setVisible(true);
+      addFrame.setResizable(false);
    }
    
-   public void deleteFrame()
+   public void deleteFrame(String access)
    {
       deleteFrame = createFrame5();
-      deleteFrame.getContentPane().add(createContent5());
+      deleteFrame.getContentPane().add(createContent5(access));
       deleteFrame.pack();
       deleteFrame.setLocationRelativeTo(null); 
       deleteFrame.setVisible(true);
+      deleteFrame.setResizable(false);
    }
 
    private JPanel createContent() 
@@ -96,27 +100,27 @@ public class Smoke2
       return login ;
    }// end create component
 
-   private Component createContent2() 
+   private Component createContent2(String Access) 
    {
-      MainPanel main = new MainPanel(mainFrame);
+      MainPanel main = new MainPanel(mainFrame,Access);
       return main;  
    }// end create component2
  
-   private Component createContent3() 
+   private Component createContent3(String Access) 
    {
-      SearchPanel search = new SearchPanel(searchFrame);
+      SearchPanel search = new SearchPanel(searchFrame, Access);
       return search;
    }
          
-   private Component createContent4() 
+   private Component createContent4(String Access) 
    {
-      AddPanel add = new AddPanel(addFrame) ;
+      AddPanel add = new AddPanel(addFrame, Access) ;
       return add;
    }
    
-    private Component createContent5() 
+    private Component createContent5(String Access) 
    {
-      DeletePanel delete = new DeletePanel(deleteFrame) ;
+      DeletePanel delete = new DeletePanel(deleteFrame, Access) ;
       return delete;
    }
  

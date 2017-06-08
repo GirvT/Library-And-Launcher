@@ -105,7 +105,7 @@ public class LoginPanel extends JPanel
                {
                   frame.dispose();
                   JOptionPane.showMessageDialog(null, "Login Sucessful!");
-                  sMain.mainFrame();
+                  sMain.mainFrame(info2[0][2]);
                }
                else
                {
@@ -118,7 +118,11 @@ public class LoginPanel extends JPanel
                {
                   frame.dispose();
                   JOptionPane.showMessageDialog(null, "Login Sucessful!");
-                  sMain.mainFrame();
+                  sMain.mainFrame(info2[1][2]);
+               }
+               else
+               {
+                  JOptionPane.showMessageDialog(null, "Incorrect Password, please try again.");
                }
             }
             else if (input.equals(info2[2][0]))
@@ -127,7 +131,11 @@ public class LoginPanel extends JPanel
                {
                   frame.dispose();
                   JOptionPane.showMessageDialog(null, "Login Sucessful!");
-                  sMain.mainFrame();
+                  sMain.mainFrame(info2[2][2]);
+               }
+               else
+               {
+                  JOptionPane.showMessageDialog(null, "Incorrect Password, please try again.");
                }
             }
             else

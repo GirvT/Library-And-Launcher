@@ -28,12 +28,12 @@ public class MainPanel extends JPanel
    String rows[] = new String[MAX];//Store max 20 records
    String info[][] = new String[MAX][6];//Store records in 2d array
       
-   public MainPanel(final JFrame Frame)
+   public MainPanel(final JFrame Frame, String access)
    {
-      main(Frame);
+      main(Frame,access);
    }
    
-   public void main(final JFrame frame)
+   public void main(final JFrame frame, String Access)
    {
       final Image image = requestImage();
 
@@ -50,9 +50,7 @@ public class MainPanel extends JPanel
          panel.setLayout(null);
               
       JButton Search = new JButton("Search");
-      JButton Help = new JButton("Help");   
-      JButton Add = new JButton("Add");      
-      JButton Delete = new JButton("Delete");        
+      JButton Help = new JButton("Help"); 
       JButton Launch = new JButton("Launch");
       JButton SortN = new JButton("Sort by Name");
       JButton SortA = new JButton("Sort by Author");
@@ -64,15 +62,7 @@ public class MainPanel extends JPanel
       Refresh.setFocusPainted(false);
       Refresh.setContentAreaFilled(false);
       Refresh.setForeground(new Color(234, 234, 225));
-      
-      Delete.setFocusPainted(false);
-      Delete.setContentAreaFilled(false);
-      Delete.setForeground(new Color(234, 234, 225));
-      
-      Add.setFocusPainted(false);
-      Add.setContentAreaFilled(false);
-      Add.setForeground(new Color(234, 234, 225));
-      
+            
       Search.setFocusPainted(false);
       Search.setContentAreaFilled(false);
       Search.setForeground(new Color(234, 234, 225));
@@ -106,8 +96,6 @@ public class MainPanel extends JPanel
       SortR.setBounds(510,40,120,30);
       SortD.setBounds(360,40,130,30);            
       Search.setBounds(70,290,100,30);
-      Add.setBounds(225,290,100,30);           
-      Delete.setBounds(380,290,100,30);
       Refresh.setBounds(530,290,100,30); 
       Launch.setBounds(300,350,100,30);  
       Help.setBounds(0,0, 60,20);
@@ -128,9 +116,7 @@ public class MainPanel extends JPanel
       scrollPane.getViewport().setOpaque(false);
       scrollPane.setOpaque(false);
       
-      panel.add(Search);   
-      panel.add(Add);
-      panel.add(Delete);   
+      panel.add(Search);     
       panel.add(Launch);
       panel.add(SortN);
       panel.add(SortA); 
@@ -146,7 +132,7 @@ public class MainPanel extends JPanel
          public void actionPerformed(ActionEvent e)
          {   
             frame.dispose();
-            sMain.searchFrame();                      
+            sMain.searchFrame(Access);                      
          }
       });
       
@@ -253,29 +239,11 @@ public class MainPanel extends JPanel
          {
             display.setText("");
             loading();
-            display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+            display.append("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
             display.append(st);
          }
         });  
-        
-      Add.addActionListener(new ActionListener()
-      {
-         public void actionPerformed(ActionEvent e)
-         {   
-            frame.dispose();
-            sMain.addFrame();                       
-         }
-      });
-      
-      Delete.addActionListener(new ActionListener()
-      {
-         public void actionPerformed(ActionEvent e)
-         {   
-            frame.dispose();
-            sMain.deleteFrame();                       
-         }
-      });
-      
+            
            
       Help.addActionListener(new ActionListener()
       {
@@ -293,6 +261,44 @@ public class MainPanel extends JPanel
              System.exit(0);
           }
       });// end Quit ActionListener
+      
+      if (Access.equals("Admin"))
+      {  
+         JButton Add = new JButton("Add");      
+         JButton Delete = new JButton("Delete"); 
+         
+         Delete.setFocusPainted(false);
+         Delete.setContentAreaFilled(false);
+         Delete.setForeground(new Color(234, 234, 225));
+      
+         Add.setFocusPainted(false);
+         Add.setContentAreaFilled(false);
+         Add.setForeground(new Color(234, 234, 225));
+         
+         Add.setBounds(225,290,100,30);           
+         Delete.setBounds(380,290,100,30);
+        
+         panel.add(Add);
+         panel.add(Delete);
+         
+         Add.addActionListener(new ActionListener()
+         {
+            public void actionPerformed(ActionEvent e)
+            {   
+               frame.dispose();
+               sMain.addFrame(Access);                       
+            }
+         });
+      
+         Delete.addActionListener(new ActionListener()
+         {
+            public void actionPerformed(ActionEvent e)
+            {   
+               frame.dispose();
+               sMain.deleteFrame(Access);                       
+            }
+         }); 
+      }
         
         panel.setPreferredSize(new Dimension(700, 400));
 

@@ -30,12 +30,12 @@ public class SearchPanel extends JPanel
    String search_input, input;
    
    JComboBox options = new JComboBox(variables);
-   public SearchPanel(final JFrame Frame)
+   public SearchPanel(final JFrame Frame, String access)
    {
-      search(Frame);
+      search(Frame, access);
    }
    
-   public void search(final JFrame frame)
+   public void search(final JFrame frame, String Access)
    {
       frame.setResizable(false);
       final Image image = requestImage();
@@ -136,7 +136,7 @@ public class SearchPanel extends JPanel
          public void actionPerformed(ActionEvent e)
          {  
             frame.dispose();
-            sMain.mainFrame();
+            sMain.mainFrame(Access);
          }
       });
       

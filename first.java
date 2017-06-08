@@ -105,7 +105,7 @@ import java.awt.geom.*;
       public void keyTyped(KeyEvent e){}
       public void keyReleased(KeyEvent e){}
       
-      public void constructors()
+      public void firstConst()
       {
          JFrame Frame = new JFrame();
          first s = new first();

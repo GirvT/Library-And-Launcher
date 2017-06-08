@@ -37,12 +37,12 @@ public class AddPanel extends JPanel
    String rows[] = new String[MAX];//Store max 20 records
    String info[][] = new String[MAX][6];//Store records in 2d array
    
-   public AddPanel (final JFrame Frame)
+   public AddPanel (final JFrame Frame, String access)
    {
-      add(Frame);
+      add(Frame, access);
    }
    
-   public void add(final JFrame frame)
+   public void add(final JFrame frame, String Access)
    {
       final Image image = requestImage();
       JPanel panel = new JPanel() 
@@ -156,7 +156,7 @@ public class AddPanel extends JPanel
          {                  
             ad.addGame(fileName, ki.entries(add1, add2, add3, add4, add5, add6));
             frame.dispose();
-            sMain.mainFrame();
+            sMain.mainFrame(Access);
             JOptionPane.showMessageDialog(null, " Successfully Added.");
          }
       });
@@ -166,7 +166,7 @@ public class AddPanel extends JPanel
          public void actionPerformed(ActionEvent e)
          {  
             frame.dispose();
-            sMain.mainFrame();         
+            sMain.mainFrame(Access);         
          }
       });
       
