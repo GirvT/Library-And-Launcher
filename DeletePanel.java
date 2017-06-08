@@ -61,6 +61,7 @@ public class DeletePanel extends JPanel
          display2.setEditable(false);
          display2.setOpaque(false);
          display2.setForeground(new Color(234, 234, 225));
+         display2.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 
          display3.setText("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
          display3.setEditable(false);

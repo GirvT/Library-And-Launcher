@@ -12,7 +12,7 @@ public class EvenMoreHelpBoxes
 {
    public void moreHelpBoxes(int x)
       {  
-         String images[] = {"add.jpg", "delete.jpg", "launch.jpg", "refresh.jpg", "sort.jpg", "search.jpg"};
+         String images[] = {"addHelp.png", "deleteHelp.png", "launch.jpg", "refresh.jpg", "sort.jpg", "search.jpg"};
          JFrame helpFrame = new JFrame();  
          String image = images[x-1];
          System.out.print(image);
