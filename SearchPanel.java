@@ -91,7 +91,7 @@ public class SearchPanel extends JPanel
          
          panel.add(display2);
          panel.add(Search);
-         //panel.add(display3);
+         panel.add(display3);
          panel.add(userInput);
          panel.add(Home);
          panel.add(Launch);
