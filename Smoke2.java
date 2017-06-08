@@ -14,7 +14,7 @@ public class Smoke2
 
    private JFrame createFrame() 
    {
-      JFrame frame = new JFrame(getClass().getName());
+      JFrame frame = new JFrame("Smoke");
       frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       return frame;
    }

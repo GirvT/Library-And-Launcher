@@ -37,12 +37,12 @@ public class AddPanel extends JPanel
    String rows[] = new String[MAX];//Store max 20 records
    String info[][] = new String[MAX][6];//Store records in 2d array
    
-   public AddPanel (final JFrame Frame, String access)
+   public AddPanel (final JFrame Frame, final String access)
    {
       add(Frame, access);
    }
    
-   public void add(final JFrame frame, String Access)
+   public void add(final JFrame frame, final String Access)
    {
       final Image image = requestImage();
       JPanel panel = new JPanel() 

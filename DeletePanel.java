@@ -30,12 +30,12 @@ public class DeletePanel extends JPanel
    String rows[] = new String[MAX];//Store max 20 records
    String info[][] = new String[MAX][6];//Store records in 2d array
    
-   public DeletePanel (final JFrame Frame, String access)
+   public DeletePanel (final JFrame Frame, final String access)
    {
       delete(Frame, access);
    }
    
-   public void delete(final JFrame frame, String Access)
+   public void delete(final JFrame frame,final String Access)
    {
       final Image image = requestImage();
       JPanel panel = new JPanel() 

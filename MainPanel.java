@@ -28,12 +28,12 @@ public class MainPanel extends JPanel
    String rows[] = new String[MAX];//Store max 20 records
    String info[][] = new String[MAX][6];//Store records in 2d array
       
-   public MainPanel(final JFrame Frame, String access)
+   public MainPanel(final JFrame Frame, final String access)
    {
       main(Frame,access);
    }
    
-   public void main(final JFrame frame, String Access)
+   public void main(final JFrame frame, final String Access)
    {
       final Image image = requestImage();
 
