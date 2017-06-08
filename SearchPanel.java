@@ -26,7 +26,7 @@ public class SearchPanel extends JPanel
    static String logName = "log.txt";//fileName = "records.txt"  
    String rows[] = new String[MAX];//Store max 20 records
    String info[][] = new String[MAX][6];//Store records in 2d array
-   String variables[] = {"Name","Filename","Difficulty","Date Created","Rating","Author"};
+   String variables[] = {"Name","Filename","Method Name","Date Created","Rating","Author"};
    String search_input, input;
    
    JComboBox options = new JComboBox(variables);
@@ -61,7 +61,7 @@ public class SearchPanel extends JPanel
          display2.setOpaque(false);
          display2.setForeground(new Color(234, 234, 225));
 
-         display3.setText("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+         display3.setText("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
          display3.setEditable(false);
          display3.setOpaque(false);
          display3.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));         
@@ -91,7 +91,7 @@ public class SearchPanel extends JPanel
          
          panel.add(display2);
          panel.add(Search);
-         panel.add(display3);
+         //panel.add(display3);
          panel.add(userInput);
          panel.add(Home);
          panel.add(Launch);
@@ -126,7 +126,7 @@ public class SearchPanel extends JPanel
          public void actionPerformed(ActionEvent e)
          {  display.setText("");                  
             search_input = userInput.getText();    
-            display3.setText("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+            display3.setText("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
             display3.append(si.searchGame(fileName, info, x, search_input));   
          }
       });

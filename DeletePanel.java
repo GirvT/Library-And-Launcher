@@ -24,12 +24,16 @@ public class DeletePanel extends JPanel
    static String logName = "log.txt";//fileName = "records.txt"   
    String search_input = new String();
    final int MAX = 10;//Set MAX number of records
+   int x = 0;
    int xSize1 = 300,ySize1 = 500;
 
    String input, input2;
    String rows[] = new String[MAX];//Store max 20 records
    String info[][] = new String[MAX][6];//Store records in 2d array
+   String variables[] = {"Name","Filename","Method Name","Date Created","Rating","Author"};
    
+   JComboBox options = new JComboBox(variables);
+
    public DeletePanel (final JFrame Frame, final String access)
    {
       delete(Frame, access);
@@ -80,21 +84,45 @@ public class DeletePanel extends JPanel
          Launch.setFocusPainted(false);
          Launch.setContentAreaFilled(false);
          Launch.setForeground(new Color(234, 234, 225));
-            
+         
+         options.setSelectedIndex(0);
+
          Delete.setBounds(300,300,100,30);
          Home.setBounds(100,320,100,30);
-         display2.setBounds(270,200,180,40);
+         display2.setBounds(270,165,180,40);
          userInput.setBounds(300,250,100,30);
          display3.setBounds(70,60,560,100);
          Launch.setBounds(500,320,100,30);
+         options.setBounds(275,200,150,25);         
          
          panel.add(display2);
          panel.add(Delete);
-         panel.add(display3);
+         //panel.add(display3);
          panel.add(userInput);
          panel.add(Home);
          panel.add(Launch);
+         panel.add(options);
          add(panel);
+         
+         options.addActionListener(new ActionListener()
+         {
+            public void actionPerformed(ActionEvent e)
+         {  
+            String text = (String)options.getSelectedItem();
+            if (text.equals(variables[0]))
+               x=0;
+            else if (text.equals(variables[1]))
+               x=1;
+            else if (text.equals(variables[2]))
+               x=2;
+            else if (text.equals(variables[3]))
+               x=3;
+            else if (text.equals(variables[4]))
+               x=4;
+            else if (text.equals(variables[5]))
+               x=5;
+         }
+      });
          
               
       Delete.addActionListener(new ActionListener()
@@ -103,7 +131,11 @@ public class DeletePanel extends JPanel
          {  
             display.setText("");                  
             search_input = userInput.getText();   
-            di.deleteGame(fileName, info, 0, search_input);    
+            di.deleteGame(fileName, info, x, search_input);
+            JOptionPane.showMessageDialog(null, " Successfully Deleted.");
+            frame.dispose();
+            sMain.mainFrame(Access);
+    
          }
       });
       

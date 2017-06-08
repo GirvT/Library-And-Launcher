@@ -74,7 +74,7 @@ public class AddPanel extends JPanel
       display2.setHorizontalAlignment(SwingConstants.CENTER);     
       display2.setBorder(null);
       
-      display3.setText("Difficulty");
+      display3.setText("Method Name");
       display3.setEditable(false);
       display3.setOpaque(false);
       display3.setForeground(new Color(234, 234, 225));
