@@ -53,7 +53,8 @@ public class Smoke2
       frame.setLocationRelativeTo(null);
       frame.setVisible(true);
    }
-   
+
+  
    public void mainFrame(String access)
    {
       mainFrame = createFrame2();
@@ -63,6 +64,7 @@ public class Smoke2
       mainFrame.setVisible(true);
       mainFrame.setResizable(false);
    }
+
    
    public void searchFrame(String access)
    {
@@ -126,7 +128,7 @@ public class Smoke2
  
    public static void main(String[] args) 
    {
-      SwingUtilities.invokeLater(new Runnable() 
+      java.awt.EventQueue.invokeLater(new Runnable() 
       {
          @Override
          public void run() 

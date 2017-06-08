@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
 
-   public class first extends JPanel implements ActionListener, KeyListener{
+   public class pathBox extends JPanel implements ActionListener, KeyListener{
       Timer t = new Timer(30,this);
       double x = 0, y = 0;
       boolean cond = true;
@@ -11,7 +11,7 @@ import java.awt.geom.*;
       static String logName = "log.txt";//fileName = "records.txt"
       ClassLoaderTest cl = new ClassLoaderTest();
       
-      public first(){
+      public pathBox(){
          t.start();
          addKeyListener(this);
          setFocusable(true);
@@ -108,7 +108,7 @@ import java.awt.geom.*;
       public void startGame1()
       {
          JFrame Frame = new JFrame();
-         first s = new first();
+         pathBox s = new pathBox();
          Frame.setSize(800,600);    
          Frame.getContentPane().add(s);
          Frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

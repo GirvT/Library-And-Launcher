@@ -7,7 +7,7 @@ import javax.swing.text.*;
  
 public class MainPanel extends JPanel
 {
-   GamesLoaderTest gl = new GamesLoaderTest();
+   GamesLoader gl = new GamesLoader();
    ReadData rd = new ReadData();//Instantiate the class ReadData
    Records re = new Records();//Instantiate the class Records
    Sort s = new Sort();
@@ -106,7 +106,7 @@ public class MainPanel extends JPanel
       rows = rd.readFile(fileName, 10);
       info = re.getRecords(rows);
       loading();
-      display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+      display.append("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
       display.append(st);
       display.setOpaque(false);
       display.setForeground(new Color(234, 234, 25));
@@ -193,7 +193,7 @@ public class MainPanel extends JPanel
                // begin To clear the previous selesction
                display.setText("");
                loading();
-               display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+               display.append("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
                display.append(st);
                // end To clear the previous selesction
                int rowStart = Utilities.getRowStart(display, offset);
@@ -201,11 +201,6 @@ public class MainPanel extends JPanel
                String selectedLine = display.getText().substring(rowStart, rowEnd);
                input = selectedLine;
                String input3 = input.replaceAll("\\s","");
-              /* System.out.println(input);
-               System.out.println("offset :" +offset);
-               System.out.println("count :" +count);
-               System.out.println(display.getLineOfOffset(offset));*/
-               //If is used for avoiding selection of blank line
                if (offset < count)
                {
                   int line = display.getLineOfOffset(offset);
@@ -237,10 +232,8 @@ public class MainPanel extends JPanel
        {
          public void actionPerformed(ActionEvent e)
          {
-            display.setText("");
-            loading();
-            display.append("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
-            display.append(st);
+            frame.dispose();
+            sMain.mainFrame(Access);
          }
         });  
             
@@ -334,7 +327,7 @@ public class MainPanel extends JPanel
             }
             sb2.append("\n");
          }
-         display.append("     |Name|" + "\t|FileName|" + "\t|Difficulty|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+         display.append("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
          display.append(sb2.toString().trim());
       }
    
