@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.lang.*;
 
 public class Smoke 
 {
@@ -51,6 +52,7 @@ public class Smoke
    {
       frame.pack();
       frame.setLocationRelativeTo(null);
+      frame.setResizable(false);
       frame.setVisible(true);
    }
 
@@ -61,8 +63,13 @@ public class Smoke
       mainFrame.getContentPane().add(createContent2(access));
       mainFrame.pack();
       mainFrame.setLocationRelativeTo(null); 
-      mainFrame.setVisible(true);
       mainFrame.setResizable(false);
+      try
+      {
+         Thread.sleep(500); 
+      }catch (Exception e)
+      {}     
+      mainFrame.setVisible(true);
    }
 
    
@@ -72,8 +79,9 @@ public class Smoke
       searchFrame.getContentPane().add(createContent3(access));
       searchFrame.pack();
       searchFrame.setLocationRelativeTo(null); 
-      searchFrame.setVisible(true);
       searchFrame.setResizable(false);
+      searchFrame.setVisible(true);
+      
    }
    
    public void addFrame(String access)
@@ -82,8 +90,9 @@ public class Smoke
       addFrame.getContentPane().add(createContent4(access));
       addFrame.pack();
       addFrame.setLocationRelativeTo(null); 
-      addFrame.setVisible(true);
       addFrame.setResizable(false);
+      addFrame.setVisible(true);
+      
    }
    
    public void deleteFrame(String access)
@@ -92,8 +101,9 @@ public class Smoke
       deleteFrame.getContentPane().add(createContent5(access));
       deleteFrame.pack();
       deleteFrame.setLocationRelativeTo(null); 
-      deleteFrame.setVisible(true);
       deleteFrame.setResizable(false);
+      deleteFrame.setVisible(true);
+
    }
 
    private JPanel createContent() 
@@ -126,7 +136,7 @@ public class Smoke
       return delete;
    }
  
-   public static void main(String[] args) 
+   public static void main(String[] args) throws Exception 
    {
       java.awt.EventQueue.invokeLater(new Runnable() 
       {

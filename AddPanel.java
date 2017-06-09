@@ -127,10 +127,12 @@ public class AddPanel extends JPanel
       addEntry.setFocusPainted(false);
       addEntry.setContentAreaFilled(false);
       addEntry.setForeground(new Color(234, 234, 225));
-      
+      addEntry.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+
       Home.setFocusPainted(false);
       Home.setContentAreaFilled(false);
       Home.setForeground(new Color(234, 234, 225));
+      Home.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
             
       //Bounds of input boxes and labels   
       add1.setBounds(30,150,100,30);
@@ -139,7 +141,7 @@ public class AddPanel extends JPanel
       add4.setBounds(360,150,100,30);
       add5.setBounds(470,150,100,30);
       add6.setBounds(580,150,100,30);
-      addEntry.setBounds(300,300,100,30);
+      addEntry.setBounds(500,320,100,30);
       Home.setBounds(100,320,100,30);
       display.setBounds(30,110,100,30);
       display2.setBounds(140,110,100,30);

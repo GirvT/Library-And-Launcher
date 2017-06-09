@@ -20,8 +20,8 @@ public class MainPanel extends JPanel
 
    JTextArea display = new JTextArea();
    DefaultHighlighter highlighter =  (DefaultHighlighter)display.getHighlighter();
-   DefaultHighlighter.DefaultHighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter( Color.GRAY );
-   DefaultHighlighter.DefaultHighlightPainter highlight = new DefaultHighlighter.DefaultHighlightPainter( Color.DARK_GRAY );
+   DefaultHighlighter.DefaultHighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.GRAY);
+   DefaultHighlighter.DefaultHighlightPainter highlight = new DefaultHighlighter.DefaultHighlightPainter(Color.DARK_GRAY);
 
    
    String input, st;
@@ -45,13 +45,15 @@ public class MainPanel extends JPanel
             protected void paintComponent(Graphics g) 
             {
                 super.paintComponent(g);
-                g.drawImage(image, 0, 0, null);
+                g.drawImage(image, 0, 0,null);
             }
         };
          
          panel.setLayout(null);
               
       JButton Search = new JButton("Search");
+      JButton Add = new JButton("Add");      
+      JButton Delete = new JButton("Delete");
       JButton Help = new JButton("Help"); 
       JButton Launch = new JButton("Launch");
       JButton SortN = new JButton("Sort by Name");
@@ -64,45 +66,64 @@ public class MainPanel extends JPanel
       Refresh.setFocusPainted(false);
       Refresh.setContentAreaFilled(false);
       Refresh.setForeground(new Color(234, 234, 225));
-            
+      Refresh.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+      
+      Delete.setFocusPainted(false);
+      Delete.setContentAreaFilled(false);
+      Delete.setForeground(new Color(234, 234, 225));
+      
+      Add.setFocusPainted(false);
+      Add.setContentAreaFilled(false);
+      Add.setForeground(new Color(234, 234, 225));
+     
       Search.setFocusPainted(false);
       Search.setContentAreaFilled(false);
       Search.setForeground(new Color(234, 234, 225));
+      Search.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
       
       SortN.setFocusPainted(false);
       SortN.setContentAreaFilled(false);
       SortN.setForeground(new Color(234, 234, 225));
+      SortN.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
       
       SortA.setFocusPainted(false);
       SortA.setContentAreaFilled(false);
       SortA.setForeground(new Color(234, 234, 225));
+      SortA.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
       
       SortR.setFocusPainted(false);
       SortR.setContentAreaFilled(false);
       SortR.setForeground(new Color(234, 234, 225));
+      SortR.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
       
       SortD.setFocusPainted(false);
       SortD.setContentAreaFilled(false);
       SortD.setForeground(new Color(234, 234, 225));
+      SortD.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
       
       Launch.setFocusPainted(false);
       Launch.setContentAreaFilled(false);
       Launch.setForeground(new Color(234, 234, 225));
+      Launch.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
       
       Help.setFocusPainted(false);
       Help.setContentAreaFilled(false);
       Help.setForeground(new Color(234, 234, 225));
+      Help.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+      
+      display.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
       
       SortN.setBounds(70,40,120,30);     
       SortA.setBounds(215,40,120,30);
       SortR.setBounds(510,40,120,30);
       SortD.setBounds(360,40,130,30);            
       Search.setBounds(70,290,100,30);
+      Add.setBounds(225,290,100,30);           
+      Delete.setBounds(380,290,100,30);
       Refresh.setBounds(530,290,100,30); 
       Launch.setBounds(300,350,100,30);  
       Help.setBounds(0,0, 60,20);
 
-            
       display.setEditable(false);
       display.setText("");
       rows = rd.readFile(fileName, 10);
@@ -112,14 +133,16 @@ public class MainPanel extends JPanel
       display.append(st);
       lightup();
       display.setOpaque(false);
-      display.setForeground(new Color(234, 234, 25));
+      display.setForeground(new Color(0, 255, 0));
       
       JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
       scrollPane.setBounds(70, 80, 560, 200);
       scrollPane.getViewport().setOpaque(false);
       scrollPane.setOpaque(false);
       
-      panel.add(Search);     
+      panel.add(Search);
+      panel.add(Add);
+      panel.add(Delete);     
       panel.add(Launch);
       panel.add(SortN);
       panel.add(SortA); 
@@ -128,7 +151,7 @@ public class MainPanel extends JPanel
       panel.add(Refresh); 
       panel.add(scrollPane); 
       panel.add(Help);
-      add(panel);      
+      add(panel);        
            
       Search.addActionListener(new ActionListener()
       {
@@ -212,7 +235,6 @@ public class MainPanel extends JPanel
                   int end =    display.getLineEndOffset(line);
                   highlighter.addHighlight(start, end, painter);
                }
-
             } catch (BadLocationException e1)
             {
                e1.printStackTrace();
@@ -260,24 +282,10 @@ public class MainPanel extends JPanel
       });// end Quit ActionListener
       
       if (Access.equals("Admin"))
-      {  
-         JButton Add = new JButton("Add");      
-         JButton Delete = new JButton("Delete"); 
-         
-         Delete.setFocusPainted(false);
-         Delete.setContentAreaFilled(false);
-         Delete.setForeground(new Color(234, 234, 225));
-      
-         Add.setFocusPainted(false);
-         Add.setContentAreaFilled(false);
-         Add.setForeground(new Color(234, 234, 225));
-         
-         Add.setBounds(225,290,100,30);           
-         Delete.setBounds(380,290,100,30);
-        
-         panel.add(Add);
-         panel.add(Delete);
-         
+      {
+         Delete.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+         Add.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+
          Add.addActionListener(new ActionListener()
          {
             public void actionPerformed(ActionEvent e)
@@ -295,6 +303,23 @@ public class MainPanel extends JPanel
                sMain.deleteFrame(Access);                       
             }
          }); 
+      } else if(Access.equals("User"))
+      {
+         Add.addActionListener(new ActionListener()
+         {
+            public void actionPerformed(ActionEvent e)
+            {   
+               JOptionPane.showMessageDialog(null, "Not Allowed.");
+            }
+         });
+      
+         Delete.addActionListener(new ActionListener()
+         {
+            public void actionPerformed(ActionEvent e)
+            {   
+               JOptionPane.showMessageDialog(null, "Not Allowed.");
+            }
+         });
       }
         
         panel.setPreferredSize(new Dimension(700, 400));

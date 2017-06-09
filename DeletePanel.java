@@ -87,19 +87,21 @@ public class DeletePanel extends JPanel
          Delete.setFocusPainted(false);
          Delete.setContentAreaFilled(false);
          Delete.setForeground(new Color(234, 234, 225));
+         Delete.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
          
          Home.setFocusPainted(false);
          Home.setContentAreaFilled(false);
          Home.setForeground(new Color(234, 234, 225));
+         Home.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
          
          options.setSelectedIndex(0);
 
          //Set bounds of labels and input boxes
-         Delete.setBounds(300,300,100,30);
-         Home.setBounds(100,320,100,30);
-         display2.setBounds(270,165,180,40);
-         userInput.setBounds(300,250,100,30);
-         options.setBounds(275,200,150,25);         
+         Delete.setBounds(475,120,100,30);
+         Home.setBounds(75,120,100,30);
+         display2.setBounds(245,25,180,40);
+         userInput.setBounds(275,100,100,30);
+         options.setBounds(250,60,150,25);         
          
          //Add input boxes and labels to main panel
          panel.add(display2);
@@ -153,7 +155,7 @@ public class DeletePanel extends JPanel
          }
       });
                
-      panel.setPreferredSize(new Dimension(700, 375));
+      panel.setPreferredSize(new Dimension(650, 200));
    }
    
    private Image requestImage()
