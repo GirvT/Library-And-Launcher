@@ -21,7 +21,7 @@ public class MainPanel extends JPanel
    JTextArea display = new JTextArea();
    DefaultHighlighter highlighter =  (DefaultHighlighter)display.getHighlighter();
    DefaultHighlighter.DefaultHighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter( Color.GRAY );
-   DefaultHighlighter.DefaultHighlightPainter highlight = new DefaultHighlighter.DefaultHighlightPainter( Color.RED );
+   DefaultHighlighter.DefaultHighlightPainter highlight = new DefaultHighlighter.DefaultHighlightPainter( Color.DARK_GRAY );
 
    
    String input, st;
