@@ -21,6 +21,8 @@ public class MainPanel extends JPanel
    JTextArea display = new JTextArea();
    DefaultHighlighter highlighter =  (DefaultHighlighter)display.getHighlighter();
    DefaultHighlighter.DefaultHighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter( Color.GRAY );
+   DefaultHighlighter.DefaultHighlightPainter highlight = new DefaultHighlighter.DefaultHighlightPainter( Color.RED );
+
    
    String input, st;
    final int MAX = 10;//Set MAX number of records
@@ -108,9 +110,10 @@ public class MainPanel extends JPanel
       loading();
       display.append("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
       display.append(st);
+      lightup();
       display.setOpaque(false);
       display.setForeground(new Color(234, 234, 25));
-
+      
       JScrollPane scrollPane = new JScrollPane(display,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
       scrollPane.setBounds(70, 80, 560, 200);
       scrollPane.getViewport().setOpaque(false);
@@ -188,20 +191,21 @@ public class MainPanel extends JPanel
             int offset = display.viewToModel(e.getPoint());
             try 
             {
-               int line_max = display.getLineCount();
-               int count = display.getLineEndOffset(line_max - 1);
                // begin To clear the previous selesction
                display.setText("");
                loading();
                display.append("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
                display.append(st);
                // end To clear the previous selesction
+               lightup();
+               int line_max = display.getLineCount();
+               int count = display.getLineEndOffset(line_max - 1);
                int rowStart = Utilities.getRowStart(display, offset);
                int rowEnd = Utilities.getRowEnd(display, offset);
                String selectedLine = display.getText().substring(rowStart, rowEnd);
                input = selectedLine;
                String input3 = input.replaceAll("\\s","");
-               if (offset < count)
+               if (74 < offset && offset < count)
                {
                   int line = display.getLineOfOffset(offset);
                   int start =  display.getLineStartOffset(line);
@@ -329,7 +333,21 @@ public class MainPanel extends JPanel
          }
          display.append("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
          display.append(sb2.toString().trim());
+         lightup();
       }
+   
+   private void lightup()
+   {
+      try 
+      {
+         int begin =  display.getLineStartOffset(0);
+         int finish =    display.getLineEndOffset(0);
+         highlighter.addHighlight(begin, finish, highlight);
+      }catch (BadLocationException e1)
+      {
+         e1.printStackTrace();
+      }
+   }
    
    private Image requestImage()
     {
