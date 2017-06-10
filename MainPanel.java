@@ -66,11 +66,11 @@ public class MainPanel extends JPanel
       Refresh.setFocusPainted(false);
       Refresh.setContentAreaFilled(false);
       Refresh.setForeground(new Color(234, 234, 225));
-      Refresh.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-      
+            
       Delete.setFocusPainted(false);
       Delete.setContentAreaFilled(false);
       Delete.setForeground(new Color(234, 234, 225));
+      Delete.setMargin( new Insets(1, 1, 1, 1) );
       
       Add.setFocusPainted(false);
       Add.setContentAreaFilled(false);
@@ -79,40 +79,31 @@ public class MainPanel extends JPanel
       Search.setFocusPainted(false);
       Search.setContentAreaFilled(false);
       Search.setForeground(new Color(234, 234, 225));
-      Search.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-      
+           
       SortN.setFocusPainted(false);
       SortN.setContentAreaFilled(false);
       SortN.setForeground(new Color(234, 234, 225));
-      SortN.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
       
       SortA.setFocusPainted(false);
       SortA.setContentAreaFilled(false);
       SortA.setForeground(new Color(234, 234, 225));
-      SortA.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-      
+            
       SortR.setFocusPainted(false);
       SortR.setContentAreaFilled(false);
       SortR.setForeground(new Color(234, 234, 225));
-      SortR.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
       
       SortD.setFocusPainted(false);
       SortD.setContentAreaFilled(false);
       SortD.setForeground(new Color(234, 234, 225));
-      SortD.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-      
+            
       Launch.setFocusPainted(false);
       Launch.setContentAreaFilled(false);
       Launch.setForeground(new Color(234, 234, 225));
-      Launch.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
       
       Help.setFocusPainted(false);
       Help.setContentAreaFilled(false);
       Help.setForeground(new Color(234, 234, 225));
-      Help.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-      
-      display.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-      
+            
       SortN.setBounds(70,40,120,30);     
       SortA.setBounds(215,40,120,30);
       SortR.setBounds(510,40,120,30);
@@ -283,8 +274,6 @@ public class MainPanel extends JPanel
       
       if (Access.equals("Admin"))
       {
-         Delete.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-         Add.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
          Add.addActionListener(new ActionListener()
          {

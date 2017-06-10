@@ -64,7 +64,7 @@ public class SearchPanel extends JPanel
          display3.setText("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
          display3.setEditable(false);
          display3.setOpaque(false);
-         display3.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));         
+                
          display3.setForeground(new Color(234, 234, 225));
          
          Search.setFocusPainted(false);

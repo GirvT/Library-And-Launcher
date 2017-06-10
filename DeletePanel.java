@@ -87,12 +87,10 @@ public class DeletePanel extends JPanel
          Delete.setFocusPainted(false);
          Delete.setContentAreaFilled(false);
          Delete.setForeground(new Color(234, 234, 225));
-         Delete.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
          
          Home.setFocusPainted(false);
          Home.setContentAreaFilled(false);
          Home.setForeground(new Color(234, 234, 225));
-         Home.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.WHITE),BorderFactory.createEmptyBorder(10, 10, 10, 10)));
          
          options.setSelectedIndex(0);
 
