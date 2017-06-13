@@ -18,7 +18,8 @@ import javax.swing.JLabel;
 public class EvenMoreHelpBoxes
 {
    /**
-   "moreHelpBoxes" creates an array that has all the help image filenames and calls a specific one based on which x is called
+   "moreHelpBoxes" creates an array that has refrences to all the help image filenames and calls a specific 
+   one based on which x is called
    @param x is the number of the help image that is needed to be called
    0 is assistance with the Add function
    1 is assistance with the Delete function

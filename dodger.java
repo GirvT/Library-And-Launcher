@@ -30,7 +30,9 @@ public class dodger extends JPanel implements ActionListener, KeyListener{
          setFocusTraversalKeysEnabled(false);
       }
       
-      //Draw graphics elements
+      /**
+      "paintComponent" draws graphics elements of the game
+      */
       public void paintComponent(Graphics g){
          super.paintComponent(g);
          g.setFont(new Font("Helvetica", Font.BOLD, 24));
