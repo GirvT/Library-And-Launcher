@@ -1,16 +1,28 @@
+//Author: Manish Suresh 
+//Date : 08/06/17
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
 
-   public class dodger extends JPanel implements ActionListener, KeyListener{
+/**
+@author Manish Suresh
+dodger class is a game where you attempt to dodge moving obsticales while trying to reach the goal.
+*/ 
+
+public class dodger extends JPanel implements ActionListener, KeyListener{
    
+      //Variables and objects in use
       Timer t = new Timer(30,this);
       double x = 0, y = 0;
       int a = 100, b = 50;
       int c = 100, d = 100;
       boolean alive = true;
       
+      /**
+      "dodger" initates game functions without a frame
+      */
       public dodger(){
          t.start();
          addKeyListener(this);
@@ -18,6 +30,7 @@ import java.awt.geom.*;
          setFocusTraversalKeysEnabled(false);
       }
       
+      //Draw graphics elements
       public void paintComponent(Graphics g){
          super.paintComponent(g);
          g.setFont(new Font("Helvetica", Font.BOLD, 24));
@@ -30,7 +43,7 @@ import java.awt.geom.*;
          g.setColor(Color.magenta);
          g.fillRect(c,d,50,50);
          g.setColor(Color.black);
-         //g.drawString("Move the black square to the red square to win the game.", 175,100);
+         //Instructions
          g.drawString("Using the arrow keys move the black", 20,220);
          g.drawString("square to the red square to win", 20,250);
          g.drawString("the game. Avoid touching the other ", 20,280);
@@ -38,6 +51,8 @@ import java.awt.geom.*;
          Graphics2D g2 = (Graphics2D) g;
          g.setColor(Color.black);
          g2.fill(new Rectangle2D.Double(x, y, 50, 50));
+         
+         // Win/Loss conditions
          if (x == 50 && y == 500) 
             {
    	      g.setColor(Color.WHITE);
@@ -63,6 +78,7 @@ import java.awt.geom.*;
             alive = false;
          }  
       }
+      
       
       public void actionPerformed(ActionEvent e){
          if (a >= 800 && alive) {
@@ -143,6 +159,9 @@ import java.awt.geom.*;
       public void keyTyped(KeyEvent e){}
       public void keyReleased(KeyEvent e){}
       
+      /**
+      "startGame2" draws the frame and initates the game elements in the frame
+      */
       public void startGame2()
       {
          JFrame Frame = new JFrame();
