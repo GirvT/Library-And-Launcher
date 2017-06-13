@@ -41,7 +41,7 @@ public class DeletePanel extends JPanel
    JComboBox options = new JComboBox(variables);
 
    /**
-   "DeletePanel" does the delete() method while retaning the name of the class
+   "DeletePanel" does the "delete" method while retaning the name of the class
    @param JFrame The main JFrame that instantiates "delete"
    @param access The access level of the user
    */
@@ -109,6 +109,7 @@ public class DeletePanel extends JPanel
          panel.add(options);
          add(panel);
          
+         
          options.addActionListener(new ActionListener()
          {
             public void actionPerformed(ActionEvent e)
@@ -129,7 +130,7 @@ public class DeletePanel extends JPanel
          }
       });
          
-              
+      //Delete button function        
       Delete.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
@@ -144,6 +145,7 @@ public class DeletePanel extends JPanel
          }
       });
       
+      //Home button
       Home.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
@@ -156,6 +158,7 @@ public class DeletePanel extends JPanel
       panel.setPreferredSize(new Dimension(650, 200));
    }
    
+   //Background
    private Image requestImage()
    {
       Image image = null;

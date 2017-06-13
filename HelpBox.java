@@ -1,5 +1,13 @@
+//Author: Keith Chow
+//Date : 05/03/17
+
 import javax.swing.*;
 
+/**
+@author Keith Chow
+"HelpBox" is the class that shows a frame that asks the user for which function they need help with. Once decided "HelpBox"
+calls "EvenMoreHelpBoxes" to refrence the image based on the input from the drop-down menu.
+*/
 public class HelpBox
 {
    public static void helpbox()

@@ -1,13 +1,20 @@
-
+//Author: Girvan Tse
+//Date : 05/03/17
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 /**
- * @author Girvan
- * 
- */
+@author Girvan Tse
+"JavaClassLoader" extends ClassLoader and attempts to load classes and methods based on the inputted
+class names and method names.
+*/
+ 
 public class JavaClassLoader extends ClassLoader {
-	
+	/**
+   "invokeClassMethod" attempts to execute a method based on the loaded class name.
+   @param classBinName is the binary name of the class that might exist
+   @param methodName is the method name of the class to be executed
+   */
 	public void invokeClassMethod(String classBinName, String methodName){
 		
 		try {
