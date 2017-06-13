@@ -59,7 +59,7 @@ public class MainPanel extends JPanel
       JButton SortN = new JButton("Sort by Name");
       JButton SortA = new JButton("Sort by Author");
       JButton SortR = new JButton("Sort by Date");      
-      JButton SortD = new JButton("<REPLACE ME>");    
+      JButton SortD = new JButton("Sort by Method Name");    
       JButton Quit = new JButton("Quit");  
       JButton Refresh = new JButton("Refresh");     
       
