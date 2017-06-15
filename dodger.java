@@ -11,7 +11,8 @@ import java.awt.geom.*;
 dodger class is a game where you attempt to dodge moving obsticales while trying to reach the goal.
 */ 
 
-public class dodger extends JPanel implements ActionListener, KeyListener{
+public class dodger extends JPanel implements ActionListener, KeyListener
+{
    
       //Variables and objects in use
       Timer t = new Timer(30,this);
@@ -32,6 +33,7 @@ public class dodger extends JPanel implements ActionListener, KeyListener{
       
       /**
       "paintComponent" draws graphics elements of the game
+      @param g is the panel that contains the drawn graphics
       */
       public void paintComponent(Graphics g){
          super.paintComponent(g);
@@ -45,34 +47,37 @@ public class dodger extends JPanel implements ActionListener, KeyListener{
          g.setColor(Color.magenta);
          g.fillRect(c,d,50,50);
          g.setColor(Color.black);
+         
          //Instructions
          g.drawString("Using the arrow keys move the black", 20,220);
          g.drawString("square to the red square to win", 20,250);
          g.drawString("the game. Avoid touching the other ", 20,280);
          g.drawString("solid boxes to prevent losing.", 20,310);
+         
          Graphics2D g2 = (Graphics2D) g;
          g.setColor(Color.black);
          g2.fill(new Rectangle2D.Double(x, y, 50, 50));
          
          // Win/Loss conditions
          if (x == 50 && y == 500) 
-            {
+         {
    	      g.setColor(Color.WHITE);
    	      g.fillRect(0, 0, getWidth(), getHeight());
    	      g.setColor(Color.BLACK);
    	      g.drawString("You Win!", 350,100);
    	      g.drawString("Press R to play again", 250,150);        
             alive = false;
-            }
+         }
          else if (x >a-50 && y>b-50 && y<b+50 && x<a+50||x>c-50 && y>d-50 && y<d+50 && x<c+50)
-            {
+         {
    	      g.setColor(Color.WHITE);
    	      g.fillRect(0, 0, getWidth(), getHeight());
    	      g.setColor(Color.BLACK);
    	      g.drawString("You Lose! Press R to restart", 140,100);
             alive = false;
-            }
-         else if (x < 500 && y+50 > 150 && y+50<500) {
+         }
+         else if (x < 500 && y+50 > 150 && y+50<500) 
+         {
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, getWidth(), getHeight());
             g.setColor(Color.BLACK);
@@ -82,51 +87,59 @@ public class dodger extends JPanel implements ActionListener, KeyListener{
       }
       
       
-      public void actionPerformed(ActionEvent e){
-         if (a >= 800 && alive) {
+      public void actionPerformed(ActionEvent e)
+      {
+         if (a >= 800 && alive) 
+         {
             repaint();
             a = 0;
          } 
-         else if (alive) {
+         else if (alive) 
+         {
             repaint();
             a += 10;
          }
          if (c<=0 && alive)
-            {
+         {
             repaint();
             c = 800;
-            }
+         }
          else if (alive)
-            {
+         {
             repaint();
             c -=6;   
-            }
+         }
          if (y>=250)
-            {
+         {
             b = 450;
             d = 510;
             repaint();  
-            }
+         }
       }        
       
-      public void up(){
+      public void up()
+      {
          y -= 10;
       }
       
-      public void down(){
+      public void down()
+      {
          y += 10;
       }
       
-      public void left(){
+      public void left()
+      {
          x -= 10;
       }
       
-      public void right(){
+      public void right()
+      {
          x += 10;
       }
       
       
-      public void keyPressed(KeyEvent e){
+      public void keyPressed(KeyEvent e)
+      {
          int code = e.getKeyCode();
          if (code == KeyEvent.VK_UP)
          {
@@ -175,4 +188,4 @@ public class dodger extends JPanel implements ActionListener, KeyListener{
          Frame.setVisible(true);
       }
       
-   }
+}

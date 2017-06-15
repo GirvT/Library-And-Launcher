@@ -1,4 +1,3 @@
-
 //Filename: KeyInput.java
 //Author: Girvan Tse & Manish Suresh
 //Date : 05/03/17
@@ -18,11 +17,18 @@ class KeyInput
    static String items[] = new String[6];
    /**
    Start taking keyboard input data in a form the NewRecord class can use
+   @param add1 JTextField that get the Game Name data
+   @param add2 JTextField that get the Class Name data
+   @param add3 JTextField that get the Method Name data
+   @param add4 JTextField that get the Date Created data
+   @param add5 JTextField that get the Rating data
+   @param add6 JTextField that get the Publisher data
    */
    public static String entries( JTextField add1, JTextField add2, JTextField add3, JTextField add4, JTextField add5, JTextField add6)
    {
       DataInput keyboard = new DataInputStream(System.in);
-      try{
+      try
+      {
          input = add1.getText();
          txt = input;//Store name
          items[0] = input;

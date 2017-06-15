@@ -1,20 +1,32 @@
+//Author: Keith Chow
+//Date : 05/03/17
+
 import javax.imageio.*;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.awt.event.*;
 import javax.swing.text.*;
- 
+
+/**
+@author Keith Chow
+Login panel to access the main program, depending on the login information given the user will have different access
+levels to be able to use or be restricted on certain features.
+*/
+
 public class LoginPanel extends JPanel
 {
+   //Object in use
    ReadData rd = new ReadData();//Instantiate the class ReadData
    Records re = new Records();//Instantiate the class Records
    Smoke sMain = new Smoke();
    
+   //Label and login boxes
    JTextField passLabel = new JTextField("Enter your Login Info");
    JTextField userField = new JTextField("Manish");
    JPasswordField passField = new JPasswordField("sss");
 
+   //Accounts pulled from ...
    static String accountsName = "accounts.txt";//fileName = "records.txt"
 
    final int MAX = 10;//Set MAX number of records
@@ -23,12 +35,20 @@ public class LoginPanel extends JPanel
    String input, input2;
    String rows2[] = new String[MAX];//Store max 20 records
    String info2[][] = new String[MAX][3];//Store records in 2d array
-   
+
+   /**
+   "LoginPanel" does the login() method while retaning the name of the class
+   @param JFrame The main JFrame that instantiates "login"
+   */   
    public LoginPanel (final JFrame Frame)
    {
       login(Frame);
    }
    
+   /**
+   "login" creates a JPanel that has the functionality of logging into the main program and setting the user's access level
+   @param JFrame The main JFrame that instantiates "login"
+   */   
    public void login(final JFrame frame)
    {
       frame.setResizable(false);
@@ -45,6 +65,7 @@ public class LoginPanel extends JPanel
           
       panel.setLayout(null);   
       
+      //Buttons
       ImageIcon login = new ImageIcon("login.png");
       JButton Login = new JButton("Login",login);
       JButton Quit = new JButton("Quit");       
@@ -91,6 +112,7 @@ public class LoginPanel extends JPanel
       panel.add(passLabel);
       add(panel);
       
+      //Login button press
       Login.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent evt)
@@ -144,7 +166,8 @@ public class LoginPanel extends JPanel
             }
          }      
       });
-
+      
+      //Quit button press
       Quit.addActionListener(new ActionListener()
       {      
          public void actionPerformed(ActionEvent e)
@@ -156,6 +179,7 @@ public class LoginPanel extends JPanel
         panel.setPreferredSize(new Dimension(xSize1, ySize1));
    }
    
+   //Background
    private Image requestImage()
    {
       Image image = null;

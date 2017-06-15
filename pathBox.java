@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -105,6 +106,9 @@ import java.awt.geom.*;
       public void keyTyped(KeyEvent e){}
       public void keyReleased(KeyEvent e){}
       
+      /**
+      "startGame1" draws the frame and initates the game elements in the frame
+      */
       public void startGame1()
       {
          JFrame Frame = new JFrame();

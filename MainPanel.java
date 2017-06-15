@@ -1,3 +1,6 @@
+//Author: Manish Suresh
+//Date : 05/03/17
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -5,8 +8,14 @@ import java.io.*;
 import java.awt.event.*;
 import javax.swing.text.*;
  
+/**
+@author Manish Suresh
+"MainPanel" is the class that contains all other panels and instaniates from the Smoke class to use
+*/
+ 
 public class MainPanel extends JPanel
 {
+   //Instaniate used objects
    GamesLoader gl = new GamesLoader();
    ReadData rd = new ReadData();//Instantiate the class ReadData
    Records re = new Records();//Instantiate the class Records
@@ -15,6 +24,7 @@ public class MainPanel extends JPanel
    Smoke sMain = new Smoke();
    HelpBox help = new HelpBox();
    
+   //Refrenced files
    static String fileName = "records.txt";//fileName = "records.txt"
    static String logName = "log.txt";//fileName = "records.txt"
 
@@ -23,18 +33,27 @@ public class MainPanel extends JPanel
    DefaultHighlighter.DefaultHighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.GRAY);
    DefaultHighlighter.DefaultHighlightPainter highlight = new DefaultHighlighter.DefaultHighlightPainter(Color.DARK_GRAY);
 
-   
    String input, st;
    final int MAX = 10;//Set MAX number of records
    int line = 0;
    String rows[] = new String[MAX];//Store max 20 records
    String info[][] = new String[MAX][6];//Store records in 2d array
       
+   /**
+   "MainPanel" does the main() method while retaning the name of the class
+   @param JFrame The main JFrame that instantiates "login"
+   @param access The access level of the user
+   */
    public MainPanel(final JFrame Frame, final String access)
    {
       main(Frame,access);
    }
    
+   /**
+   "main" creates a JPanel that contains buttons to access classes instantiated from "Smoke"
+   @param JFrame The main JFrame that instantiates "login"
+   @param access The access level of the user
+   */
    public void main(final JFrame frame, final String Access)
    {
       final Image image = requestImage();
@@ -50,7 +69,8 @@ public class MainPanel extends JPanel
         };
          
          panel.setLayout(null);
-              
+      
+      //Added Buttons    
       JButton Search = new JButton("Search");
       JButton Add = new JButton("Add");      
       JButton Delete = new JButton("Delete");
@@ -143,7 +163,8 @@ public class MainPanel extends JPanel
       panel.add(scrollPane); 
       panel.add(Help);
       add(panel);        
-           
+      
+      //Search button
       Search.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
@@ -153,6 +174,7 @@ public class MainPanel extends JPanel
          }
       });
       
+      //Sort by name button
       SortN.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
@@ -162,6 +184,7 @@ public class MainPanel extends JPanel
          }
       });// end Sort ActionListener
       
+      //Sort by author button
       SortA.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
@@ -171,6 +194,7 @@ public class MainPanel extends JPanel
          }
       });// end Sort ActionListener
       
+      //Sort by rating button
       SortR.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
@@ -180,7 +204,7 @@ public class MainPanel extends JPanel
          }
       });// end Sort ActionListener
 
-      
+      //Sort by date created button
       SortD.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
@@ -190,6 +214,7 @@ public class MainPanel extends JPanel
          }
       });// end Sort ActionListener
       
+       //Mouse select 
        display.addMouseListener(new MouseAdapter() 
        {
          @Override
@@ -226,13 +251,15 @@ public class MainPanel extends JPanel
                   int end =    display.getLineEndOffset(line);
                   highlighter.addHighlight(start, end, painter);
                }
-            } catch (BadLocationException e1)
+            } 
+            catch (BadLocationException e1)
             {
                e1.printStackTrace();
             }
          }
       });
       
+      //Launch button press
       Launch.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent a)
@@ -245,6 +272,7 @@ public class MainPanel extends JPanel
          }
       });// end Launch ActionListener
        
+       //Refresh button press
        Refresh.addActionListener(new ActionListener()
        {
          public void actionPerformed(ActionEvent e)
@@ -254,7 +282,7 @@ public class MainPanel extends JPanel
          }
         });  
             
-           
+      //Help button press
       Help.addActionListener(new ActionListener()
       {
          public void actionPerformed(ActionEvent e)
@@ -263,7 +291,8 @@ public class MainPanel extends JPanel
          }
            
       });
-                 
+       
+       //Quit button press   
        Quit.addActionListener(new ActionListener()
        {      
           public void actionPerformed(ActionEvent e)
@@ -272,9 +301,11 @@ public class MainPanel extends JPanel
           }
       });// end Quit ActionListener
       
+      //"Admin" user level
       if (Access.equals("Admin"))
       {
 
+         //Add button press
          Add.addActionListener(new ActionListener()
          {
             public void actionPerformed(ActionEvent e)
@@ -283,7 +314,8 @@ public class MainPanel extends JPanel
                sMain.addFrame(Access);                       
             }
          });
-      
+     
+         //Delete button press
          Delete.addActionListener(new ActionListener()
          {
             public void actionPerformed(ActionEvent e)
@@ -292,8 +324,12 @@ public class MainPanel extends JPanel
                sMain.deleteFrame(Access);                       
             }
          }); 
-      } else if(Access.equals("User"))
+      } 
+      
+      //Next "User" user level
+      else if(Access.equals("User"))
       {
+         //Add button Press
          Add.addActionListener(new ActionListener()
          {
             public void actionPerformed(ActionEvent e)
@@ -301,7 +337,8 @@ public class MainPanel extends JPanel
                JOptionPane.showMessageDialog(null, "Not Allowed.");
             }
          });
-      
+         
+         //Delete button Press
          Delete.addActionListener(new ActionListener()
          {
             public void actionPerformed(ActionEvent e)
@@ -315,6 +352,9 @@ public class MainPanel extends JPanel
 
    }
   
+  /**
+  "loading" translates the selected data into a form the program can use
+  */
   public String loading()
       {
          StringBuilder sb = new StringBuilder();
@@ -329,7 +369,17 @@ public class MainPanel extends JPanel
          st = sb.toString().trim();
          return st;
       }
-      
+   
+  /**
+  "loading" sorts the data depending on the cateogry determined by the paramater
+  @param a is the numerical value for the cataegory to be searched by
+               0 is Name
+               1 is FileName
+               2 is MethodName
+               3 is Date Created
+               4 is Rating
+               5 is Publisher
+  */
    public void sorting(int a)
       {
          info = s.sortGame(info,a);
@@ -345,11 +395,14 @@ public class MainPanel extends JPanel
             }
             sb2.append("\n");
          }
-         display.append("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+         display.append("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Publisher|" + "\n");
          display.append(sb2.toString().trim());
          lightup();
       }
    
+   /**
+   "lightup" highlights the selected data
+   */
    private void lightup()
    {
       try 

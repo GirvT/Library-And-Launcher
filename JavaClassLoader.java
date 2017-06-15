@@ -1,5 +1,6 @@
 //Author: Girvan Tse
 //Date : 05/03/17
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
@@ -33,9 +34,13 @@ public class JavaClassLoader extends ClassLoader {
 	        Method method = loadedMyClass.getMethod(methodName);
 	        method.invoke(myClassObject);
 
-		} catch (ClassNotFoundException e) {
+		} 
+      catch (ClassNotFoundException e) 
+      {
 			e.printStackTrace();
-		} catch (Exception e) {
+		} 
+      catch (Exception e) 
+      {
 			e.printStackTrace();
 		}
 		
