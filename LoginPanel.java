@@ -23,8 +23,8 @@ public class LoginPanel extends JPanel
    
    //Label and login boxes
    JTextField passLabel = new JTextField("Enter your Login Info");
-   JTextField userField = new JTextField("Manish");
-   JPasswordField passField = new JPasswordField("sss");
+   JTextField userField = new JTextField();
+   JPasswordField passField = new JPasswordField();
 
    //Accounts pulled from ...
    static String accountsName = "accounts.txt";//fileName = "records.txt"
