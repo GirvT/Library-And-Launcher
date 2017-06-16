@@ -1,12 +1,21 @@
+//Author: Manish Suresh 
+//Date : 08/06/17
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.awt.event.*;
 import javax.swing.text.*;
+
+/**
+@author Manish Suresh
+SearchPanel class is the GUI equlivant to Search class.
+*/  
  
 public class SearchPanel extends JPanel
 {
+   //Instaniate required objects
    GamesLoader gl = new GamesLoader();
    ReadData rd = new ReadData();//Instantiate the class ReadData
    Records re = new Records();//Instantiate the class Records
@@ -14,12 +23,13 @@ public class SearchPanel extends JPanel
    Add ad = new Add();  
    Smoke sMain = new Smoke();
 
+   //Panel Elements
    JTextArea display = new JTextArea();
    JTextArea display2 = new JTextArea();
    JTextArea display3 = new JTextArea();
    JTextField userInput = new JTextField();
    
-   
+   //Variables
    final int MAX = 10;//Set MAX number of records
    int x = 0;
    static String fileName = "records.txt";//fileName = "records.txt"   
@@ -29,12 +39,24 @@ public class SearchPanel extends JPanel
    String variables[] = {"Name","Filename","Method Name","Date Created","Rating","Author"};
    String search_input, input;
    
+   //Dropdown Menu
    JComboBox options = new JComboBox(variables);
+   
+   /**
+   "SearchPanel" does the "search" method while retaning the name of the class
+   @param JFrame The main JFrame that instantiates "search"
+   @param access The access level of the user
+   */
    public SearchPanel(final JFrame Frame, final String access)
    {
       search(Frame, access);
    }
    
+   /**
+   "search" creates a JPanel that has the functionallity to find data from records
+   @param JFrame The main JFrame that instantiates "search"
+   @param access The access level of the user
+   */
    public void search(final JFrame frame, final String Access)
    {
       frame.setResizable(false);
@@ -89,6 +111,11 @@ public class SearchPanel extends JPanel
          Launch.setBounds(500,320,100,30);
          options.setBounds(275,200,150,25);
          
+         JScrollPane scrollPane = new JScrollPane(display3,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+         scrollPane.setBounds(70, 60, 560, 100);
+         scrollPane.getViewport().setOpaque(false);
+         scrollPane.setOpaque(false);
+         
          panel.add(display2);
          panel.add(Search);
          panel.add(display3);
@@ -96,6 +123,7 @@ public class SearchPanel extends JPanel
          panel.add(Home);
          panel.add(Launch);
          panel.add(options);
+         panel.add(scrollPane);
          add(panel);
                               
          rows = rd.readFile(fileName, 10);
@@ -183,8 +211,9 @@ public class SearchPanel extends JPanel
                
          panel.setPreferredSize(new Dimension(700, 375));
       }
-     
-   private Image requestImage()
+    
+    //Background
+    private Image requestImage()
     {
         Image image = null;
 

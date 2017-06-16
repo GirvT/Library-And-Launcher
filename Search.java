@@ -1,55 +1,52 @@
-//Filename: SearchInput.java
-//Author: Girvan Tse & Manish Suresh
-//Date : 05/03/17
+//Author: Girvan Tse
+//Date : 08/06/17
 
 import java.io.*;
 
 /**
+@author Girvan Tse
 Takes an input in the form which the Search class can read
-@author Girvan Tse & Manish Suresh
 */
 
 class Search //prepares keyboard to recieve data
 {
+   String ss;
    /**
-   Takes the data and puts it into a form that the Search class can read
+   "searchGame" reads the input and returns the data with the same specified data 
    @param fileName The name of the file to take the data from
    @param data The data set to search for the Search class target
    @param item The specific data category to look for assigned to a numerical value
                0 is Name
-               1 is ID
-               2 is Homeform
-               3 is Date
-               4 is Time
-               5 is Period
+               1 is FileName
+               2 is MethodName
+               3 is Date Created
+               4 is Rating
+               5 is Publisher
    */
-   String ss;
-   
-   public String searchGame(String fileName, String data[][], int item, String input)
+public String searchGame(String fileName, String data[][], int item, String input)
+   {
+      DataInput d = new DataInputStream(System.in);
+      StringBuilder sb = new StringBuilder();
+      if(input != null)
       {
-         DataInput d = new DataInputStream(System.in);
-         StringBuilder sb = new StringBuilder();
-            if(input != null)
+         boolean found = false;
+         for(int i = 0; i < data.length; i++)//Search for record
+         {
+            if(data[i][item].equals(input))
             {
-               boolean found = false;
-               for(int i = 0; i < data.length; i++)//Search for record
+               found = true;
+               for(int k = 0; k < 6; k++)
                {
-                  if(data[i][item].equals(input))
-                  {
-                     found = true;
-                     for(int k = 0; k < 6; k++)
-                     {
-                        sb.append(data[i][k] + "\t"); //output entire record
-                     }
-                     sb.append("\n");
-                  }//end if
-               }//end loop
-               if(!found)
-               {
-               } 
-            }
-            ss = sb.toString();
-            return ss;
-
+                  sb.append(data[i][k] + "\t"); //output entire record
+               }
+               sb.append("\n");
+            }//end if
+         }//end loop
+         if(!found)
+         {
+         } 
+      }
+      ss = sb.toString();
+      return ss;
    }//end keyInput
 }//end searchInput

@@ -1,11 +1,24 @@
+//Author: Manish Suresh & Girvan Tse
+//Date : 08/06/17
+
 import javax.swing.*;
 import java.awt.*;
 import java.lang.*;
 
+/**
+@author Manish Suresh
+@author Girvan Tse
+Smoke class is the class that can be called to call any other class, it instaniates every class
+and when called will deplay the frame of that class.
+*/
+
 public class Smoke 
 {
    private JFrame frame, mainFrame, searchFrame, addFrame, deleteFrame;
-      
+   
+   /**
+   "create" creates an instance of createFrame
+   */
    private Smoke create() 
    {
       frame = createFrame();
@@ -13,6 +26,9 @@ public class Smoke
       return this;
    }
 
+   /**
+   "createFrame" sets the closing option for frame "Smoke"
+   */
    private JFrame createFrame() 
    {
       JFrame frame = new JFrame("Smoke");
@@ -20,6 +36,9 @@ public class Smoke
       return frame;
    }
     
+   /**
+   "createFrame2" sets the closing option for frame "mainFrame"
+   */
    private JFrame createFrame2() 
    {
       JFrame mainFrame = new JFrame(getClass().getName());
@@ -27,6 +46,9 @@ public class Smoke
       return mainFrame;
    }
    
+   /**
+   "createFrame3" sets the closing option for frame "searchFrame"
+   */
    private JFrame createFrame3() 
    {
       JFrame searchFrame = new JFrame(getClass().getName());
@@ -34,13 +56,19 @@ public class Smoke
       return searchFrame;
    }
     
-    private JFrame createFrame4() 
+   /**
+   "createFrame4" sets the closing option for frame "addFrame"
+   */
+   private JFrame createFrame4() 
    {
       JFrame addFrame = new JFrame(getClass().getName());
       addFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       return addFrame;
    }
     
+   /**
+   "createFrame5" sets the closing option for frame "deleteFrame"
+   */ 
    private JFrame createFrame5() 
    {
       JFrame deleteFrame = new JFrame(getClass().getName());
@@ -48,6 +76,9 @@ public class Smoke
       return deleteFrame;
    } 
    
+   /**
+   "show" specifies the qualities of frame "Smoke" 
+   */
    private void show()
    {
       frame.pack();
@@ -56,23 +87,22 @@ public class Smoke
       frame.setVisible(true);
    }
 
-  
+   /**
+   "mainFrame" specifies the qualities of frame "mainFrame" 
+   */
    public void mainFrame(String access)
    {
       mainFrame = createFrame2();
       mainFrame.getContentPane().add(createContent2(access));
       mainFrame.pack();
       mainFrame.setLocationRelativeTo(null); 
-      mainFrame.setResizable(false);
-      try
-      {
-         Thread.sleep(500); 
-      }catch (Exception e)
-      {}     
+      mainFrame.setResizable(false);   
       mainFrame.setVisible(true);
    }
 
-   
+   /**
+   "mainFrame" specifies the qualities of frame "mainFrame" 
+   */
    public void searchFrame(String access)
    {
       searchFrame = createFrame3();
@@ -84,6 +114,9 @@ public class Smoke
       
    }
    
+   /**
+   "mainFrame" specifies the qualities of frame "mainFrame" 
+   */
    public void addFrame(String access)
    {
       addFrame = createFrame4();
@@ -95,6 +128,9 @@ public class Smoke
       
    }
    
+   /**
+   "mainFrame" specifies the qualities of frame "mainFrame" 
+   */
    public void deleteFrame(String access)
    {
       deleteFrame = createFrame5();
@@ -110,13 +146,13 @@ public class Smoke
    {
       LoginPanel login = new LoginPanel(frame);
       return login ;
-   }// end create component
+   }
 
    private Component createContent2(String Access) 
    {
       MainPanel main = new MainPanel(mainFrame,Access);
       return main;  
-   }// end create component2
+   }
  
    private Component createContent3(String Access) 
    {
@@ -130,13 +166,13 @@ public class Smoke
       return add;
    }
    
-    private Component createContent5(String Access) 
+   private Component createContent5(String Access) 
    {
       DeletePanel delete = new DeletePanel(deleteFrame, Access) ;
       return delete;
    }
  
-   public static void main(String[] args) throws Exception 
+   public static void main(String[] args) 
    {
       java.awt.EventQueue.invokeLater(new Runnable() 
       {

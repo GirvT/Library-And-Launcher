@@ -1,18 +1,17 @@
-//Filename: Sorter.java
-//Author: Girvan Tse & Manish Suresh
-//Date : 05/03/17
+//Author: Girvan Tse
+//Date : 08/06/17
 
 import java.io.*;
 
 /**
+@author Girvan Tse 
 Takes the given data set and updates any changes made
-@author Girvan Tse & Manish Suresh
 */
 
 class Write
 {
    /**
-   Takes the given data set and confirms any changes
+   Takes the given data set and applies any changes to the data set
    @param fileName The name of the text file to be updated
    @param data The changed data set to implement into the file
    */

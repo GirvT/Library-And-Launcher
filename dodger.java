@@ -24,7 +24,8 @@ public class dodger extends JPanel implements ActionListener, KeyListener
       /**
       "dodger" initates game functions without a frame
       */
-      public dodger(){
+      public dodger()
+      {
          t.start();
          addKeyListener(this);
          setFocusable(true);
@@ -35,7 +36,8 @@ public class dodger extends JPanel implements ActionListener, KeyListener
       "paintComponent" draws graphics elements of the game
       @param g is the panel that contains the drawn graphics
       */
-      public void paintComponent(Graphics g){
+      public void paintComponent(Graphics g)
+      {
          super.paintComponent(g);
          g.setFont(new Font("Helvetica", Font.BOLD, 24));
          g.setColor(Color.red);  

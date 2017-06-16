@@ -1,10 +1,9 @@
-//Filename: Sorter.java
-//Author: Girvan Tse & Manish Suresh
-//Date : 05/03/17
+//Author: Girvan Tse 
+//Date : 08/06/17
 
 /**
 Takes the given data set and sorts it using a sorting algorthim
-@author Girvan Tse & Manish Suresh
+@author Girvan Tse 
 */
 
 class Sort
@@ -14,11 +13,11 @@ class Sort
    @param data The data set to organize
    @param item The specific data category to organized assigned to a numerical value
                0 is Name
-               1 is ID
-               2 is Homeform
-               3 is Date
-               4 is Time
-               5 is Period
+               1 is FileName
+               2 is MethodName
+               3 is Date Created
+               4 is Rating
+               5 is Publisher
    */
    public static String[][] sortGame(String data[][], int item)
    {//input records; item = name etc
