@@ -140,7 +140,7 @@ public class MainPanel extends JPanel
       rows = rd.readFile(fileName, 10);
       info = re.getRecords(rows);
       loading();
-      display.append("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+      display.append("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Publisher|" + "\n");
       display.append(st);
       lightup();
       display.setOpaque(false);
@@ -233,7 +233,7 @@ public class MainPanel extends JPanel
                // begin To clear the previous selesction
                display.setText("");
                loading();
-               display.append("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+               display.append("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Publisher|" + "\n");
                display.append(st);
                // end To clear the previous selesction
                lightup();
@@ -243,7 +243,6 @@ public class MainPanel extends JPanel
                int rowEnd = Utilities.getRowEnd(display, offset);
                String selectedLine = display.getText().substring(rowStart, rowEnd);
                input = selectedLine;
-               String input3 = input.replaceAll("\\s","");
                if (74 < offset && offset < count)
                {
                   int line = display.getLineOfOffset(offset);
@@ -265,7 +264,6 @@ public class MainPanel extends JPanel
          public void actionPerformed(ActionEvent a)
          {
             String input2 = input;
-            
             rows = rd.readFile(fileName, 10);
             info = re.getRecords(rows);
             gl.load(input2, info);

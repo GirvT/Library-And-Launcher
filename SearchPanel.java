@@ -83,7 +83,7 @@ public class SearchPanel extends JPanel
          display2.setOpaque(false);
          display2.setForeground(new Color(234, 234, 225));
 
-         display3.setText("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+         display3.setText("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Publisher|" + "\n");
          display3.setEditable(false);
          display3.setOpaque(false);
                 
@@ -154,7 +154,7 @@ public class SearchPanel extends JPanel
          public void actionPerformed(ActionEvent e)
          {  display.setText("");                  
             search_input = userInput.getText();    
-            display3.setText("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Created By|" + "\n");
+            display3.setText("     |Name|" + "\t|FileName|" + "\t|Method Name|" + "\t|Date Created|" + "\t|Rating|" + "\t|Publisher|" + "\n");
             display3.append(si.searchGame(fileName, info, x, search_input));   
          }
       });
